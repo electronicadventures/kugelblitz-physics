@@ -1,0 +1,44 @@
+/* Lesson planner table styling */
+.md-typeset table:not([class]) th {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+}
+.md-typeset table:not([class]) td {
+  vertical-align: top;
+}
+
+/* Theory/Practical/Assessment badges */
+.badge-theory {
+  background: #7c4dff22;
+  color: #7c4dff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 600;
+}
+.badge-practical {
+  background: #00bfa522;
+  color: #00bfa5;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 600;
+}
+.badge-assessment {
+  background: #ff6d0022;
+  color: #ff6d00;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 600;
+}
+
+/* Formula highlight boxes */
+.md-typeset .admonition.formula,
+.md-typeset details.formula {
+  border-color: #7c4dff;
+}
+.md-typeset .admonition.formula > .admonition-title,
+.md-typeset details.formula > summary {
+  background-color: rgba(124, 77, 255, 0.1);
+}

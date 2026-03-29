@@ -1,0 +1,107 @@
+site_name: Kugelblitz Physics
+site_url: https://kugelblitz.me/
+site_description: QCAA Senior Physics — Notes, Formulas & Resources
+site_author: Kugelblitz
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+  icon:
+    logo: material/atom
+  font:
+    text: Inter
+    code: JetBrains Mono
+
+nav:
+  - Home: index.md
+  - Unit 1 — Thermal, Nuclear & Electrical:
+      - Lesson Planner: unit1/index.md
+      - Heating Processes: unit1/heating-processes.md
+      - Ionising Radiation & Nuclear Reactions: unit1/nuclear-physics.md
+      - Electrical Circuits: unit1/electrical-circuits.md
+  - Unit 2 — Linear Motion & Waves:
+      - Lesson Planner: unit2/index.md
+      - Linear Motion & Force: unit2/linear-motion.md
+      - Waves: unit2/waves.md
+  - Unit 3 — Gravity & Electromagnetism:
+      - Lesson Planner: unit3/index.md
+      - Gravity & Motion: unit3/gravity-motion.md
+      - Electromagnetism: unit3/electromagnetism.md
+  - Unit 4 — Modern Physics:
+      - Lesson Planner: unit4/index.md
+      - Special Relativity: unit4/special-relativity.md
+      - Quantum Theory: unit4/quantum-theory.md
+      - The Standard Model: unit4/standard-model.md
+  - Assessment:
+      - Overview: assessment/index.md
+      - IA1 — Data Test: assessment/ia1-data-test.md
+      - IA2 — Student Experiment: assessment/ia2-student-experiment.md
+      - IA3 — Research Investigation: assessment/ia3-research-investigation.md
+      - External Exam: assessment/external-exam.md
+  - Resources: resources/index.md
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - admonition
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.inlinehilite
+  - tables
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.caret
+  - attr_list
+  - md_in_html
+  - footnotes
+  - def_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search
+
+extra:
+  generator: false
+
+copyright: "&copy; 2026 Kugelblitz Physics"
