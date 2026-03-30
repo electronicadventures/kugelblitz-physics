@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Constant Velocity Lab — Kugelblitz Physics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#0f0f1a;--surface:#1a1a2e;--surface2:#252540;--border:#2a2a4a;--text:#e0e0f0;--muted:#8888aa;--accent:#00bfa5;--accent2:#64ffda;--warn:#ff9800;--err:#e24b4a}
+  body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;padding:16px;max-width:900px;margin:0 auto}
+  h1{font-size:1.4em;font-weight:600;margin-bottom:4px;color:var(--accent2)}
+  .subtitle{font-size:0.85em;color:var(--muted);margin-bottom:16px}
+  canvas{width:100%;border-radius:10px;border:1px solid var(--border);background:var(--surface);display:block}
+  .controls{display:flex;flex-wrap:wrap;gap:16px;margin:12px 0;padding:14px;background:var(--surface);border-radius:10px;border:1px solid var(--border);align-items:center}
+  .control-group label{font-size:0.8em;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:4px}
+  .control-row{display:flex;align-items:center;gap:8px}
+  .control-row input[type=range]{flex:1;-webkit-appearance:none;height:6px;border-radius:3px;background:var(--surface2);outline:none;width:120px}
+  .control-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;border:2px solid var(--accent2)}
+  .val{font-family:'JetBrains Mono',monospace;font-size:0.95em;min-width:50px;text-align:right;font-weight:500}
+  .btn{padding:8px 20px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:0.9em;cursor:pointer;transition:all 0.15s}
+  .btn:hover{background:var(--surface2);border-color:var(--accent)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#0f0f1a;font-weight:500}
+  .btn.primary:hover{background:var(--accent2)}
+  .btn:disabled{opacity:0.4;cursor:not-allowed}
+  .stopwatch{font-family:'JetBrains Mono',monospace;font-size:2em;font-weight:500;text-align:center;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:10px;margin:12px 0;color:var(--accent2)}
+  .marker-info{display:flex;gap:12px;margin:8px 0;flex-wrap:wrap}
+  .marker-card{flex:1;min-width:120px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px;text-align:center}
+  .marker-card .lbl{font-size:0.7em;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+  .marker-card .num{font-family:'JetBrains Mono',monospace;font-size:1.1em;margin-top:4px;color:var(--accent2)}
+  .section-title{font-size:0.85em;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin:20px 0 8px}
+  .data-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.85em}
+  .data-table th{background:var(--surface2);padding:8px 12px;text-align:center;font-weight:500;border:1px solid var(--border);color:var(--accent2)}
+  .data-table td{padding:6px 12px;text-align:center;border:1px solid var(--border);background:var(--surface)}
+  .data-table input{width:55px;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:4px 6px;border-radius:4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.9em}
+  .data-table input:focus{outline:none;border-color:var(--accent)}
+  .instructions{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;margin:16px 0;font-size:0.85em;line-height:1.6}
+  .instructions h3{font-size:0.95em;color:var(--accent2);margin-bottom:8px}
+  .instructions ol,.instructions ul{padding-left:20px}
+  .instructions li{margin-bottom:6px;color:var(--muted)}
+  .feedback{font-size:0.85em;margin:8px 0;padding:8px 12px;border-radius:6px;display:none}
+  .feedback.correct{display:block;background:#0d3028;border:1px solid #00bfa5;color:#64ffda}
+  .feedback.incorrect{display:block;background:#4a1b0c;border:1px solid #e24b4a;color:#f09595}
+  .btn-row{display:flex;gap:8px;margin:8px 0;flex-wrap:wrap}
+  .footer{text-align:center;margin-top:24px;padding:12px;font-size:0.75em;color:var(--muted)}
+</style>
+</head>
+<body>
+<h1>Constant Velocity Lab</h1>
+<p class="subtitle">Measure time and distance to determine the speed of a moving object</p>
+
+<canvas id="sim" height="220"></canvas>
+
+<div class="controls">
+  <div class="control-group" style="flex:1;min-width:180px">
+    <label>Hidden speed (unknown to you!)</label>
+    <div class="control-row">
+      <button class="btn" onclick="randomiseSpeed()">🎲 New random speed</button>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>Marker distance</label>
+    <div class="control-row">
+      <input type="range" id="markerDist" min="5" max="50" value="20" step="1">
+      <span class="val" id="mdv">20 m</span>
+    </div>
+  </div>
+</div>
+
+<div class="btn-row">
+  <button class="btn primary" id="goBtn" onclick="startObject()">▶ Launch object</button>
+  <button class="btn" id="timerBtn" onclick="toggleTimer()" disabled>⏱ Start timer</button>
+  <button class="btn" id="lapBtn" onclick="lapTimer()" disabled>🏁 Lap at marker</button>
+  <button class="btn" onclick="fullReset()">↺ Reset all</button>
+</div>
+
+<div class="stopwatch" id="stopwatch">0.000 s</div>
+
+<div class="marker-info">
+  <div class="marker-card"><div class="lbl">Distance to marker</div><div class="num" id="distDisplay">20 m</div></div>
+  <div class="marker-card"><div class="lbl">Your measured time</div><div class="num" id="measuredTime">— s</div></div>
+  <div class="marker-card"><div class="lbl">Your calculated speed</div><div class="num" id="calcSpeed">— m/s</div></div>
+</div>
+
+<div class="instructions">
+  <h3>Investigation: Measuring constant velocity</h3>
+  <ol>
+    <li>Set the marker distance (this is like placing a ruler or measuring tape)</li>
+    <li>Press <strong>Launch object</strong> to start the object moving</li>
+    <li>Press <strong>Start timer</strong> exactly when the object crosses the start line (left edge)</li>
+    <li>Press <strong>Lap at marker</strong> when the object reaches the marker flag</li>
+    <li>Calculate: speed = distance ÷ time</li>
+    <li>Record your data and try different marker distances</li>
+    <li>Try to determine the hidden speed of the object!</li>
+  </ol>
+</div>
+
+<p class="section-title">Data table</p>
+<table class="data-table">
+  <thead><tr><th>Trial</th><th>Distance (m)</th><th>Time (s)</th><th>Speed = d/t (m/s)</th><th>Check</th></tr></thead>
+  <tbody id="tableBody"></tbody>
+</table>
+<div class="btn-row">
+  <button class="btn" onclick="recordTrial()">+ Record trial</button>
+  <button class="btn" onclick="clearTable()">Clear table</button>
+</div>
+<div id="feedback" class="feedback"></div>
+
+<p class="section-title">Distance–time graph</p>
+<canvas id="graph" height="220"></canvas>
+
+<div class="instructions" style="margin-top:16px">
+  <h3>Questions</h3>
+  <ol>
+    <li>What shape is the distance–time graph for constant velocity?</li>
+    <li>What does the gradient of a distance–time graph represent?</li>
+    <li>Why might your measured speed differ slightly between trials? (Think about reaction time)</li>
+    <li>How could you improve the accuracy of your measurement?</li>
+    <li>A car travels at a constant 60 km/h. How far does it travel in 2.5 hours? Convert this to m/s.</li>
+  </ol>
+</div>
+
+<div class="footer">Kugelblitz Physics — kugelblitz.me</div>
+
+<script>
+const cv=document.getElementById('sim'),ctx=cv.getContext('2d');
+const gv=document.getElementById('graph'),gx=gv.getContext('2d');
+let W,H,gW,gH;
+function resize(){W=cv.width=cv.clientWidth;H=cv.height=220;gW=gv.width=gv.clientWidth;gH=gv.height=220;draw();drawGraph()}
+resize();
+
+let speed=Math.round((3+Math.random()*12)*10)/10;
+let markerDist=20;
+let objX=-30,objMoving=false;
+let timerRunning=false,timerStart=0,timerElapsed=0,lapTime=null;
+let trialCount=0;
+let trials=[];
+
+document.getElementById('markerDist').oninput=function(){
+  markerDist=+this.value;
+  document.getElementById('mdv').textContent=markerDist+' m';
+  document.getElementById('distDisplay').textContent=markerDist+' m';
+  draw();
+};
+
+function randomiseSpeed(){
+  speed=Math.round((2+Math.random()*13)*10)/10;
+  fullReset();
+}
+
+function startObject(){
+  objX=0;objMoving=true;
+  document.getElementById('timerBtn').disabled=false;
+  document.getElementById('lapBtn').disabled=false;
+  document.getElementById('goBtn').disabled=true;
+}
+
+function toggleTimer(){
+  if(!timerRunning){
+    timerRunning=true;timerStart=performance.now()-timerElapsed*1000;
+    document.getElementById('timerBtn').textContent='⏸ Stop timer';
+  }else{
+    timerRunning=false;
+    document.getElementById('timerBtn').textContent='⏱ Start timer';
+  }
+}
+
+function lapTimer(){
+  if(timerRunning){
+    lapTime=timerElapsed;
+    timerRunning=false;
+    document.getElementById('timerBtn').textContent='⏱ Start timer';
+    document.getElementById('measuredTime').textContent=lapTime.toFixed(3)+' s';
+    let calcS=markerDist/lapTime;
+    document.getElementById('calcSpeed').textContent=calcS.toFixed(2)+' m/s';
+  }
+}
+
+function fullReset(){
+  objX=-30;objMoving=false;timerRunning=false;timerElapsed=0;lapTime=null;
+  document.getElementById('stopwatch').textContent='0.000 s';
+  document.getElementById('timerBtn').textContent='⏱ Start timer';
+  document.getElementById('timerBtn').disabled=true;
+  document.getElementById('lapBtn').disabled=true;
+  document.getElementById('goBtn').disabled=false;
+  document.getElementById('measuredTime').textContent='— s';
+  document.getElementById('calcSpeed').textContent='— m/s';
+  draw();
+}
+
+function recordTrial(){
+  if(lapTime===null)return;
+  trialCount++;
+  let calcS=markerDist/lapTime;
+  trials.push({d:markerDist,t:lapTime,s:calcS});
+  let tbody=document.getElementById('tableBody');
+  let row=document.createElement('tr');
+  row.innerHTML=`<td>${trialCount}</td><td>${markerDist}</td><td>${lapTime.toFixed(3)}</td><td><input type="text" id="sp${trialCount}" placeholder="?"></td><td><button class="btn" style="padding:4px 10px;font-size:0.8em" onclick="checkSpeed(${trialCount},${markerDist},${lapTime.toFixed(4)})">Check</button></td>`;
+  tbody.appendChild(row);
+  drawGraph();
+}
+
+function checkSpeed(trial,dist,time){
+  let input=document.getElementById('sp'+trial);
+  let answer=parseFloat(input.value);
+  let expected=dist/time;
+  let fb=document.getElementById('feedback');
+  if(Math.abs(answer-expected)<0.3){
+    fb.className='feedback correct';
+    fb.textContent='✓ Correct! '+dist+' ÷ '+time.toFixed(3)+' = '+expected.toFixed(2)+' m/s';
+  }else{
+    fb.className='feedback incorrect';
+    fb.textContent='✗ Try again. speed = distance ÷ time = '+dist+' ÷ '+time.toFixed(3);
+  }
+}
+
+function clearTable(){document.getElementById('tableBody').innerHTML='';trialCount=0;trials=[];document.getElementById('feedback').className='feedback';drawGraph()}
+
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  let groundY=H-40;
+  ctx.fillStyle='#1e1e38';ctx.fillRect(0,groundY,W,40);
+  let trackLeft=60,trackRight=W-40;
+  let trackW=trackRight-trackLeft;
+  ctx.strokeStyle='#3a3a5a';ctx.lineWidth=2;ctx.setLineDash([8,6]);
+  ctx.beginPath();ctx.moveTo(trackLeft,groundY-2);ctx.lineTo(trackRight,groundY-2);ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.strokeStyle='#64ffda';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(trackLeft,groundY-20);ctx.lineTo(trackLeft,groundY);ctx.stroke();
+  ctx.fillStyle='#64ffda';ctx.font='600 11px "Space Grotesk",sans-serif';ctx.textAlign='center';
+  ctx.fillText('START',trackLeft,groundY-24);
+  ctx.fillText('0 m',trackLeft,groundY+16);
+  let maxVisibleDist=50;
+  let markerX=trackLeft+(markerDist/maxVisibleDist)*trackW;
+  if(markerX>trackRight)markerX=trackRight;
+  ctx.strokeStyle='#ff9800';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(markerX,groundY-30);ctx.lineTo(markerX,groundY);ctx.stroke();
+  ctx.fillStyle='#ff9800';ctx.beginPath();ctx.moveTo(markerX,groundY-30);ctx.lineTo(markerX+12,groundY-38);ctx.lineTo(markerX+12,groundY-22);ctx.fill();
+  ctx.fillStyle='#ff9800';ctx.font='600 11px "Space Grotesk",sans-serif';
+  ctx.fillText(markerDist+' m',markerX,groundY+16);
+  for(let d=10;d<maxVisibleDist;d+=10){
+    if(d===markerDist)continue;
+    let x=trackLeft+(d/maxVisibleDist)*trackW;
+    ctx.strokeStyle='#2e2e4e';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,groundY-8);ctx.lineTo(x,groundY);ctx.stroke();
+    ctx.fillStyle='#4a4a6a';ctx.font='10px "JetBrains Mono",monospace';ctx.textAlign='center';
+    ctx.fillText(d+'',x,groundY+14);
+  }
+  if(objMoving||objX>=0){
+    let objScreenX=trackLeft+(objX/maxVisibleDist)*trackW;
+    let sz=18;
+    ctx.fillStyle='#7c4dff';ctx.beginPath();ctx.arc(objScreenX,groundY-sz,sz,0,Math.PI*2);ctx.fill();
+    ctx.strokeStyle='#b388ff';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(objScreenX,groundY-sz,sz,0,Math.PI*2);ctx.stroke();
+    ctx.fillStyle='#fff';ctx.font='500 11px "Space Grotesk",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText('●',objScreenX,groundY-sz);
+  }
+  ctx.fillStyle='var(--accent2,#64ffda)';ctx.font='500 12px "JetBrains Mono",monospace';ctx.textAlign='left';ctx.textBaseline='top';
+  if(objMoving)ctx.fillText('position: '+objX.toFixed(1)+' m',14,12);
+}
+
+function drawGraph(){
+  gx.clearRect(0,0,gW,gH);
+  let pad={l:50,r:20,t:20,b:36};
+  let plotW=gW-pad.l-pad.r,plotH=gH-pad.t-pad.b;
+  gx.fillStyle='#15152a';gx.fillRect(pad.l,pad.t,plotW,plotH);
+  gx.strokeStyle='#2a2a4a';gx.lineWidth=0.5;
+  for(let i=0;i<=5;i++){let y=pad.t+plotH*(1-i/5);gx.beginPath();gx.moveTo(pad.l,y);gx.lineTo(pad.l+plotW,y);gx.stroke()}
+  for(let i=0;i<=5;i++){let x=pad.l+plotW*i/5;gx.beginPath();gx.moveTo(x,pad.t);gx.lineTo(x,pad.t+plotH);gx.stroke()}
+  gx.fillStyle='#8888aa';gx.font='11px "JetBrains Mono",monospace';
+  gx.textAlign='center';gx.fillText('Time (s)',pad.l+plotW/2,gH-4);
+  gx.save();gx.translate(14,pad.t+plotH/2);gx.rotate(-Math.PI/2);gx.fillText('Distance (m)',0,0);gx.restore();
+  if(trials.length===0)return;
+  let maxD=Math.max(10,...trials.map(tr=>tr.d))*1.2;
+  let maxT=Math.max(2,...trials.map(tr=>tr.t))*1.2;
+  gx.textAlign='right';
+  for(let i=0;i<=5;i++){gx.fillText((maxD*i/5).toFixed(0),pad.l-6,pad.t+plotH*(1-i/5)+4)}
+  gx.textAlign='center';
+  for(let i=0;i<=5;i++){gx.fillText((maxT*i/5).toFixed(1),pad.l+plotW*i/5,pad.t+plotH+16)}
+  trials.forEach((tr,i)=>{
+    let x=pad.l+(tr.t/maxT)*plotW;
+    let y=pad.t+plotH-(tr.d/maxD)*plotH;
+    gx.fillStyle='#00bfa5';gx.beginPath();gx.arc(x,y,5,0,Math.PI*2);gx.fill();
+    gx.strokeStyle='#64ffda';gx.lineWidth=1;gx.beginPath();gx.arc(x,y,5,0,Math.PI*2);gx.stroke();
+    gx.fillStyle='#8888aa';gx.font='10px "JetBrains Mono",monospace';gx.textAlign='left';
+    gx.fillText('('+tr.t.toFixed(2)+', '+tr.d+')',x+8,y-2);
+  });
+  if(trials.length>=2){
+    gx.strokeStyle='#64ffda44';gx.lineWidth=1;gx.setLineDash([4,4]);gx.beginPath();
+    gx.moveTo(pad.l,pad.t+plotH);
+    let avgSpeed=trials.reduce((s,tr)=>s+tr.s,0)/trials.length;
+    let endT=maxT;let endD=avgSpeed*endT;
+    let endX=pad.l+(endT/maxT)*plotW;
+    let endY=pad.t+plotH-(endD/maxD)*plotH;
+    gx.lineTo(endX,endY);gx.stroke();gx.setLineDash([]);
+  }
+  gx.fillStyle='#00bfa5';gx.font='600 12px "Space Grotesk",sans-serif';gx.textAlign='left';
+  gx.fillText('distance vs time',pad.l+8,pad.t+14);
+}
+
+let lastTime=0;
+function loop(ts){
+  if(!lastTime)lastTime=ts;
+  let dt=(ts-lastTime)/1000;
+  lastTime=ts;
+  if(objMoving&&dt<0.1){
+    objX+=speed*dt;
+    if(objX>55)objX=55;
+  }
+  if(timerRunning){
+    timerElapsed=(performance.now()-timerStart)/1000;
+    document.getElementById('stopwatch').textContent=timerElapsed.toFixed(3)+' s';
+  }
+  draw();
+  requestAnimationFrame(loop);
+}
+draw();drawGraph();requestAnimationFrame(loop);
+window.addEventListener('resize',resize);
+</script>
+</body>
+</html>

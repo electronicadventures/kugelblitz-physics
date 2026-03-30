@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newton's Second Law Lab — Kugelblitz Physics</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#0f0f1a;--surface:#1a1a2e;--surface2:#252540;--border:#2a2a4a;
+    --text:#e0e0f0;--muted:#8888aa;--accent:#7c4dff;--accent2:#b388ff;
+    --force-color:#ff6d00;--friction-color:#e24b4a;--velocity-color:#7c4dff;
+    --success:#4caf50;--warning:#ff9800;
+  }
+  body{background:var(--bg);color:var(--text);font-family:'Space Grotesk',sans-serif;padding:16px;max-width:900px;margin:0 auto}
+  h1{font-size:1.4em;font-weight:600;margin-bottom:4px;color:var(--accent2)}
+  .subtitle{font-size:0.85em;color:var(--muted);margin-bottom:16px}
+  .sim-canvas{width:100%;border-radius:10px;border:1px solid var(--border);background:var(--surface)}
+  .controls{display:flex;flex-wrap:wrap;gap:16px;margin:16px 0;padding:16px;background:var(--surface);border-radius:10px;border:1px solid var(--border)}
+  .control-group{flex:1;min-width:200px}
+  .control-group label{display:block;font-size:0.8em;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+  .control-row{display:flex;align-items:center;gap:8px}
+  .control-row input[type=range]{flex:1;-webkit-appearance:none;height:6px;border-radius:3px;background:var(--surface2);outline:none}
+  .control-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;border:2px solid var(--accent2)}
+  .control-row .val{font-family:'JetBrains Mono',monospace;font-size:0.95em;min-width:60px;text-align:right;color:var(--text);font-weight:500}
+  .data-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0}
+  .data-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:12px;text-align:center}
+  .data-card .lbl{font-size:0.7em;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+  .data-card .num{font-family:'JetBrains Mono',monospace;font-size:1.3em;font-weight:500;margin-top:4px}
+  .data-card .num.force{color:var(--force-color)}
+  .data-card .num.accel{color:var(--accent2)}
+  .data-card .num.vel{color:var(--velocity-color)}
+  .data-card .num.disp{color:var(--success)}
+  .btn-row{display:flex;gap:8px;margin:12px 0}
+  .btn{padding:8px 20px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:'Space Grotesk',sans-serif;font-size:0.9em;cursor:pointer;transition:all 0.15s}
+  .btn:hover{background:var(--surface2);border-color:var(--accent)}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .btn.primary:hover{background:var(--accent2)}
+  .graph-canvas{width:100%;border-radius:10px;border:1px solid var(--border);background:var(--surface);margin-top:12px}
+  .section-title{font-size:0.85em;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin:20px 0 8px}
+  .instructions{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px;margin:16px 0;font-size:0.85em;line-height:1.6}
+  .instructions h3{font-size:0.95em;color:var(--accent2);margin-bottom:8px}
+  .instructions ol{padding-left:20px}
+  .instructions li{margin-bottom:6px;color:var(--muted)}
+  .data-table{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.85em}
+  .data-table th{background:var(--surface2);padding:8px 12px;text-align:center;font-weight:500;border:1px solid var(--border);color:var(--accent2)}
+  .data-table td{padding:6px 12px;text-align:center;border:1px solid var(--border);background:var(--surface)}
+  .data-table input{width:60px;background:var(--bg);border:1px solid var(--border);color:var(--text);padding:4px 6px;border-radius:4px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:0.9em}
+  .data-table input:focus{outline:none;border-color:var(--accent)}
+  .check-btn{padding:4px 10px;font-size:0.8em}
+  .feedback{font-size:0.85em;margin:8px 0;padding:8px 12px;border-radius:6px;display:none}
+  .feedback.correct{display:block;background:#1b5e20;border:1px solid #4caf50;color:#a5d6a7}
+  .feedback.incorrect{display:block;background:#4a1b0c;border:1px solid #e24b4a;color:#f09595}
+  .footer{text-align:center;margin-top:24px;padding:12px;font-size:0.75em;color:var(--muted)}
+  @media(max-width:600px){.data-grid{grid-template-columns:repeat(2,1fr)}.controls{flex-direction:column}}
+</style>
+</head>
+<body>
+<h1>Newton's Second Law Lab</h1>
+<p class="subtitle">Investigate the relationship between force, mass and acceleration — F = ma</p>
+
+<canvas id="sim" class="sim-canvas" height="260"></canvas>
+
+<div class="controls">
+  <div class="control-group">
+    <label>Applied force</label>
+    <div class="control-row">
+      <input type="range" id="force" min="0" max="50" value="20" step="1">
+      <span class="val" id="fv">20 N</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>Mass</label>
+    <div class="control-row">
+      <input type="range" id="mass" min="1" max="20" value="5" step="0.5">
+      <span class="val" id="mv">5.0 kg</span>
+    </div>
+  </div>
+  <div class="control-group">
+    <label>Friction coefficient (μ)</label>
+    <div class="control-row">
+      <input type="range" id="mu" min="0" max="0.5" value="0" step="0.01">
+      <span class="val" id="muv">0.00</span>
+    </div>
+  </div>
+</div>
+
+<div class="data-grid">
+  <div class="data-card"><div class="lbl">Net force</div><div class="num force" id="dF">20.0 N</div></div>
+  <div class="data-card"><div class="lbl">Acceleration</div><div class="num accel" id="dA">4.00 m/s²</div></div>
+  <div class="data-card"><div class="lbl">Velocity</div><div class="num vel" id="dV">0.0 m/s</div></div>
+  <div class="data-card"><div class="lbl">Displacement</div><div class="num disp" id="dS">0.0 m</div></div>
+</div>
+
+<div class="btn-row">
+  <button class="btn primary" id="goBtn" onclick="toggleSim()">▶ Start</button>
+  <button class="btn" onclick="resetSim()">↺ Reset</button>
+  <button class="btn" onclick="recordData()">📋 Record data point</button>
+</div>
+
+<p class="section-title">Velocity–time graph</p>
+<canvas id="graph" class="graph-canvas" height="200"></canvas>
+
+<div class="instructions">
+  <h3>Investigation: How does mass affect acceleration?</h3>
+  <ol>
+    <li>Set friction to 0 and force to 20 N</li>
+    <li>Set mass to 2.0 kg, press Start, observe the acceleration, then press Record</li>
+    <li>Press Reset. Change mass to 4.0 kg and repeat</li>
+    <li>Continue for masses 6.0, 8.0 and 10.0 kg</li>
+    <li>Record your data in the table below and calculate the expected acceleration</li>
+    <li>Describe the relationship between mass and acceleration when force is constant</li>
+  </ol>
+</div>
+
+<p class="section-title">Data table</p>
+<table class="data-table" id="dataTable">
+  <thead>
+    <tr><th>Trial</th><th>Force (N)</th><th>Mass (kg)</th><th>Measured a (m/s²)</th><th>Calculated a (m/s²)</th><th>Check</th></tr>
+  </thead>
+  <tbody id="tableBody">
+  </tbody>
+</table>
+<div class="btn-row">
+  <button class="btn" onclick="addRow()">+ Add row</button>
+  <button class="btn" onclick="clearTable()">Clear table</button>
+</div>
+<div id="feedback" class="feedback"></div>
+
+<div class="instructions" style="margin-top:16px">
+  <h3>Questions to answer</h3>
+  <ol>
+    <li>When force is constant, what happens to acceleration as mass increases?</li>
+    <li>When mass is constant, what happens to acceleration as force increases?</li>
+    <li>Write the mathematical relationship between force, mass and acceleration.</li>
+    <li>Predict: If a 3.0 kg object has a net force of 12 N applied, what will the acceleration be?</li>
+    <li>Extension: Set friction to 0.20. How does friction affect the net force and acceleration?</li>
+  </ol>
+</div>
+
+<div class="footer">Kugelblitz Physics — kugelblitz.me</div>
+
+<script>
+const cv=document.getElementById('sim'),ctx=cv.getContext('2d');
+const gv=document.getElementById('graph'),gx=gv.getContext('2d');
+let W,H,gW,gH;
+function resize(){
+  W=cv.width=cv.clientWidth;H=cv.height=260;
+  gW=gv.width=gv.clientWidth;gH=gv.height=200;
+  drawBlock();drawGraph();
+}
+resize();
+
+const forceEl=document.getElementById('force'),massEl=document.getElementById('mass'),muEl=document.getElementById('mu');
+let F=20,m=5,mu=0,acc=0,vel=0,disp=0,blockX=80,running=false,t=0;
+let vData=[];
+const g=9.8;
+let trialCount=0;
+
+forceEl.oninput=()=>{F=+forceEl.value;document.getElementById('fv').textContent=F+' N';update()};
+massEl.oninput=()=>{m=+massEl.value;document.getElementById('mv').textContent=m.toFixed(1)+' kg';update()};
+muEl.oninput=()=>{mu=+muEl.value;document.getElementById('muv').textContent=mu.toFixed(2);update()};
+
+function update(){
+  let friction=mu*m*g;
+  let net=Math.max(F-friction,0);
+  if(vel<=0&&F<=friction)net=0;
+  acc=net/m;
+  document.getElementById('dF').textContent=net.toFixed(1)+' N';
+  document.getElementById('dA').textContent=acc.toFixed(2)+' m/s²';
+}
+
+function toggleSim(){running=!running;document.getElementById('goBtn').textContent=running?'⏸ Pause':'▶ Start'}
+
+function resetSim(){
+  running=false;vel=0;disp=0;t=0;blockX=80;vData=[];
+  document.getElementById('goBtn').textContent='▶ Start';
+  document.getElementById('dV').textContent='0.0 m/s';
+  document.getElementById('dS').textContent='0.0 m';
+  update();drawGraph();
+}
+
+function recordData(){
+  trialCount++;
+  let friction=mu*m*g;
+  let net=Math.max(F-friction,0);
+  let measuredAcc=net/m;
+  let tbody=document.getElementById('tableBody');
+  let row=document.createElement('tr');
+  row.innerHTML=`<td>${trialCount}</td><td>${F}</td><td>${m.toFixed(1)}</td><td>${measuredAcc.toFixed(2)}</td><td><input type="text" id="calc${trialCount}" placeholder="?"></td><td><button class="btn check-btn" onclick="checkRow(${trialCount},${F},${m})">Check</button></td>`;
+  tbody.appendChild(row);
+}
+
+function addRow(){
+  trialCount++;
+  let tbody=document.getElementById('tableBody');
+  let row=document.createElement('tr');
+  row.innerHTML=`<td>${trialCount}</td><td><input type="text" style="width:40px" id="f${trialCount}" placeholder="F"></td><td><input type="text" style="width:40px" id="m${trialCount}" placeholder="m"></td><td><input type="text" style="width:50px" id="meas${trialCount}" placeholder="?"></td><td><input type="text" style="width:50px" id="calc${trialCount}" placeholder="?"></td><td><button class="btn check-btn" onclick="checkManualRow(${trialCount})">Check</button></td>`;
+  tbody.appendChild(row);
+}
+
+function checkRow(trial,force,mass){
+  let input=document.getElementById('calc'+trial);
+  let expected=(force/mass).toFixed(2);
+  let answer=parseFloat(input.value);
+  let fb=document.getElementById('feedback');
+  if(Math.abs(answer-parseFloat(expected))<0.1){
+    fb.className='feedback correct';
+    fb.textContent='✓ Correct! F/m = '+force+'/'+mass.toFixed(1)+' = '+expected+' m/s²';
+  }else{
+    fb.className='feedback incorrect';
+    fb.textContent='✗ Try again. Use a = F/m. What is '+force+' ÷ '+mass.toFixed(1)+'?';
+  }
+}
+
+function checkManualRow(trial){
+  let fEl=document.getElementById('f'+trial);
+  let mEl=document.getElementById('m'+trial);
+  let calcEl=document.getElementById('calc'+trial);
+  let force=parseFloat(fEl.value);
+  let mass=parseFloat(mEl.value);
+  let answer=parseFloat(calcEl.value);
+  let fb=document.getElementById('feedback');
+  if(isNaN(force)||isNaN(mass)||isNaN(answer)){
+    fb.className='feedback incorrect';fb.textContent='Please fill in force, mass, and calculated acceleration.';return;
+  }
+  let expected=force/mass;
+  if(Math.abs(answer-expected)<0.15){
+    fb.className='feedback correct';fb.textContent='✓ Correct! '+force+' ÷ '+mass.toFixed(1)+' = '+expected.toFixed(2)+' m/s²';
+  }else{
+    fb.className='feedback incorrect';fb.textContent='✗ Try again. a = F/m = '+force+' ÷ '+mass.toFixed(1);
+  }
+}
+
+function clearTable(){document.getElementById('tableBody').innerHTML='';trialCount=0;document.getElementById('feedback').className='feedback'}
+
+function drawBlock(){
+  ctx.clearRect(0,0,W,H);
+  let groundY=H-50;
+  ctx.fillStyle='#1e1e38';ctx.fillRect(0,groundY,W,50);
+  for(let i=0;i<W;i+=18){ctx.strokeStyle='#2e2e4e';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(i,groundY);ctx.lineTo(i-8,groundY+12);ctx.stroke()}
+  let bw=Math.max(40,20+m*3),bh=50,bx=blockX%(W+200),by=groundY-bh;
+  if(bx<-bw)bx+=W+200;
+  ctx.fillStyle='#7c4dff';ctx.beginPath();ctx.roundRect(bx,by,bw,bh,6);ctx.fill();
+  ctx.strokeStyle='#b388ff';ctx.lineWidth=1;ctx.beginPath();ctx.roundRect(bx,by,bw,bh,6);ctx.stroke();
+  ctx.fillStyle='#fff';ctx.font='500 13px "Space Grotesk",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillText(m.toFixed(1)+' kg',bx+bw/2,by+bh/2);
+  if(F>0){
+    let arrowLen=Math.min(F*2.2,140);
+    ctx.strokeStyle=getComputedStyle(document.documentElement).getPropertyValue('--force-color').trim();
+    ctx.lineWidth=3;ctx.lineCap='round';ctx.beginPath();
+    ctx.moveTo(bx+bw+4,by+bh/2);ctx.lineTo(bx+bw+arrowLen,by+bh/2);ctx.stroke();
+    ctx.fillStyle='#ff6d00';ctx.beginPath();
+    ctx.moveTo(bx+bw+arrowLen+10,by+bh/2);ctx.lineTo(bx+bw+arrowLen-4,by+bh/2-7);ctx.lineTo(bx+bw+arrowLen-4,by+bh/2+7);ctx.fill();
+    ctx.font='500 12px "Space Grotesk",sans-serif';ctx.textAlign='center';
+    ctx.fillText('F = '+F+' N',bx+bw+arrowLen/2,by+bh/2-16);
+  }
+  let friction=mu*m*g;
+  if(friction>0.01&&(vel>0.01||F>0)){
+    let fLen=Math.min(friction*2.2,110);
+    ctx.strokeStyle='#e24b4a';ctx.lineWidth=2.5;ctx.beginPath();
+    ctx.moveTo(bx-4,by+bh/2);ctx.lineTo(bx-fLen,by+bh/2);ctx.stroke();
+    ctx.fillStyle='#e24b4a';ctx.beginPath();
+    ctx.moveTo(bx-fLen-8,by+bh/2);ctx.lineTo(bx-fLen+4,by+bh/2-6);ctx.lineTo(bx-fLen+4,by+bh/2+6);ctx.fill();
+    ctx.font='12px "Space Grotesk",sans-serif';ctx.textAlign='center';
+    ctx.fillText('f = '+friction.toFixed(1)+' N',bx-fLen/2,by+bh/2-16);
+  }
+  ctx.fillStyle='#b388ff';ctx.font='500 13px "JetBrains Mono",monospace';ctx.textAlign='left';
+  ctx.fillText('a = '+acc.toFixed(2)+' m/s²',14,24);
+  ctx.fillText('v = '+vel.toFixed(1)+' m/s',14,44);
+  ctx.fillStyle='#4caf50';
+  ctx.fillText('s = '+disp.toFixed(1)+' m',W-140,24);
+}
+
+function drawGraph(){
+  gx.clearRect(0,0,gW,gH);
+  let pad={l:50,r:20,t:20,b:36};
+  let plotW=gW-pad.l-pad.r,plotH=gH-pad.t-pad.b;
+  gx.fillStyle='#15152a';gx.fillRect(pad.l,pad.t,plotW,plotH);
+  gx.strokeStyle='#2a2a4a';gx.lineWidth=0.5;
+  for(let i=0;i<=5;i++){let y=pad.t+plotH*(1-i/5);gx.beginPath();gx.moveTo(pad.l,y);gx.lineTo(pad.l+plotW,y);gx.stroke()}
+  gx.fillStyle='#8888aa';gx.font='11px "JetBrains Mono",monospace';
+  gx.textAlign='center';gx.fillText('Time (s)',pad.l+plotW/2,gH-4);
+  gx.save();gx.translate(14,pad.t+plotH/2);gx.rotate(-Math.PI/2);gx.fillText('v (m/s)',0,0);gx.restore();
+  if(vData.length<2)return;
+  let maxV=Math.max(5,...vData.map(d=>d[1]));
+  let maxT=Math.max(2,...vData.map(d=>d[0]));
+  gx.textAlign='right';
+  for(let i=0;i<=5;i++){
+    let y=pad.t+plotH*(1-i/5);
+    gx.fillText((maxV*i/5).toFixed(0),pad.l-6,y+4);
+  }
+  gx.textAlign='center';
+  for(let i=0;i<=4;i++){
+    let x=pad.l+(plotW*i/4);
+    gx.fillText((maxT*i/4).toFixed(1),x,pad.t+plotH+16);
+  }
+  gx.strokeStyle='#7c4dff';gx.lineWidth=2;gx.beginPath();
+  vData.forEach((d,i)=>{
+    let x=pad.l+(d[0]/maxT)*plotW,y=pad.t+plotH-(d[1]/maxV)*plotH;
+    i===0?gx.moveTo(x,y):gx.lineTo(x,y);
+  });
+  gx.stroke();
+  gx.fillStyle='#7c4dff';gx.font='600 12px "Space Grotesk",sans-serif';gx.textAlign='left';
+  gx.fillText('velocity (m/s)',pad.l+8,pad.t+14);
+}
+
+let lastTime=0;
+function loop(ts){
+  if(!lastTime)lastTime=ts;
+  let dt=(ts-lastTime)/1000;
+  lastTime=ts;
+  if(running&&dt<0.1){
+    t+=dt;
+    let friction=mu*m*g;
+    let net=F-friction;
+    if(net<0&&vel<=0.001){net=0;vel=0}
+    acc=net/m;
+    vel+=acc*dt;
+    if(vel<0)vel=0;
+    disp+=vel*dt;
+    blockX=80+disp*8;
+    vData.push([t,vel]);
+    if(vData.length>600)vData.shift();
+    document.getElementById('dV').textContent=vel.toFixed(1)+' m/s';
+    document.getElementById('dS').textContent=disp.toFixed(1)+' m';
+    document.getElementById('dF').textContent=Math.max(F-friction,0).toFixed(1)+' N';
+    document.getElementById('dA').textContent=acc.toFixed(2)+' m/s²';
+    if(t%0.15<dt)drawGraph();
+  }
+  drawBlock();
+  requestAnimationFrame(loop);
+}
+
+update();drawGraph();requestAnimationFrame(loop);
+window.addEventListener('resize',resize);
+</script>
+</body>
+</html>
