@@ -60,7 +60,9 @@ nav:
       - IA2 — Student Experiment: assessment/ia2-student-experiment.md
       - IA3 — Research Investigation: assessment/ia3-research-investigation.md
       - External Exam: assessment/external-exam.md
-  - Resources: resources/index.md
+  - Resources:
+      - Overview: resources/index.md
+      - Interactive Labs: resources/labs.md
 
 markdown_extensions:
   - pymdownx.arithmatex:
