@@ -39,3 +39,10 @@ Each unit has two ways to navigate:
 - [Resources hub](resources/index.md) — simulations, videos, external sites, and tools
 - [QCAA Physics formula and data book](https://www.qcaa.qld.edu.au/downloads/senior-qce/common/snr_physics_25_formula_data_book.pdf) (PDF)
 - [QCAA Physics syllabus](https://www.qcaa.qld.edu.au/downloads/senior-qce/syllabuses/snr_physics_25_syll.pdf) (PDF)
+
+## Year 10 — Forces and Motion
+
+Interactive labs for investigating Newton's laws:
+
+- [Newton's Second Law Lab](labs/newtons-second-law.html) — investigate F = ma
+- [Constant Velocity Lab](labs/constant-velocity.html) — measure speed from distance and time
