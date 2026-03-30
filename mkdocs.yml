@@ -102,8 +102,7 @@ extra_css:
 
 plugins:
   - search
-exclude_docs: |
-  labs/
+
 extra:
   generator: false
 
