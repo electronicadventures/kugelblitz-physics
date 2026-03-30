@@ -46,6 +46,104 @@
 </style>
 </head>
 <body>
+
+<script>
+var speed = Math.round((3 + Math.random() * 12) * 10) / 10;
+var markerDist = 20;
+var objX = -30;
+var objMoving = false;
+var timerRunning = false;
+var timerStart = 0;
+var timerElapsed = 0;
+var lapTime = null;
+var trialCount = 0;
+var trials = [];
+
+function randomiseSpeed() {
+  speed = Math.round((2 + Math.random() * 13) * 10) / 10;
+  fullReset();
+}
+
+function startObject() {
+  objX = 0;
+  objMoving = true;
+  document.getElementById('timerBtn').disabled = false;
+  document.getElementById('lapBtn').disabled = false;
+  document.getElementById('goBtn').disabled = true;
+}
+
+function toggleTimer() {
+  if (!timerRunning) {
+    timerRunning = true;
+    timerStart = performance.now() - timerElapsed * 1000;
+    document.getElementById('timerBtn').textContent = '⏸ Stop timer';
+  } else {
+    timerRunning = false;
+    document.getElementById('timerBtn').textContent = '⏱ Start timer';
+  }
+}
+
+function lapTimer() {
+  if (timerRunning) {
+    lapTime = timerElapsed;
+    timerRunning = false;
+    document.getElementById('timerBtn').textContent = '⏱ Start timer';
+    document.getElementById('measuredTime').textContent = lapTime.toFixed(3) + ' s';
+    var calcS = markerDist / lapTime;
+    document.getElementById('calcSpeed').textContent = calcS.toFixed(2) + ' m/s';
+  }
+}
+
+function fullReset() {
+  objX = -30;
+  objMoving = false;
+  timerRunning = false;
+  timerElapsed = 0;
+  lapTime = null;
+  document.getElementById('stopwatch').textContent = '0.000 s';
+  document.getElementById('timerBtn').textContent = '⏱ Start timer';
+  document.getElementById('timerBtn').disabled = true;
+  document.getElementById('lapBtn').disabled = true;
+  document.getElementById('goBtn').disabled = false;
+  document.getElementById('measuredTime').textContent = '— s';
+  document.getElementById('calcSpeed').textContent = '— m/s';
+}
+
+function recordTrial() {
+  if (lapTime === null) return;
+  trialCount++;
+  var calcS = markerDist / lapTime;
+  trials.push({d: markerDist, t: lapTime, s: calcS});
+  var tbody = document.getElementById('tableBody');
+  var row = document.createElement('tr');
+  row.innerHTML = '<td>' + trialCount + '</td><td>' + markerDist + '</td><td>' + lapTime.toFixed(3) + '</td><td><input type="text" id="sp' + trialCount + '" placeholder="?"></td><td><button class="btn" style="padding:4px 10px;font-size:0.8em" onclick="checkSpeed(' + trialCount + ',' + markerDist + ',' + lapTime.toFixed(4) + ')">Check</button></td>';
+  tbody.appendChild(row);
+  drawGraph();
+}
+
+function checkSpeed(trial, dist, time) {
+  var input = document.getElementById('sp' + trial);
+  var answer = parseFloat(input.value);
+  var expected = dist / time;
+  var fb = document.getElementById('feedback');
+  if (Math.abs(answer - expected) < 0.3) {
+    fb.className = 'feedback correct';
+    fb.textContent = '✓ Correct! ' + dist + ' ÷ ' + time.toFixed(3) + ' = ' + expected.toFixed(2) + ' m/s';
+  } else {
+    fb.className = 'feedback incorrect';
+    fb.textContent = '✗ Try again. speed = distance ÷ time = ' + dist + ' ÷ ' + time.toFixed(3);
+  }
+}
+
+function clearTable() {
+  document.getElementById('tableBody').innerHTML = '';
+  trialCount = 0;
+  trials = [];
+  document.getElementById('feedback').className = 'feedback';
+  drawGraph();
+}
+</script>
+
 <h1>Constant Velocity Lab</h1>
 <p class="subtitle">Measure time and distance to determine the speed of a moving object</p>
 
@@ -123,195 +221,219 @@
 <div class="footer">Kugelblitz Physics — kugelblitz.me</div>
 
 <script>
-const cv=document.getElementById('sim'),ctx=cv.getContext('2d');
-const gv=document.getElementById('graph'),gx=gv.getContext('2d');
-let W,H,gW,gH;
-function resize(){W=cv.width=cv.clientWidth;H=cv.height=220;gW=gv.width=gv.clientWidth;gH=gv.height=220;draw();drawGraph()}
+var cv = document.getElementById('sim');
+var ctx = cv.getContext('2d');
+var gv = document.getElementById('graph');
+var gx = gv.getContext('2d');
+var W, H, gW, gH;
+var lastTime = 0;
+
+function resize() {
+  W = cv.width = cv.clientWidth;
+  H = cv.height = 220;
+  gW = gv.width = gv.clientWidth;
+  gH = gv.height = 220;
+  draw();
+  drawGraph();
+}
 resize();
 
-let speed=Math.round((3+Math.random()*12)*10)/10;
-let markerDist=20;
-let objX=-30,objMoving=false;
-let timerRunning=false,timerStart=0,timerElapsed=0,lapTime=null;
-let trialCount=0;
-let trials=[];
-
-document.getElementById('markerDist').oninput=function(){
-  markerDist=+this.value;
-  document.getElementById('mdv').textContent=markerDist+' m';
-  document.getElementById('distDisplay').textContent=markerDist+' m';
+document.getElementById('markerDist').oninput = function() {
+  markerDist = +this.value;
+  document.getElementById('mdv').textContent = markerDist + ' m';
+  document.getElementById('distDisplay').textContent = markerDist + ' m';
   draw();
 };
 
-function randomiseSpeed(){
-  speed=Math.round((2+Math.random()*13)*10)/10;
-  fullReset();
-}
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+  var groundY = H - 40;
+  ctx.fillStyle = '#1e1e38';
+  ctx.fillRect(0, groundY, W, 40);
 
-function startObject(){
-  objX=0;objMoving=true;
-  document.getElementById('timerBtn').disabled=false;
-  document.getElementById('lapBtn').disabled=false;
-  document.getElementById('goBtn').disabled=true;
-}
-
-function toggleTimer(){
-  if(!timerRunning){
-    timerRunning=true;timerStart=performance.now()-timerElapsed*1000;
-    document.getElementById('timerBtn').textContent='⏸ Stop timer';
-  }else{
-    timerRunning=false;
-    document.getElementById('timerBtn').textContent='⏱ Start timer';
-  }
-}
-
-function lapTimer(){
-  if(timerRunning){
-    lapTime=timerElapsed;
-    timerRunning=false;
-    document.getElementById('timerBtn').textContent='⏱ Start timer';
-    document.getElementById('measuredTime').textContent=lapTime.toFixed(3)+' s';
-    let calcS=markerDist/lapTime;
-    document.getElementById('calcSpeed').textContent=calcS.toFixed(2)+' m/s';
-  }
-}
-
-function fullReset(){
-  objX=-30;objMoving=false;timerRunning=false;timerElapsed=0;lapTime=null;
-  document.getElementById('stopwatch').textContent='0.000 s';
-  document.getElementById('timerBtn').textContent='⏱ Start timer';
-  document.getElementById('timerBtn').disabled=true;
-  document.getElementById('lapBtn').disabled=true;
-  document.getElementById('goBtn').disabled=false;
-  document.getElementById('measuredTime').textContent='— s';
-  document.getElementById('calcSpeed').textContent='— m/s';
-  draw();
-}
-
-function recordTrial(){
-  if(lapTime===null)return;
-  trialCount++;
-  let calcS=markerDist/lapTime;
-  trials.push({d:markerDist,t:lapTime,s:calcS});
-  let tbody=document.getElementById('tableBody');
-  let row=document.createElement('tr');
-  row.innerHTML=`<td>${trialCount}</td><td>${markerDist}</td><td>${lapTime.toFixed(3)}</td><td><input type="text" id="sp${trialCount}" placeholder="?"></td><td><button class="btn" style="padding:4px 10px;font-size:0.8em" onclick="checkSpeed(${trialCount},${markerDist},${lapTime.toFixed(4)})">Check</button></td>`;
-  tbody.appendChild(row);
-  drawGraph();
-}
-
-function checkSpeed(trial,dist,time){
-  let input=document.getElementById('sp'+trial);
-  let answer=parseFloat(input.value);
-  let expected=dist/time;
-  let fb=document.getElementById('feedback');
-  if(Math.abs(answer-expected)<0.3){
-    fb.className='feedback correct';
-    fb.textContent='✓ Correct! '+dist+' ÷ '+time.toFixed(3)+' = '+expected.toFixed(2)+' m/s';
-  }else{
-    fb.className='feedback incorrect';
-    fb.textContent='✗ Try again. speed = distance ÷ time = '+dist+' ÷ '+time.toFixed(3);
-  }
-}
-
-function clearTable(){document.getElementById('tableBody').innerHTML='';trialCount=0;trials=[];document.getElementById('feedback').className='feedback';drawGraph()}
-
-function draw(){
-  ctx.clearRect(0,0,W,H);
-  let groundY=H-40;
-  ctx.fillStyle='#1e1e38';ctx.fillRect(0,groundY,W,40);
-  let trackLeft=60,trackRight=W-40;
-  let trackW=trackRight-trackLeft;
-  ctx.strokeStyle='#3a3a5a';ctx.lineWidth=2;ctx.setLineDash([8,6]);
-  ctx.beginPath();ctx.moveTo(trackLeft,groundY-2);ctx.lineTo(trackRight,groundY-2);ctx.stroke();
+  var trackLeft = 60, trackRight = W - 40;
+  var trackW = trackRight - trackLeft;
+  ctx.strokeStyle = '#3a3a5a';
+  ctx.lineWidth = 2;
+  ctx.setLineDash([8, 6]);
+  ctx.beginPath();
+  ctx.moveTo(trackLeft, groundY - 2);
+  ctx.lineTo(trackRight, groundY - 2);
+  ctx.stroke();
   ctx.setLineDash([]);
-  ctx.strokeStyle='#64ffda';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(trackLeft,groundY-20);ctx.lineTo(trackLeft,groundY);ctx.stroke();
-  ctx.fillStyle='#64ffda';ctx.font='600 11px "Space Grotesk",sans-serif';ctx.textAlign='center';
-  ctx.fillText('START',trackLeft,groundY-24);
-  ctx.fillText('0 m',trackLeft,groundY+16);
-  let maxVisibleDist=50;
-  let markerX=trackLeft+(markerDist/maxVisibleDist)*trackW;
-  if(markerX>trackRight)markerX=trackRight;
-  ctx.strokeStyle='#ff9800';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(markerX,groundY-30);ctx.lineTo(markerX,groundY);ctx.stroke();
-  ctx.fillStyle='#ff9800';ctx.beginPath();ctx.moveTo(markerX,groundY-30);ctx.lineTo(markerX+12,groundY-38);ctx.lineTo(markerX+12,groundY-22);ctx.fill();
-  ctx.fillStyle='#ff9800';ctx.font='600 11px "Space Grotesk",sans-serif';
-  ctx.fillText(markerDist+' m',markerX,groundY+16);
-  for(let d=10;d<maxVisibleDist;d+=10){
-    if(d===markerDist)continue;
-    let x=trackLeft+(d/maxVisibleDist)*trackW;
-    ctx.strokeStyle='#2e2e4e';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(x,groundY-8);ctx.lineTo(x,groundY);ctx.stroke();
-    ctx.fillStyle='#4a4a6a';ctx.font='10px "JetBrains Mono",monospace';ctx.textAlign='center';
-    ctx.fillText(d+'',x,groundY+14);
+
+  ctx.strokeStyle = '#64ffda';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(trackLeft, groundY - 20);
+  ctx.lineTo(trackLeft, groundY);
+  ctx.stroke();
+  ctx.fillStyle = '#64ffda';
+  ctx.font = '600 11px "Space Grotesk",sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'alphabetic';
+  ctx.fillText('START', trackLeft, groundY - 24);
+  ctx.fillText('0 m', trackLeft, groundY + 16);
+
+  var maxVisibleDist = 50;
+  var markerX = trackLeft + (markerDist / maxVisibleDist) * trackW;
+  if (markerX > trackRight) markerX = trackRight;
+
+  ctx.strokeStyle = '#ff9800';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(markerX, groundY - 30);
+  ctx.lineTo(markerX, groundY);
+  ctx.stroke();
+  ctx.fillStyle = '#ff9800';
+  ctx.beginPath();
+  ctx.moveTo(markerX, groundY - 30);
+  ctx.lineTo(markerX + 12, groundY - 38);
+  ctx.lineTo(markerX + 12, groundY - 22);
+  ctx.fill();
+  ctx.font = '600 11px "Space Grotesk",sans-serif';
+  ctx.fillText(markerDist + ' m', markerX, groundY + 16);
+
+  for (var d = 10; d < maxVisibleDist; d += 10) {
+    if (d === markerDist) continue;
+    var x = trackLeft + (d / maxVisibleDist) * trackW;
+    ctx.strokeStyle = '#2e2e4e';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(x, groundY - 8);
+    ctx.lineTo(x, groundY);
+    ctx.stroke();
+    ctx.fillStyle = '#4a4a6a';
+    ctx.font = '10px "JetBrains Mono",monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText(d + '', x, groundY + 14);
   }
-  if(objMoving||objX>=0){
-    let objScreenX=trackLeft+(objX/maxVisibleDist)*trackW;
-    let sz=18;
-    ctx.fillStyle='#7c4dff';ctx.beginPath();ctx.arc(objScreenX,groundY-sz,sz,0,Math.PI*2);ctx.fill();
-    ctx.strokeStyle='#b388ff';ctx.lineWidth=1.5;ctx.beginPath();ctx.arc(objScreenX,groundY-sz,sz,0,Math.PI*2);ctx.stroke();
-    ctx.fillStyle='#fff';ctx.font='500 11px "Space Grotesk",sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText('●',objScreenX,groundY-sz);
+
+  if (objMoving || objX >= 0) {
+    var objScreenX = trackLeft + (objX / maxVisibleDist) * trackW;
+    var sz = 18;
+    ctx.fillStyle = '#7c4dff';
+    ctx.beginPath();
+    ctx.arc(objScreenX, groundY - sz, sz, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#b388ff';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(objScreenX, groundY - sz, sz, 0, Math.PI * 2);
+    ctx.stroke();
   }
-  ctx.fillStyle='var(--accent2,#64ffda)';ctx.font='500 12px "JetBrains Mono",monospace';ctx.textAlign='left';ctx.textBaseline='top';
-  if(objMoving)ctx.fillText('position: '+objX.toFixed(1)+' m',14,12);
+
+  ctx.fillStyle = '#64ffda';
+  ctx.font = '500 12px "JetBrains Mono",monospace';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'top';
+  if (objMoving) ctx.fillText('position: ' + objX.toFixed(1) + ' m', 14, 12);
 }
 
-function drawGraph(){
-  gx.clearRect(0,0,gW,gH);
-  let pad={l:50,r:20,t:20,b:36};
-  let plotW=gW-pad.l-pad.r,plotH=gH-pad.t-pad.b;
-  gx.fillStyle='#15152a';gx.fillRect(pad.l,pad.t,plotW,plotH);
-  gx.strokeStyle='#2a2a4a';gx.lineWidth=0.5;
-  for(let i=0;i<=5;i++){let y=pad.t+plotH*(1-i/5);gx.beginPath();gx.moveTo(pad.l,y);gx.lineTo(pad.l+plotW,y);gx.stroke()}
-  for(let i=0;i<=5;i++){let x=pad.l+plotW*i/5;gx.beginPath();gx.moveTo(x,pad.t);gx.lineTo(x,pad.t+plotH);gx.stroke()}
-  gx.fillStyle='#8888aa';gx.font='11px "JetBrains Mono",monospace';
-  gx.textAlign='center';gx.fillText('Time (s)',pad.l+plotW/2,gH-4);
-  gx.save();gx.translate(14,pad.t+plotH/2);gx.rotate(-Math.PI/2);gx.fillText('Distance (m)',0,0);gx.restore();
-  if(trials.length===0)return;
-  let maxD=Math.max(10,...trials.map(tr=>tr.d))*1.2;
-  let maxT=Math.max(2,...trials.map(tr=>tr.t))*1.2;
-  gx.textAlign='right';
-  for(let i=0;i<=5;i++){gx.fillText((maxD*i/5).toFixed(0),pad.l-6,pad.t+plotH*(1-i/5)+4)}
-  gx.textAlign='center';
-  for(let i=0;i<=5;i++){gx.fillText((maxT*i/5).toFixed(1),pad.l+plotW*i/5,pad.t+plotH+16)}
-  trials.forEach((tr,i)=>{
-    let x=pad.l+(tr.t/maxT)*plotW;
-    let y=pad.t+plotH-(tr.d/maxD)*plotH;
-    gx.fillStyle='#00bfa5';gx.beginPath();gx.arc(x,y,5,0,Math.PI*2);gx.fill();
-    gx.strokeStyle='#64ffda';gx.lineWidth=1;gx.beginPath();gx.arc(x,y,5,0,Math.PI*2);gx.stroke();
-    gx.fillStyle='#8888aa';gx.font='10px "JetBrains Mono",monospace';gx.textAlign='left';
-    gx.fillText('('+tr.t.toFixed(2)+', '+tr.d+')',x+8,y-2);
-  });
-  if(trials.length>=2){
-    gx.strokeStyle='#64ffda44';gx.lineWidth=1;gx.setLineDash([4,4]);gx.beginPath();
-    gx.moveTo(pad.l,pad.t+plotH);
-    let avgSpeed=trials.reduce((s,tr)=>s+tr.s,0)/trials.length;
-    let endT=maxT;let endD=avgSpeed*endT;
-    let endX=pad.l+(endT/maxT)*plotW;
-    let endY=pad.t+plotH-(endD/maxD)*plotH;
-    gx.lineTo(endX,endY);gx.stroke();gx.setLineDash([]);
+function drawGraph() {
+  gx.clearRect(0, 0, gW, gH);
+  var pad = {l: 50, r: 20, t: 20, b: 36};
+  var plotW = gW - pad.l - pad.r;
+  var plotH = gH - pad.t - pad.b;
+
+  gx.fillStyle = '#15152a';
+  gx.fillRect(pad.l, pad.t, plotW, plotH);
+  gx.strokeStyle = '#2a2a4a';
+  gx.lineWidth = 0.5;
+  for (var i = 0; i <= 5; i++) {
+    var y = pad.t + plotH * (1 - i / 5);
+    gx.beginPath(); gx.moveTo(pad.l, y); gx.lineTo(pad.l + plotW, y); gx.stroke();
+    var x = pad.l + plotW * i / 5;
+    gx.beginPath(); gx.moveTo(x, pad.t); gx.lineTo(x, pad.t + plotH); gx.stroke();
   }
-  gx.fillStyle='#00bfa5';gx.font='600 12px "Space Grotesk",sans-serif';gx.textAlign='left';
-  gx.fillText('distance vs time',pad.l+8,pad.t+14);
+
+  gx.fillStyle = '#8888aa';
+  gx.font = '11px "JetBrains Mono",monospace';
+  gx.textAlign = 'center';
+  gx.textBaseline = 'top';
+  gx.fillText('Time (s)', pad.l + plotW / 2, gH - 4);
+  gx.save();
+  gx.translate(14, pad.t + plotH / 2);
+  gx.rotate(-Math.PI / 2);
+  gx.fillText('Distance (m)', 0, 0);
+  gx.restore();
+
+  if (trials.length === 0) return;
+
+  var maxD = 10, maxT = 2;
+  for (var i = 0; i < trials.length; i++) {
+    if (trials[i].d > maxD) maxD = trials[i].d;
+    if (trials[i].t > maxT) maxT = trials[i].t;
+  }
+  maxD *= 1.2;
+  maxT *= 1.2;
+
+  gx.textAlign = 'right';
+  gx.textBaseline = 'middle';
+  for (var i = 0; i <= 5; i++) gx.fillText((maxD * i / 5).toFixed(0), pad.l - 6, pad.t + plotH * (1 - i / 5));
+  gx.textAlign = 'center';
+  gx.textBaseline = 'top';
+  for (var i = 0; i <= 5; i++) gx.fillText((maxT * i / 5).toFixed(1), pad.l + plotW * i / 5, pad.t + plotH + 6);
+
+  for (var i = 0; i < trials.length; i++) {
+    var x = pad.l + (trials[i].t / maxT) * plotW;
+    var y = pad.t + plotH - (trials[i].d / maxD) * plotH;
+    gx.fillStyle = '#00bfa5';
+    gx.beginPath(); gx.arc(x, y, 5, 0, Math.PI * 2); gx.fill();
+    gx.strokeStyle = '#64ffda';
+    gx.lineWidth = 1;
+    gx.beginPath(); gx.arc(x, y, 5, 0, Math.PI * 2); gx.stroke();
+    gx.fillStyle = '#8888aa';
+    gx.font = '10px "JetBrains Mono",monospace';
+    gx.textAlign = 'left';
+    gx.textBaseline = 'middle';
+    gx.fillText('(' + trials[i].t.toFixed(2) + ', ' + trials[i].d + ')', x + 8, y - 2);
+  }
+
+  if (trials.length >= 2) {
+    var totalS = 0;
+    for (var i = 0; i < trials.length; i++) totalS += trials[i].s;
+    var avgSpeed = totalS / trials.length;
+    gx.strokeStyle = '#64ffda44';
+    gx.lineWidth = 1;
+    gx.setLineDash([4, 4]);
+    gx.beginPath();
+    gx.moveTo(pad.l, pad.t + plotH);
+    var endD = avgSpeed * maxT;
+    var endX = pad.l + plotW;
+    var endY = pad.t + plotH - (endD / maxD) * plotH;
+    gx.lineTo(endX, endY);
+    gx.stroke();
+    gx.setLineDash([]);
+  }
+
+  gx.fillStyle = '#00bfa5';
+  gx.font = '600 12px "Space Grotesk",sans-serif';
+  gx.textAlign = 'left';
+  gx.textBaseline = 'top';
+  gx.fillText('distance vs time', pad.l + 8, pad.t + 4);
 }
 
-let lastTime=0;
-function loop(ts){
-  if(!lastTime)lastTime=ts;
-  let dt=(ts-lastTime)/1000;
-  lastTime=ts;
-  if(objMoving&&dt<0.1){
-    objX+=speed*dt;
-    if(objX>55)objX=55;
+function loop(ts) {
+  if (!lastTime) lastTime = ts;
+  var dt = (ts - lastTime) / 1000;
+  lastTime = ts;
+  if (objMoving && dt < 0.1) {
+    objX += speed * dt;
+    if (objX > 55) objX = 55;
   }
-  if(timerRunning){
-    timerElapsed=(performance.now()-timerStart)/1000;
-    document.getElementById('stopwatch').textContent=timerElapsed.toFixed(3)+' s';
+  if (timerRunning) {
+    timerElapsed = (performance.now() - timerStart) / 1000;
+    document.getElementById('stopwatch').textContent = timerElapsed.toFixed(3) + ' s';
   }
   draw();
   requestAnimationFrame(loop);
 }
-draw();drawGraph();requestAnimationFrame(loop);
-window.addEventListener('resize',resize);
+
+draw();
+drawGraph();
+requestAnimationFrame(loop);
+window.addEventListener('resize', resize);
 </script>
 </body>
 </html>
