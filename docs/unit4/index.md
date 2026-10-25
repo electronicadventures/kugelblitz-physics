@@ -53,12 +53,12 @@
 |---|---|---|---|---|---|
 | W1<br>12 Jul | L082<br><span class="badge-assessment">Assessment</span> | [IA3: analysing and interpreting evidence](../assessment/ia3-research-investigation.md) |  |  |  |
 | W1<br>12 Jul | L083<br><span class="badge-assessment">Assessment</span> | [IA3: drafting](../assessment/ia3-research-investigation.md) |  |  |  |
-| W1<br>12 Jul | L084<br><span class="badge-assessment">Assessment</span> | [IA3: drafting; checkpoint submission](../assessment/ia3-research-investigation.md)<br><small>IA3 ECP Thu 15 Jul 2027 (projected)</small> |  |  |  |
+| W1<br>12 Jul | L084<br><span class="badge-assessment">Assessment</span> | [IA3: drafting; checkpoint submission](../assessment/ia3-research-investigation.md) |  |  |  |
 | W2<br>19 Jul | L085<br><span class="badge-theory">Theory</span> | [Elementary particles and antiparticles; quarks and leptons](standard-model.md) | S1.1<br>S1.2<br>S1.4 | **Read:** Textbook 13.1<br>Textbook 13.1 Qs; Past exams: 2020 MC9, 2022 MC5, 2023 MC14, 2025 P2 Q1 | [The Particle Adventure](https://particleadventure.org/standard_model.html) |
 | W2<br>19 Jul | L086<br><span class="badge-theory">Theory</span> | [Hadrons: baryons and mesons](standard-model.md) | S1.3 | **Read:** Textbook 13.1<br>Textbook 13.1 Qs; Past exams: 2021 MC5, 2024 MC1, 2025 MC17, 2024 P2 Q7a |  |
 | W2<br>19 Jul | L087<br><span class="badge-assessment">Assessment</span> | [IA3: responding to feedback](../assessment/ia3-research-investigation.md) |  |  |  |
 | W3<br>26 Jul | L088<br><span class="badge-theory">Theory</span> | [Gauge bosons and fundamental forces](standard-model.md) | S1.5<br>S2.1<br>S2.2<br>S5.4 | **Read:** Textbook 13.2<br>Textbook 13.2 Qs; Past exams: 2020 MC10, 2020 MC14, 2021 MC1, 2022 MC20, 2024 MC16, 2025 MC9, 2021 P2 Q2, 2022 P2 Q2, 2024 P2 Q7b |  |
-| W3<br>26 Jul | L089<br><span class="badge-theory">Theory</span> | [Lepton number and baryon number](standard-model.md)<br><small>IA3 final due Thu 29 Jul 2027 (projected)</small> | S3.1<br>S3.2<br>S3.3 | **Read:** Textbook 14.1<br>Textbook 14.1 Qs |  |
+| W3<br>26 Jul | L089<br><span class="badge-theory">Theory</span> | [Lepton number and baryon number](standard-model.md) | S3.1<br>S3.2<br>S3.3 | **Read:** Textbook 14.1<br>Textbook 14.1 Qs |  |
 | W3<br>26 Jul | L090<br><span class="badge-theory">Theory</span> | [Conservation in particle interactions](standard-model.md) | S3.4 | **Read:** Textbook 14.1<br>Textbook 14.1 Qs; Past exams: 2023 MC7 |  |
 | W4<br>2 Aug | L091<br><span class="badge-theory">Theory</span> | [Particle interaction diagrams: electron-electron and electron-positron](standard-model.md) | S4.1<br>S4.2<br>S5.1 | **Read:** Textbook 14.2<br>Textbook 14.2 Qs; Past exams: 2021 MC15, 2022 P2 Q5, 2024 P1 Q21 |  |
 | W4<br>2 Aug | L092<br><span class="badge-theory">Theory</span> | [Neutron decay and the weak interaction](standard-model.md) | S4.3 | **Read:** Textbook 14.2<br>Textbook 14.2 Qs; Past exams: 2022 MC14, 2025 P2 Q8 |  |
@@ -78,7 +78,7 @@
 | W9<br>6 Sep | L106<br><span class="badge-review">Revision</span> | [Exam practice: full paper conditions (1/3)](../assessment/external-exam.md) | All | QCAA past external exams 2020-2025 |  |
 | W9<br>6 Sep | L107<br><span class="badge-review">Revision</span> | [Exam practice: full paper conditions (2/3)](../assessment/external-exam.md) | All | QCAA past external exams 2020-2025 |  |
 | W9<br>6 Sep | L108<br><span class="badge-review">Revision</span> | [Exam practice: full paper conditions (3/3)](../assessment/external-exam.md) | All | QCAA past external exams 2020-2025 |  |
-| W10<br>13 Sep | —<br><span class="badge-assessment">Assessment</span> | [Mock exam block (no regular lessons)](../assessment/external-exam.md)<br><small>Mock exam in the Week 10 block (projected)</small> | All |  |  |
+| W10<br>13 Sep | —<br><span class="badge-assessment">Assessment</span> | [Mock exam block (no regular lessons)](../assessment/external-exam.md) | All |  |  |
 
 ## Term 4 2027
 
@@ -97,4 +97,4 @@
 
 ---
 
-*Planner generated from the course plan (2026–27 cohort). Dates are week-beginning Mondays; assessment dates are projected until confirmed on QLearn.*
+*Planner generated from the course plan (2026–27 cohort). Dates are week-beginning Mondays; check QLearn for assessment dates.*

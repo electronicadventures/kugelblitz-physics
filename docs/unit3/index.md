@@ -42,7 +42,7 @@
 
 | Week | Lesson | What we're learning | Checklist | Read & practise | Try it |
 |---|---|---|---|---|---|
-| W1<br>25 Jan | L022<br><span class="badge-theory">Theory</span> | [Electric charge and Coulomb's Law](electromagnetism.md)<br><small>Short week (school starts Wed); next term absorbs any lost lesson</small> | E1.1<br>E1.2<br>E4.1 | **Read:** Textbook 6.1<br>Textbook 6.1 Qs; EP Electric Fields and Energy; EP Coulomb's Law for Two Charges; Past exams: 2021 MC4, 2023 MC11, 2024 MC5, 2021 P2 Q1, 2024 P1 Q26 | [PhET Coulomb's Law](https://phet.colorado.edu/en/simulations/coulombs-law) |
+| W1<br>25 Jan | L022<br><span class="badge-theory">Theory</span> | [Electric charge and Coulomb's Law](electromagnetism.md) | E1.1<br>E1.2<br>E4.1 | **Read:** Textbook 6.1<br>Textbook 6.1 Qs; EP Electric Fields and Energy; EP Coulomb's Law for Two Charges; Past exams: 2021 MC4, 2023 MC11, 2024 MC5, 2021 P2 Q1, 2024 P1 Q26 | [PhET Coulomb's Law](https://phet.colorado.edu/en/simulations/coulombs-law) |
 | W1<br>25 Jan | L023<br><span class="badge-theory">Theory</span> | [Coulomb's Law with more than two charges](electromagnetism.md) | E1.2 | **Read:** Textbook 6.1<br>Textbook 6.1 Qs; Past exams: 2020 P2 Q5, 2023 P2 Q3, 2025 P2 Q5 |  |
 | W1<br>25 Jan | L024<br><span class="badge-theory">Theory</span> | [Electric fields and field strength](electromagnetism.md) | E1.3<br>E1.4 | **Read:** Textbook 6.2<br>Textbook 6.2 Qs; EP Electric Field Strength and Potential Energy; Past exams: 2022 MC10, 2023 MC19, 2020 P2 Q2 | [PhET Charges and Fields](https://phet.colorado.edu/en/simulations/charges-and-fields) |
 | W2<br>1 Feb | L025<br><span class="badge-practical">Practical</span> | [Practical: electrostatic charge on materials (trickling water)](electromagnetism.md) | E5.3 | **Read:** Textbook 6.3<br>Textbook 6.3 practical Qs | Prac: Electrostatic charge (trickling water)<br>[PhET Balloons and Static Electricity](https://phet.colorado.edu/en/simulations/balloons-and-static-electricity) |
@@ -60,24 +60,24 @@
 | W6<br>1 Mar | L037<br><span class="badge-theory">Theory</span> | [Transformers; renewable energy and how electricity is made](electromagnetism.md) | E3.5<br>E3.6<br>E4.2<br>E5.4 | **Read:** Textbook 8.5<br>Textbook 8.5 Qs; EP Transformers; Past exams: 2022 MC18, 2024 P1 Q25 | [PhET Faraday's Electromagnetic Lab](https://phet.colorado.edu/en/simulations/faradays-electromagnetic-lab) |
 | W6<br>1 Mar | L038<br><span class="badge-practical">Practical</span> | [Practical: induced EMF from an AC generator](electromagnetism.md) | E5.6<br>E5.4 | **Read:** Textbook 8.6<br>Textbook 8.6 practical Qs; EP Induced EMF from an AC Generator | Prac: AC generator EMF<br>[PhET Faraday's Electromagnetic Lab](https://phet.colorado.edu/en/simulations/faradays-electromagnetic-lab) |
 | W6<br>1 Mar | L039<br><span class="badge-theory">Theory</span> | [Electromagnetic waves and oscillating charges; media claims about wi-fi and phones](electromagnetism.md) | E3.7<br>E3.8<br>E4.3 | **Read:** Textbook 8.7<br>Textbook 8.7 Qs; EP Electromagnetic Waves; Past exams: 2021 MC6, 2024 MC18, 2025 MC4 | [Falstad EM Waves](https://www.falstad.com/emwave1/) |
-| W7<br>8 Mar | L040<br><span class="badge-assessment">Assessment</span> | [IA1 preparation: data test skills on Unit 3 datasets](../assessment/ia1-data-test.md)<br><small>IA1 data test sits in the Week 7 block (projected from 2026 schedule)</small> | G1.5<br>E2.7<br>E2.8 | **Read:** Textbook Module 1; 8.8<br>Past exams: 2021 P2 Q7, 2022 P2 Q8, 2020 P2 Q2, 2024 P2 Q8; Textbook 8.8 review |  |
+| W7<br>8 Mar | L040<br><span class="badge-assessment">Assessment</span> | [IA1 preparation: data test skills on Unit 3 datasets](../assessment/ia1-data-test.md) | G1.5<br>E2.7<br>E2.8 | **Read:** Textbook Module 1; 8.8<br>Past exams: 2021 P2 Q7, 2022 P2 Q8, 2020 P2 Q2, 2024 P2 Q8; Textbook 8.8 review |  |
 | W7<br>8 Mar | L041<br><span class="badge-assessment">Assessment</span> | [IA2 launch: task, criteria, choosing a practical to modify](../assessment/ia2-student-experiment.md) |  | **Read:** Textbook Module 1 |  |
 | W7<br>8 Mar | L042<br><span class="badge-assessment">Assessment</span> | [IA2: research question, rationale and risk assessment](../assessment/ia2-student-experiment.md) |  | **Read:** Textbook Module 1 |  |
 | W8<br>15 Mar | L043<br><span class="badge-assessment">Assessment</span> | [IA2: trialling the method](../assessment/ia2-student-experiment.md) |  |  |  |
 | W8<br>15 Mar | L044<br><span class="badge-assessment">Assessment</span> | [IA2: data collection](../assessment/ia2-student-experiment.md) |  |  |  |
 | W8<br>15 Mar | L045<br><span class="badge-assessment">Assessment</span> | [IA2: data collection](../assessment/ia2-student-experiment.md) |  |  |  |
-| W9<br>22 Mar | L046<br><span class="badge-assessment">Assessment</span> | [IA2: processing and analysing data](../assessment/ia2-student-experiment.md)<br><small>Short week (term ends Thu)</small> |  | **Read:** Textbook Module 1 |  |
+| W9<br>22 Mar | L046<br><span class="badge-assessment">Assessment</span> | [IA2: processing and analysing data](../assessment/ia2-student-experiment.md) |  | **Read:** Textbook Module 1 |  |
 | W9<br>22 Mar | L047<br><span class="badge-assessment">Assessment</span> | [IA2: interpreting and evaluating](../assessment/ia2-student-experiment.md) |  |  |  |
-| W9<br>22 Mar | L048<br><span class="badge-she">SHE</span> | [Unit 3 SHE wrap-up: SKA, superconductivity, Maxwell](electromagnetism.md)<br><small>Short week: set as holiday reading if lost</small> | E4.1<br>E4.4<br>E4.6 | **Read:** Textbook 8.7<br>Short-response reflection (SHE) |  |
+| W9<br>22 Mar | L048<br><span class="badge-she">SHE</span> | [Unit 3 SHE wrap-up: SKA, superconductivity, Maxwell](electromagnetism.md) | E4.1<br>E4.4<br>E4.6 | **Read:** Textbook 8.7<br>Short-response reflection (SHE) |  |
 
 ## Term 2 2027
 
 | Week | Lesson | What we're learning | Checklist | Read & practise | Try it |
 |---|---|---|---|---|---|
 | W1<br>12 Apr | L049<br><span class="badge-assessment">Assessment</span> | [IA2: drafting the report](../assessment/ia2-student-experiment.md) |  |  |  |
-| W1<br>12 Apr | L050<br><span class="badge-assessment">Assessment</span> | [IA2: drafting; checkpoint submission](../assessment/ia2-student-experiment.md)<br><small>IA2 ECP Thu 15 Apr 2027 (projected)</small> |  |  |  |
-| W2<br>19 Apr | L054<br><span class="badge-assessment">Assessment</span> | [IA2: responding to feedback; final submission](../assessment/ia2-student-experiment.md)<br><small>IA2 final due Thu 22 Apr 2027 (projected)</small> |  |  |  |
+| W1<br>12 Apr | L050<br><span class="badge-assessment">Assessment</span> | [IA2: drafting; checkpoint submission](../assessment/ia2-student-experiment.md) |  |  |  |
+| W2<br>19 Apr | L054<br><span class="badge-assessment">Assessment</span> | [IA2: responding to feedback; final submission](../assessment/ia2-student-experiment.md) |  |  |  |
 
 ---
 
-*Planner generated from the course plan (2026–27 cohort). Dates are week-beginning Mondays; assessment dates are projected until confirmed on QLearn.*
+*Planner generated from the course plan (2026–27 cohort). Dates are week-beginning Mondays; check QLearn for assessment dates.*
