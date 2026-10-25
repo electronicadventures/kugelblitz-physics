@@ -3,7 +3,11 @@
 !!! info "Syllabus reference"
     Unit 4, Topic 1 — 16 hours (including practicals)
 
+    Checklist codes (e.g. `G1.4`) under each heading match the Know-and-Do checklists on QLearn.
+
 ## Einstein's postulates
+
+<span class="checklist-codes">Checklist: R1.2 · R1.3 · R1.4</span>
 
 1. The laws of physics are the same in all inertial frames of reference.
 2. The speed of light in a vacuum is the same for all observers, regardless of the motion of the source or observer: \(c = 3 \times 10^8\) m s⁻¹.
@@ -17,6 +21,8 @@ The **Lorentz factor** appears in all relativistic equations:
 ---
 
 ## Time dilation
+
+<span class="checklist-codes">Checklist: R2.1 · R2.2 · R2.3 · R3.1 · R5.2</span>
 
 A moving clock runs slower relative to a stationary observer.
 
@@ -42,6 +48,8 @@ A moving clock runs slower relative to a stationary observer.
 
 ## Length contraction
 
+<span class="checklist-codes">Checklist: R2.1 · R2.2 · R2.3 · R3.1</span>
+
 A moving object is shorter in the direction of motion as measured by a stationary observer.
 
 !!! note "Key formula"
@@ -57,6 +65,8 @@ From the muon's frame of reference, the muon's lifetime is normal but the distan
 
 ## Relativistic momentum
 
+<span class="checklist-codes">Checklist: R2.2 · R3.1 · R3.2</span>
+
 At speeds approaching \(c\), classical momentum (\(p = mv\)) is insufficient. Relativistic momentum:
 
 !!! note "Key formula"
@@ -69,6 +79,8 @@ As \(v \to c\), \(\gamma \to \infty\) and the momentum approaches infinity. This
 ---
 
 ## Mass–energy equivalence
+
+<span class="checklist-codes">Checklist: R2.4 · R3.1</span>
 
 !!! note "Key formula"
     \[
@@ -88,6 +100,11 @@ The rest energy (when \(v = 0\)) is simply \(E_0 = mc^2\).
 ---
 
 ## Simulations and videos
+
+**Verified simulations:**
+
+- [Fendt Time Dilation](https://www.walter-fendt.de/html5/phen/timedilation_en.htm)
+- [MIT A Slower Speed of Light](https://gamelab.mit.edu/games/a-slower-speed-of-light/)
 
 **Crash Course Physics:**
 

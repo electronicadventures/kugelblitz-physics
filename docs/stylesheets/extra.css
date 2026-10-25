@@ -42,3 +42,32 @@
 .md-typeset details.formula > summary {
   background-color: rgba(124, 77, 255, 0.1);
 }
+
+/* Review / SHE badges (lesson planners) */
+.badge-review {
+  background: #2979ff22;
+  color: #2979ff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 600;
+}
+.badge-she {
+  background: #c5116222;
+  color: #c51162;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 600;
+}
+
+/* Syllabus checklist codes on topic pages */
+.checklist-codes {
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: 600;
+  color: var(--md-default-fg-color--light);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
