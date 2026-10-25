@@ -39,6 +39,9 @@ A projectile is any object moving freely under the influence of gravity alone (i
     
     At any time, the resultant velocity: \(v = \sqrt{v_x^2 + v_y^2}\)
 
+!!! tip "Self-check"
+    Test yourself: [Self-check: Projectile motion](self-check-projectiles.md)
+
 ??? example "Worked example: Horizontal projection"
     **Question:** A ball is launched horizontally at 15 m s⁻¹ from a cliff 45 m high. How far does it land from the base?
     
