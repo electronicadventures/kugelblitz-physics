@@ -3,7 +3,11 @@
 !!! info "Syllabus reference"
     Unit 4, Topic 2 — 16 hours (including practicals)
 
+    Checklist codes (e.g. `G1.4`) under each heading match the Know-and-Do checklists on QLearn.
+
 ## Black-body radiation
+
+<span class="checklist-codes">Checklist: Q1.3 · Q1.4</span>
 
 A **black body** is an idealised object that absorbs all incident electromagnetic radiation and re-emits it based only on its temperature.
 
@@ -26,6 +30,8 @@ where \(h = 6.626 \times 10^{-34}\) J s (Planck's constant).
 ---
 
 ## Photoelectric effect
+
+<span class="checklist-codes">Checklist: Q2.1 · Q2.2 · Q2.3 · Q2.4</span>
 
 When light shines on a metal surface, electrons may be ejected. Classical wave theory could not explain the observations. Einstein explained it using the photon model:
 
@@ -63,6 +69,8 @@ Key observations:
 
 ## Bohr model
 
+<span class="checklist-codes">Checklist: Q3.1 · Q3.2 · Q3.3</span>
+
 Bohr proposed that electrons orbit the nucleus in discrete **energy levels** (stationary states). Key features:
 
 - Electrons can only exist in specific orbits with quantised energies
@@ -80,6 +88,8 @@ E_{photon} = E_{higher} - E_{lower} = hf = \frac{hc}{\lambda}
 ---
 
 ## Wave–particle duality
+
+<span class="checklist-codes">Checklist: Q3.3 · Q4.1</span>
 
 **de Broglie** proposed that all matter has wave-like properties. The wavelength of a particle:
 
@@ -104,10 +114,21 @@ This is a fundamental limit of nature, not a limitation of measurement technolog
 
 ## Simulations and videos
 
-**PhET Simulations:**
+**Verified simulations:**
 
-- [Blackbody Spectrum](https://phet.colorado.edu/en/simulation/legacy/blackbody-spectrum)
-- [Photoelectric Effect](https://phet.colorado.edu/en/simulation/legacy/photoelectric)
+- [PhET Wave Interference](https://phet.colorado.edu/en/simulations/wave-interference)
+- [PhET Blackbody Spectrum](https://phet.colorado.edu/en/simulations/blackbody-spectrum)
+- [PhET Greenhouse Effect](https://phet.colorado.edu/en/simulations/greenhouse-effect)
+- [Fendt Photoelectric Effect](https://www.walter-fendt.de/html5/phen/photoeffect_en.htm)
+- [PhET Rutherford Scattering](https://phet.colorado.edu/en/simulations/rutherford-scattering)
+- [PhET Models of the Hydrogen Atom](https://phet.colorado.edu/en/simulations/models-of-the-hydrogen-atom)
+
+**Practicals for this topic:**
+
+- Double-slit interference <span class="checklist-codes">Q1.1</span>
+- Planck's constant from LEDs <span class="checklist-codes">Q6.3</span>
+- Photoelectric effect <span class="checklist-codes">Q6.1–Q6.4</span>
+- Line spectra <span class="checklist-codes">Q3.2</span>
 
 **Crash Course Physics:**
 

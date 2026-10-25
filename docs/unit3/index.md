@@ -1,87 +1,83 @@
 # Unit 3: Gravity & Electromagnetism — Lesson Planner
 
-!!! info "Unit overview"
-    **Notional time:** 55 hours (including assessment)  
-    Students develop a deeper understanding of motion using Newton's laws, gravitational fields, and electromagnetism. Units 3 & 4 begin in the final weeks of the year and continue into the following year.
+!!! info "How to use this planner"
+    Every Unit 3 lesson in order, from Year 11 Term 4 (2026) to Term 2 (2027). Use it to plan ahead, revise, or catch up.
+    **Checklist** codes (e.g. `G1.4`) match the Know-and-Do checklists on QLearn.
+    **Textbook** = *Physics for Queensland Units 3 & 4* (Oxford) section. **EP** = Education Perfect lesson.
+    **Past exams** = QCAA external exam question, e.g. `2023 P2 Q6` = 2023, Paper 2, Question 6 ([QCAA Physics assessment page](https://www.qcaa.qld.edu.au/senior/senior-subjects/sciences/physics/assessment)).
 
-## Topic 1: Gravity and motion (22 hours)
+??? tip "Missed a lesson?"
+    1. Find the lesson below and read the textbook section.
+    2. Open the topic page (link in *What we're learning*) and work through the notes and worked examples.
+    3. Do the practice questions and check your answers. Bring anything you couldn't do to the next lesson.
+    4. Missed a practical? See your teacher about catch-up data.
 
-### Module 2 — Vectors and projectile motion
+## Year 11 Term 4 2026
 
-| Lesson | Time | Focus | Subject matter |
-|--------|------|-------|---------------|
-| 2.1 | 60 min | <span class="badge-theory">Theory</span> | Working with vectors. Resolve a vector into two perpendicular components. Recombine components to find the resultant. |
-| 2.2 | 60 min | <span class="badge-theory">Theory</span> | [Horizontal projection](gravity-motion.md#projectile-motion). Resolve the velocity vector into horizontal and vertical components. |
-| 2.3 | 60 min | <span class="badge-theory">Theory</span> | Projection at an angle. Independence of horizontal and vertical components. |
-| 2.4 | 60 min | <span class="badge-practical">Practical</span> | **Practical: Projectile motion.** Determine horizontal distance at various launch angles. |
-| 2.5 | 60 min | <span class="badge-theory">Theory</span> | Solve complex projectile motion problems. |
+| Week | Lesson | What we're learning | Checklist | Read & practise | Try it |
+|---|---|---|---|---|---|
+| W4<br>26 Oct | L001<br><span class="badge-theory">Theory</span> | Unit 3 launch and physics toolkit refresh |  | **Read:** Textbook Module 1<br>Textbook Module 1 questions |  |
+| W4<br>26 Oct | L002<br><span class="badge-theory">Theory</span> | [Resolving vectors into components](gravity-motion.md) | G1.1 | **Read:** Textbook 2.1<br>Textbook 2.1 Qs; EP Vector Addition in 2D Q6-8 | [PhET Vector Addition](https://phet.colorado.edu/sims/html/vector-addition/latest/vector-addition_en.html) |
+| W4<br>26 Oct | L003<br><span class="badge-theory">Theory</span> | [Adding and subtracting vectors by components](gravity-motion.md) | G1.2 | **Read:** Textbook 2.1<br>Textbook 2.1 Qs; EP Vector Addition in 2D Q10-12; Past exams: 2020 MC3, 2021 MC8, 2022 MC16, 2024 MC8 | [PhET Vector Addition](https://phet.colorado.edu/sims/html/vector-addition/latest/vector-addition_en.html) |
+| W5<br>2 Nov | L004<br><span class="badge-theory">Theory</span> | [Horizontal projection: independent components](gravity-motion.md) | G1.3<br>G1.4 | **Read:** Textbook 2.2<br>Textbook 2.2 Qs; EP Motion under Gravity; Past exams: 2020 MC8 | [PhET Projectile Motion](https://phet.colorado.edu/en/simulations/projectile-motion) |
+| W5<br>2 Nov | L005<br><span class="badge-theory">Theory</span> | [Projection at an angle](gravity-motion.md) | G1.4 | **Read:** Textbook 2.3<br>Textbook 2.3 Qs; EP Projectile Motion; Past exams: 2021 MC2, 2021 MC12, 2025 MC13-14, 2023 P2 Q6, 2024 P1 Q27 | [PhET Projectile Motion](https://phet.colorado.edu/en/simulations/projectile-motion) |
+| W5<br>2 Nov | L006<br><span class="badge-practical">Sim</span> | [Range versus launch angle: interpreting data](gravity-motion.md) | G1.5<br>G1.4 | **Read:** Textbook 2.3<br>EP Interpreting Projectile Motion Experiment Data; Past exams: 2022 MC9, 2024 MC12, 2025 P1 Q25 | [PhET Projectile Motion](https://phet.colorado.edu/en/simulations/projectile-motion) |
+| W6<br>9 Nov | L007<br><span class="badge-practical">Practical</span> | [Practical: projectile range at various angles](gravity-motion.md) | G5.2<br>G1.5 | **Read:** Textbook 2.4<br>Textbook 2.4 practical Qs | Prac: Projectile range vs angle |
+| W6<br>9 Nov | L008<br><span class="badge-theory">Theory</span> | [Weight, normal force and free-body diagrams](gravity-motion.md) | G2.1<br>G2.2 | **Read:** Textbook 3.1-3.2<br>Textbook 3.1-3.2 Qs; EP Weight and Mass; Past exams: 2021 MC7, 2021 MC16, 2025 MC1, 2023 P2 Q4, 2024 MC6 |  |
+| W6<br>9 Nov | L009<br><span class="badge-theory">Theory</span> | [Forces on an inclined plane](gravity-motion.md) | G2.3<br>G2.4 | **Read:** Textbook 3.3<br>Textbook 3.3 Qs; EP Inclined Planes With and Without Friction; Past exams: 2020 MC1, 2022 MC3, 2023 MC18, 2024 MC7 | [oPhysics Inclined Plane](https://ophysics.com/f2.html) |
+| W7<br>16 Nov | L010<br><span class="badge-theory">Theory</span> | [Inclined planes with applied force, friction and connected masses](gravity-motion.md) | G2.3<br>G2.4 | **Read:** Textbook 3.3<br>Textbook 3.3 Qs; EP Inclined Planes with Applied Force; Past exams: 2020 P2 Q8, 2022 P2 Q4, 2025 P1 Q21 |  |
+| W7<br>16 Nov | L011<br><span class="badge-practical">Practical</span> | [Practical: parallel component of weight vs incline angle](gravity-motion.md) | G5.3 | **Read:** Textbook 3.4<br>Textbook 3.4 practical Qs; EP Inclined Plane Experiment; Past exams: 2024 P2 Q3 | Prac: Weight component down an incline |
+| W7<br>16 Nov | L012<br><span class="badge-theory">Theory</span> | [Uniform circular motion: period and speed](gravity-motion.md) | G2.5<br>G2.6<br>G2.7 | **Read:** Textbook 4.1-4.2<br>Textbook 4.1-4.2 Qs; EP Circular Motion & Centripetal Acceleration; Past exams: 2020 MC2, 2021 MC11, 2022 MC12 | [Physics Classroom Circular Motion](https://www.physicsclassroom.com/interactive/circular-and-satellite-motion/circular-motion) |
+| W8<br>23 Nov | L013<br><span class="badge-theory">Theory</span> | [Centripetal acceleration and force; constant speed yet accelerating](gravity-motion.md) | G2.8<br>G2.9<br>G5.1 | **Read:** Textbook 4.3<br>Textbook 4.3 Qs; EP Centripetal Force; Past exams: 2023 MC6, 2024 MC15, 2025 MC10, 2021 P2 Q3, 2024 P2 Q4, 2025 P2 Q2 | [Physics Classroom Circular Motion](https://www.physicsclassroom.com/interactive/circular-and-satellite-motion/circular-motion) |
+| W8<br>23 Nov | L014<br><span class="badge-practical">Practical</span> | [Practical: horizontal circular motion on a string](gravity-motion.md) | G5.4 | **Read:** Textbook 4.4<br>Textbook 4.4 practical Qs; EP Circular Motion Experiment; Past exams: 2024 P1 Q23, 2023 P2 Q2, 2022 P2 Q9 | Prac: Circular motion on a string |
+| W8<br>23 Nov | L015<br><span class="badge-theory">Theory</span> | [Newton's Law of Universal Gravitation](gravity-motion.md) | G3.1<br>G3.2<br>G4.1 | **Read:** Textbook 5.1-5.2<br>Textbook 5.1-5.2 Qs; EP Newton's Law of Universal Gravitation; Past exams: 2023 MC15, 2024 MC3, 2025 MC2, 2021 P2 Q4, 2022 P2 Q7 | [PhET Gravity Force Lab: Basics](https://phet.colorado.edu/en/simulations/gravity-force-lab-basics) |
+| W9<br>30 Nov | L016<br><span class="badge-theory">Theory</span> | [Gravitational fields and field strength](gravity-motion.md) | G3.3<br>G3.4 | **Read:** Textbook 5.3<br>Textbook 5.3 Qs; EP Gravitational Fields; Past exams: 2021 MC18, 2022 MC17, 2022 P2 Q8, 2024 P2 Q2a, 2025 P2 Q7 |  |
+| W9<br>30 Nov | L017<br><span class="badge-theory">Theory</span> | [Kepler's laws and the shift to a heliocentric model](gravity-motion.md) | G3.5<br>G3.6<br>G3.7<br>G4.3<br>G4.4<br>G5.5 | **Read:** Textbook 5.4<br>Textbook 5.4 Qs; EP Kepler's Laws of Planetary Motion; Past exams: 2020 MC12, 2021 MC13, 2022 MC4, 2023 MC4, 2024 MC11, 2025 MC5, 2025 P1 Q23 | [PhET Kepler's Laws](https://phet.colorado.edu/en/simulations/keplers-laws) |
+| W9<br>30 Nov | L018<br><span class="badge-practical">Sim</span> | [Simulation investigation: orbital radius and mass; positioning satellites](gravity-motion.md) | G5.6<br>G3.7<br>G4.5<br>G4.6 | **Read:** Textbook 5.5<br>Textbook 5.5 practical Qs; EP Orbiting Objects Investigation; Past exams: 2020 P2 Q9 | [PhET My Solar System](https://phet.colorado.edu/en/simulations/my-solar-system) |
+| W10<br>7 Dec | L019<br><span class="badge-she">SHE</span> | [Science as a human endeavour: LIGO, Katherine Johnson, du Châtelet, forensic ballistics](gravity-motion.md) | G4.1<br>G4.2<br>G4.7 | **Read:** Textbook 5.1<br>Short-response reflection (SHE) |  |
+| W10<br>7 Dec | L020<br><span class="badge-review">Review</span> | [Topic review: mixed past-exam questions](gravity-motion.md) | G1.1-G3.7 | **Read:** Textbook 2.5, 3.5, 4.5, 5.6<br>Textbook module review Qs 2.5, 3.5, 4.5, 5.6 |  |
+| W10<br>7 Dec | L021<br><span class="badge-review">Review</span> | [Topic check and holiday revision set](gravity-motion.md) | G1.1-G3.7 | Holiday set: Textbook module reviews; Isaac Science practice (optional) |  |
 
-### Module 3 — Inclined planes
+## Term 1 2027
 
-| Lesson | Time | Focus | Subject matter |
-|--------|------|-------|---------------|
-| 3.1 | 60 min | <span class="badge-theory">Theory</span> | [Forces on inclined planes](gravity-motion.md#inclined-planes). Resolve weight into components parallel and perpendicular to the surface. |
-| 3.2 | 60 min | <span class="badge-theory">Theory</span> | Solve inclined plane problems with friction. |
-| 3.3 | 60 min | <span class="badge-practical">Practical</span> | **Practical: Acceleration on an inclined plane.** |
+| Week | Lesson | What we're learning | Checklist | Read & practise | Try it |
+|---|---|---|---|---|---|
+| W1<br>25 Jan | L022<br><span class="badge-theory">Theory</span> | [Electric charge and Coulomb's Law](electromagnetism.md) | E1.1<br>E1.2<br>E4.1 | **Read:** Textbook 6.1<br>Textbook 6.1 Qs; EP Electric Fields and Energy; EP Coulomb's Law for Two Charges; Past exams: 2021 MC4, 2023 MC11, 2024 MC5, 2021 P2 Q1, 2024 P1 Q26 | [PhET Coulomb's Law](https://phet.colorado.edu/en/simulations/coulombs-law) |
+| W1<br>25 Jan | L023<br><span class="badge-theory">Theory</span> | [Coulomb's Law with more than two charges](electromagnetism.md) | E1.2 | **Read:** Textbook 6.1<br>Textbook 6.1 Qs; Past exams: 2020 P2 Q5, 2023 P2 Q3, 2025 P2 Q5 |  |
+| W1<br>25 Jan | L024<br><span class="badge-theory">Theory</span> | [Electric fields and field strength](electromagnetism.md) | E1.3<br>E1.4 | **Read:** Textbook 6.2<br>Textbook 6.2 Qs; EP Electric Field Strength and Potential Energy; Past exams: 2022 MC10, 2023 MC19, 2020 P2 Q2 | [PhET Charges and Fields](https://phet.colorado.edu/en/simulations/charges-and-fields) |
+| W2<br>1 Feb | L025<br><span class="badge-practical">Practical</span> | [Practical: electrostatic charge on materials (trickling water)](electromagnetism.md) | E5.3 | **Read:** Textbook 6.3<br>Textbook 6.3 practical Qs | Prac: Electrostatic charge (trickling water)<br>[PhET Balloons and Static Electricity](https://phet.colorado.edu/en/simulations/balloons-and-static-electricity) |
+| W2<br>1 Feb | L026<br><span class="badge-theory">Theory</span> | [Electrical potential energy and potential difference](electromagnetism.md) | E1.3<br>E1.5 | **Read:** Textbook 6.4<br>Textbook 6.4 Qs; Past exams: 2021 MC17, 2024 MC19, 2025 MC8, 2021 P2 Q5, 2022 P2 Q3, 2025 P1 Q22 |  |
+| W2<br>1 Feb | L027<br><span class="badge-theory">Theory</span> | [Magnetic fields, field lines and moving charges](electromagnetism.md) | E2.1<br>E2.2<br>E2.3<br>E4.1 | **Read:** Textbook 7.1<br>Textbook 7.1 Qs; EP Magnetic Fields; Past exams: 2020 MC17 | Prac: Mapping magnetic field lines<br>[PhET Magnets and Electromagnets](https://phet.colorado.edu/en/simulations/magnets-and-electromagnets) |
+| W3<br>8 Feb | L028<br><span class="badge-theory">Theory</span> | [Magnetic field around a straight current-carrying wire](electromagnetism.md) | E2.3<br>E2.4 | **Read:** Textbook 7.2<br>Textbook 7.2 Qs; EP Magnetic Field of a Current-Carrying Wire; Past exams: 2023 MC3, 2025 P2 Q6a-b | [PhET Magnets and Electromagnets](https://phet.colorado.edu/en/simulations/magnets-and-electromagnets) |
+| W3<br>8 Feb | L029<br><span class="badge-practical">Practical</span> | [Practical: strength of a magnet at various distances](electromagnetism.md) | E5.2<br>E2.8 | **Read:** Textbook 7.3-7.4<br>Textbook 7.3-7.4 practical Qs; EP Strength of a Magnet Experiment | Prac: Magnet strength vs distance |
+| W3<br>8 Feb | L030<br><span class="badge-theory">Theory</span> | [Magnetic field inside a solenoid](electromagnetism.md) | E2.4 | **Read:** Textbook 7.5<br>Textbook 7.5 Qs; EP Magnetic Field in a Solenoid; Past exams: 2022 MC7, 2021 P2 Q6 | [PhET Magnets and Electromagnets](https://phet.colorado.edu/en/simulations/magnets-and-electromagnets) |
+| W4<br>15 Feb | L031<br><span class="badge-theory">Theory</span> | [Force on moving charges; MRI and NMR safety](electromagnetism.md) | E2.5<br>E2.6<br>E4.5 | **Read:** Textbook 7.6<br>Textbook 7.6 Qs; EP Force on a Charge in a Magnetic Field; EP Motion of Charges in a Magnetic Field; Past exams: 2021 MC14, 2025 MC3, 2020 P2 Q6 | [Fendt Lorentz Force](https://www.walter-fendt.de/html5/phen/lorentzforce_en.htm) |
+| W4<br>15 Feb | L032<br><span class="badge-theory">Theory</span> | [Force on a current-carrying wire](electromagnetism.md) | E2.5<br>E2.6 | **Read:** Textbook 7.7<br>Textbook 7.7 Qs; Past exams: 2022 MC19, 2024 MC10, 2025 MC12, 2025 P2 Q6c | [Fendt Lorentz Force](https://www.walter-fendt.de/html5/phen/lorentzforce_en.htm) |
+| W4<br>15 Feb | L033<br><span class="badge-practical">Practical</span> | [Practical: force on a conductor in a magnetic field (current balance)](electromagnetism.md) | E5.1<br>E2.7 | **Read:** Textbook 7.8<br>Textbook 7.8 practical Qs; EP Force on a Conductor in a Magnetic Field Experiment; Past exams: 2024 P2 Q8 | Prac: Force on a conductor (current balance) |
+| W5<br>22 Feb | L034<br><span class="badge-theory">Theory</span> | [Magnetic flux and flux density](electromagnetism.md) | E3.1<br>E3.2<br>E4.1 | **Read:** Textbook 8.1<br>Textbook 8.1 Qs; EP Magnetic Flux; Past exams: 2024 MC14 | [PhET Faraday's Electromagnetic Lab](https://phet.colorado.edu/en/simulations/faradays-electromagnetic-lab) |
+| W5<br>22 Feb | L035<br><span class="badge-theory">Theory</span> | [Faraday's Law and EMF in a moving conductor](electromagnetism.md) | E3.1<br>E3.3<br>E3.6 | **Read:** Textbook 8.2<br>Textbook 8.2 Qs; EP Electromagnetic Induction in a Conductor; EP Faraday's Law; Past exams: 2020 MC4, 2020 MC19, 2022 MC1, 2022 MC13, 2023 MC9, 2025 MC11, 2023 P2 Q8, 2024 P2 Q1 | [PhET Faraday's Law](https://phet.colorado.edu/sims/html/faradays-law/1.4.13/faradays-law_all.html) |
+| W5<br>22 Feb | L036<br><span class="badge-practical">Practical</span> | [Practical: induction with a magnet and coil; Lenz's Law](electromagnetism.md) | E5.5<br>E3.4<br>E4.1 | **Read:** Textbook 8.3-8.4<br>Textbook 8.3-8.4 Qs; EP Induction in Coils Experiment; EP Lenz's Law; Past exams: 2020 MC5, 2023 MC13, 2025 MC19 | Prac: Magnet and coil induction<br>[PhET Faraday's Law](https://phet.colorado.edu/sims/html/faradays-law/1.4.13/faradays-law_all.html) |
+| W6<br>1 Mar | L037<br><span class="badge-theory">Theory</span> | [Transformers; renewable energy and how electricity is made](electromagnetism.md) | E3.5<br>E3.6<br>E4.2<br>E5.4 | **Read:** Textbook 8.5<br>Textbook 8.5 Qs; EP Transformers; Past exams: 2022 MC18, 2024 P1 Q25 | [PhET Faraday's Electromagnetic Lab](https://phet.colorado.edu/en/simulations/faradays-electromagnetic-lab) |
+| W6<br>1 Mar | L038<br><span class="badge-practical">Practical</span> | [Practical: induced EMF from an AC generator](electromagnetism.md) | E5.6<br>E5.4 | **Read:** Textbook 8.6<br>Textbook 8.6 practical Qs; EP Induced EMF from an AC Generator | Prac: AC generator EMF<br>[PhET Faraday's Electromagnetic Lab](https://phet.colorado.edu/en/simulations/faradays-electromagnetic-lab) |
+| W6<br>1 Mar | L039<br><span class="badge-theory">Theory</span> | [Electromagnetic waves and oscillating charges; media claims about wi-fi and phones](electromagnetism.md) | E3.7<br>E3.8<br>E4.3 | **Read:** Textbook 8.7<br>Textbook 8.7 Qs; EP Electromagnetic Waves; Past exams: 2021 MC6, 2024 MC18, 2025 MC4 | [Falstad EM Waves](https://www.falstad.com/emwave1/) |
+| W7<br>8 Mar | L040<br><span class="badge-assessment">Assessment</span> | [IA1 preparation: data test skills on Unit 3 datasets](../assessment/ia1-data-test.md) | G1.5<br>E2.7<br>E2.8 | **Read:** Textbook Module 1; 8.8<br>Past exams: 2021 P2 Q7, 2022 P2 Q8, 2020 P2 Q2, 2024 P2 Q8; Textbook 8.8 review |  |
+| W7<br>8 Mar | L041<br><span class="badge-assessment">Assessment</span> | [IA2 launch: task, criteria, choosing a practical to modify](../assessment/ia2-student-experiment.md) |  | **Read:** Textbook Module 1 |  |
+| W7<br>8 Mar | L042<br><span class="badge-assessment">Assessment</span> | [IA2: research question, rationale and risk assessment](../assessment/ia2-student-experiment.md) |  | **Read:** Textbook Module 1 |  |
+| W8<br>15 Mar | L043<br><span class="badge-assessment">Assessment</span> | [IA2: trialling the method](../assessment/ia2-student-experiment.md) |  |  |  |
+| W8<br>15 Mar | L044<br><span class="badge-assessment">Assessment</span> | [IA2: data collection](../assessment/ia2-student-experiment.md) |  |  |  |
+| W8<br>15 Mar | L045<br><span class="badge-assessment">Assessment</span> | [IA2: data collection](../assessment/ia2-student-experiment.md) |  |  |  |
+| W9<br>22 Mar | L046<br><span class="badge-assessment">Assessment</span> | [IA2: processing and analysing data](../assessment/ia2-student-experiment.md) |  | **Read:** Textbook Module 1 |  |
+| W9<br>22 Mar | L047<br><span class="badge-assessment">Assessment</span> | [IA2: interpreting and evaluating](../assessment/ia2-student-experiment.md) |  |  |  |
+| W9<br>22 Mar | L048<br><span class="badge-she">SHE</span> | [Unit 3 SHE wrap-up: SKA, superconductivity, Maxwell](electromagnetism.md) | E4.1<br>E4.4<br>E4.6 | **Read:** Textbook 8.7<br>Short-response reflection (SHE) |  |
 
-### Module 4 — Circular motion
+## Term 2 2027
 
-| Lesson | Time | Focus | Subject matter |
-|--------|------|-------|---------------|
-| 4.1 | 60 min | <span class="badge-theory">Theory</span> | [Uniform circular motion](gravity-motion.md#circular-motion). Centripetal acceleration and force. |
-| 4.2 | 60 min | <span class="badge-theory">Theory</span> | Solve problems involving \(a_c = \frac{v^2}{r}\) and \(F_c = \frac{mv^2}{r}\). |
-| 4.3 | 60 min | <span class="badge-practical">Practical</span> | **Practical: Circular motion investigation.** |
-
-### Module 5 — Orbital mechanics
-
-| Lesson | Time | Focus | Subject matter |
-|--------|------|-------|---------------|
-| 5.1 | 60 min | <span class="badge-theory">Theory</span> | [Newton's law of universal gravitation](gravity-motion.md#gravitation). \(F = \frac{Gm_1 m_2}{r^2}\). |
-| 5.2 | 60 min | <span class="badge-theory">Theory</span> | Gravitational field strength. Orbital velocity and period. |
-| 5.3 | 60 min | <span class="badge-theory">Theory</span> | Kepler's laws. Satellite motion. Low Earth orbit vs geostationary orbit. |
-| 5.4 | 60 min | <span class="badge-practical">Practical</span> | **Practical: Modelling orbital mechanics** (simulation-based). |
-| 5.5 | 60 min | <span class="badge-theory">Theory</span> | Gravitational potential energy in a field: \(E_p = -\frac{Gm_1 m_2}{r}\). |
-| 5.6 | 60 min | <span class="badge-theory">Theory</span> | **Review:** Orbital mechanics. |
+| Week | Lesson | What we're learning | Checklist | Read & practise | Try it |
+|---|---|---|---|---|---|
+| W1<br>12 Apr | L049<br><span class="badge-assessment">Assessment</span> | [IA2: drafting the report](../assessment/ia2-student-experiment.md) |  |  |  |
+| W1<br>12 Apr | L050<br><span class="badge-assessment">Assessment</span> | [IA2: drafting; checkpoint submission](../assessment/ia2-student-experiment.md) |  |  |  |
+| W2<br>19 Apr | L054<br><span class="badge-assessment">Assessment</span> | [IA2: responding to feedback; final submission](../assessment/ia2-student-experiment.md) |  |  |  |
 
 ---
 
-## Topic 2: Electromagnetism (23 hours)
-
-### Module 6 — Electrostatics
-
-| Lesson | Time | Focus | Subject matter |
-|--------|------|-------|---------------|
-| 6.1 | 60 min | <span class="badge-theory">Theory</span> | [Coulomb's law](electromagnetism.md#coulombs-law): \(F = k\frac{q_1 q_2}{r^2}\). Force between charged objects in one and two dimensions. |
-| 6.2 | 60 min | <span class="badge-theory">Theory</span> | [Electric fields](electromagnetism.md#electric-fields) and field strength: \(E = \frac{F}{q}\). |
-| 6.3 | 60 min | <span class="badge-practical">Practical</span> | **Practical: Effects of electrostatic charge on various materials.** |
-| 6.4 | 60 min | <span class="badge-theory">Theory</span> | Electric potential energy. Electrical potential difference: \(V = \frac{W}{q}\). Equipotential lines. |
-| 6.5 | 60 min | <span class="badge-theory">Theory</span> | **Review:** Electrostatics. |
-
-### Module 7 — Magnetic fields
-
-| Lesson | Time | Focus | Subject matter |
-|--------|------|-------|---------------|
-| 7.1 | 60 min | <span class="badge-theory">Theory</span> | [Magnetic fields](electromagnetism.md#magnetic-fields). Fields produced by moving electric charges. Field around a current-carrying wire. |
-| 7.2 | 60 min | <span class="badge-theory">Theory</span> | Force on a current-carrying conductor in a magnetic field: \(F = BIl\sin\theta\). |
-| 7.3 | 60 min | <span class="badge-theory">Theory</span> | Force on a moving charge in a magnetic field: \(F = qvB\sin\theta\). |
-| 7.4 | 60 min | <span class="badge-practical">Practical</span> | **Practical: Magnetic field around a current-carrying wire.** |
-| 7.5 | 60 min | <span class="badge-theory">Theory</span> | Solenoids. Applications of magnetic force. |
-
-### Module 8 — Electromagnetic induction and radiation
-
-| Lesson | Time | Focus | Subject matter |
-|--------|------|-------|---------------|
-| 8.1 | 60 min | <span class="badge-theory">Theory</span> | [Electromagnetic induction](electromagnetism.md#electromagnetic-induction). Magnetic flux. Faraday's law. Lenz's law. |
-| 8.2 | 60 min | <span class="badge-theory">Theory</span> | Generators and transformers. \(\frac{V_p}{V_s} = \frac{N_p}{N_s}\). |
-| 8.3 | 60 min | <span class="badge-practical">Practical</span> | **Practical: Electromagnetic induction investigation.** |
-| 8.4 | 60 min | <span class="badge-theory">Theory</span> | Production of electromagnetic waves. |
-| 8.5 | 60 min | <span class="badge-theory">Theory</span> | **Review:** Electromagnetism. |
-
----
-
-## Assessment (10 hours)
-
-| Assessment | Focus | Weighting |
-|------------|-------|-----------|
-| [IA1 — Data test](../assessment/ia1-data-test.md) | Unit 3 Topic 1 | 10% |
-| [IA2 — Student experiment](../assessment/ia2-student-experiment.md) | Unit 3 Topic 2 | 20% |
+*Planner generated from the course plan (2026–27 cohort). Dates are week-beginning Mondays; check QLearn for assessment dates.*

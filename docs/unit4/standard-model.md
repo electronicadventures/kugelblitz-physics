@@ -3,11 +3,17 @@
 !!! info "Syllabus reference"
     Unit 4, Topic 3 — 13 hours (including practicals)
 
+    Checklist codes (e.g. `G1.4`) under each heading match the Know-and-Do checklists on QLearn.
+
 ## Elementary particles
+
+<span class="checklist-codes">Checklist: S1.1</span>
 
 An **elementary particle** is a particle that is not made up of smaller particles. For every particle there is a corresponding **antiparticle** with the same mass but opposite charge (e.g. electron and positron).
 
 ### Quarks (6 types)
+
+<span class="checklist-codes">Checklist: S1.2</span>
 
 | Generation | Quark | Charge | Antiquark | Charge |
 |-----------|-------|--------|-----------|--------|
@@ -20,6 +26,8 @@ An **elementary particle** is a particle that is not made up of smaller particle
 
 ### Leptons (6 types)
 
+<span class="checklist-codes">Checklist: S1.4</span>
+
 | Generation | Lepton | Charge | Neutrino |
 |-----------|--------|--------|----------|
 | 1st | Electron (e⁻) | −1 | Electron neutrino (νₑ) |
@@ -27,6 +35,8 @@ An **elementary particle** is a particle that is not made up of smaller particle
 | 3rd | Tau (τ⁻) | −1 | Tau neutrino (ν_τ) |
 
 ### Gauge bosons (force carriers)
+
+<span class="checklist-codes">Checklist: S1.5 · S2.1 · S2.2</span>
 
 | Force | Boson | Acts on |
 |-------|-------|---------|
@@ -38,6 +48,8 @@ An **elementary particle** is a particle that is not made up of smaller particle
 ---
 
 ## Hadrons
+
+<span class="checklist-codes">Checklist: S1.3</span>
 
 Particles made of quarks are called **hadrons**. There are two types:
 
@@ -55,6 +67,8 @@ Particles made of quarks are called **hadrons**. There are two types:
 ---
 
 ## Conservation laws
+
+<span class="checklist-codes">Checklist: S3.1 · S3.2 · S3.3 · S3.4</span>
 
 In all particle interactions, the following quantities are conserved:
 
@@ -76,6 +90,8 @@ In all particle interactions, the following quantities are conserved:
 
 ### Key interactions
 
+<span class="checklist-codes">Checklist: S4.1 · S4.2 · S4.3</span>
+
 **Electron–electron interaction** — two electrons exchange a virtual photon (electromagnetic repulsion).
 
 **Electron–positron annihilation** — an electron and positron annihilate, producing two photons.
@@ -90,11 +106,23 @@ At the quark level: a down quark converts to an up quark by emitting a W⁻ boso
 
 ### Symmetry in particle interactions
 
+<span class="checklist-codes">Checklist: S4.4</span>
+
 The same Feynman diagram can represent multiple processes depending on the direction of time — this is **crossing symmetry**. The significance of symmetry in particle physics reflects deep mathematical properties of nature.
 
 ---
 
 ## Simulations and videos
+
+**Verified simulations:**
+
+- [The Particle Adventure](https://particleadventure.org/standard_model.html)
+- [HYPATIA event analysis](https://hypatia.iasa.gr/en/index.html)
+
+**Practicals for this topic:**
+
+- Cloud chamber <span class="checklist-codes">S6.1</span>
+- Collision event analysis <span class="checklist-codes">S6.1</span>
 
 **External resources:**
 
