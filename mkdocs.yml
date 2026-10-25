@@ -49,6 +49,25 @@ nav:
       - Lesson Planner: unit3/index.md
       - Gravity & Motion: unit3/gravity-motion.md
       - "Self-check: Projectile Motion": unit3/self-check-projectiles.md
+      - Gravity & Motion lessons:
+          - "Resolving vectors": unit3/lessons/resolving-vectors.md
+          - "Adding vectors": unit3/lessons/adding-vectors.md
+          - "Horizontal projection": unit3/lessons/horizontal-projection.md
+          - "Projection at an angle": unit3/lessons/projection-at-an-angle.md
+          - "Range and launch angle": unit3/lessons/range-and-launch-angle.md
+          - "Practical: projectile range": unit3/lessons/practical-projectile-range.md
+          - "Weight and normal force": unit3/lessons/weight-and-normal-force.md
+          - "Inclined planes": unit3/lessons/inclined-planes.md
+          - "Inclined planes: applied force": unit3/lessons/inclined-planes-applied-force.md
+          - "Practical: inclined plane": unit3/lessons/practical-inclined-plane.md
+          - "Uniform circular motion": unit3/lessons/uniform-circular-motion.md
+          - "Centripetal force": unit3/lessons/centripetal-force.md
+          - "Practical: circular motion": unit3/lessons/practical-circular-motion.md
+          - "Universal gravitation": unit3/lessons/universal-gravitation.md
+          - "Gravitational fields": unit3/lessons/gravitational-fields.md
+          - "Kepler's laws": unit3/lessons/keplers-laws.md
+          - "Orbits and satellites": unit3/lessons/orbits-and-satellites.md
+          - "Gravity: people and collaboration": unit3/lessons/gravity-people-and-collaboration.md
       - Electromagnetism: unit3/electromagnetism.md
   - Unit 4 — Modern Physics:
       - Lesson Planner: unit4/index.md

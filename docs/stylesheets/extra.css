@@ -94,3 +94,9 @@
 .sc-fb.sc-no { color: #c62828; }
 [data-md-color-scheme="slate"] .sc-fb.sc-ok { color: #81c784; }
 [data-md-color-scheme="slate"] .sc-fb.sc-no { color: #ef9a9a; }
+
+/* Wide layout for lesson planner pages (uses the space on large screens) */
+body:has(.kb-wide) .md-grid { max-width: 100rem; }
+body:has(.kb-wide) .md-typeset table:not([class]) { font-size: 0.72rem; }
+.md-typeset .md-typeset__table { width: 100%; }
+.md-typeset .md-typeset__table table:not([class]) { display: table; width: 100%; }
