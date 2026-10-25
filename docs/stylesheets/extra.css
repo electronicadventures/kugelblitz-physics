@@ -71,3 +71,26 @@
   border-radius: 4px;
   padding: 1px 6px;
 }
+
+/* Self-check questions */
+.sc-num, .sc-mc { margin: 0.6em 0 1em; }
+.sc-row { display: flex; gap: 0.5em; align-items: center; flex-wrap: wrap; }
+.sc-row input {
+  font: inherit; padding: 0.35em 0.6em; width: 9em;
+  border: 1px solid var(--md-default-fg-color--lighter); border-radius: 4px;
+  background: var(--md-default-bg-color); color: var(--md-default-fg-color);
+}
+.sc-unit { color: var(--md-default-fg-color--light); }
+.md-typeset .sc-check { padding: 0.3em 1em; margin: 0; }
+.sc-opt {
+  display: block; width: 100%; text-align: left; margin: 0.3em 0; padding: 0.5em 0.8em; cursor: pointer;
+  font: inherit; color: var(--md-default-fg-color); background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lighter); border-radius: 4px;
+}
+.sc-opt:hover { border-color: var(--md-accent-fg-color); }
+.sc-opt.sc-picked { border-color: var(--md-primary-fg-color); border-width: 2px; }
+.sc-fb { margin-top: 0.4em; font-size: 0.9em; min-height: 1em; }
+.sc-fb.sc-ok { color: #2e7d32; }
+.sc-fb.sc-no { color: #c62828; }
+[data-md-color-scheme="slate"] .sc-fb.sc-ok { color: #81c784; }
+[data-md-color-scheme="slate"] .sc-fb.sc-no { color: #ef9a9a; }

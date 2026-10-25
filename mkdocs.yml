@@ -48,6 +48,7 @@ nav:
   - Unit 3 — Gravity & Electromagnetism:
       - Lesson Planner: unit3/index.md
       - Gravity & Motion: unit3/gravity-motion.md
+      - "Self-check: Projectile Motion": unit3/self-check-projectiles.md
       - Electromagnetism: unit3/electromagnetism.md
   - Unit 4 — Modern Physics:
       - Lesson Planner: unit4/index.md
@@ -96,6 +97,7 @@ markdown_extensions:
 extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - javascripts/selfcheck.js
 
 extra_css:
   - stylesheets/extra.css
