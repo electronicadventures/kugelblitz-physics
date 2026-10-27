@@ -46,6 +46,12 @@
 
 ## Try it
 
+**PhET: Vector Addition.** Use the Explore 2D screen. Build two vectors, predict the resultant's components and size, then turn on the sum to check.
+
+<iframe title="PhET: Vector Addition" src="https://phet.colorado.edu/sims/html/vector-addition/latest/vector-addition_en.html" width="100%" height="560" style="border:1px solid #ccc;border-radius:8px;" allowfullscreen loading="lazy"></iframe>
+
+[Open it in a new tab](https://phet.colorado.edu/en/simulations/vector-addition) if it does not load.
+
 - [PhET Vector Addition](https://phet.colorado.edu/sims/html/vector-addition/latest/vector-addition_en.html)
 
 ## Watch
