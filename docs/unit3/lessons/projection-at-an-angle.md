@@ -52,6 +52,12 @@
 
 ## Try it
 
+**PhET: Projectile Motion.** Predict the time of flight and range first, then fire and use the measuring tool to check.
+
+<iframe title="PhET: Projectile Motion" src="https://phet.colorado.edu/sims/html/projectile-motion/latest/projectile-motion_en.html" width="100%" height="560" style="border:1px solid #ccc;border-radius:8px;" allowfullscreen loading="lazy"></iframe>
+
+[Open it in a new tab](https://phet.colorado.edu/en/simulations/projectile-motion) if it does not load.
+
 - [PhET Projectile Motion](https://phet.colorado.edu/en/simulations/projectile-motion)
 - [Physics Classroom: Projectiles](https://www.physicsclassroom.com/interactive/vectors-and-projectiles/projectiles)
 

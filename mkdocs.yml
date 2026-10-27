@@ -49,6 +49,7 @@ nav:
       - Lesson Planner: unit3/index.md
       - Gravity & Motion: unit3/gravity-motion.md
       - "Self-check: Projectile Motion": unit3/self-check-projectiles.md
+      - "Data test skills": unit3/data-test-skills.md
       - Gravity & Motion lessons:
           - "Resolving vectors": unit3/lessons/resolving-vectors.md
           - "Adding vectors": unit3/lessons/adding-vectors.md

@@ -35,8 +35,15 @@
 - **Read:** Textbook (Oxford *Physics for Queensland Units 3 & 4*) section 2.3
 - **Do:** CYL 2.3 Q7, 9
 - **Self-check:** [Projectile motion self-check](../self-check-projectiles.md)
+- **Data skills:** [Data test skills and practice](../data-test-skills.md)
 
 ## Try it
+
+**PhET: Projectile Data Lab.** Collect range data at several launch angles, then look for the angle that gives the maximum range.
+
+<iframe title="PhET: Projectile Data Lab" src="https://phet.colorado.edu/sims/html/projectile-data-lab/latest/projectile-data-lab_en.html" width="100%" height="560" style="border:1px solid #ccc;border-radius:8px;" allowfullscreen loading="lazy"></iframe>
+
+[Open it in a new tab](https://phet.colorado.edu/en/simulations/projectile-data-lab) if it does not load.
 
 - [PhET Projectile Data Lab](https://phet.colorado.edu/en/simulations/projectile-data-lab)
 - [PhET Projectile Motion](https://phet.colorado.edu/en/simulations/projectile-motion)

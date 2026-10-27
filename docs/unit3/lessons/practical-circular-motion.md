@@ -28,6 +28,7 @@
 
 - **Read:** Textbook (Oxford *Physics for Queensland Units 3 & 4*) section 4.4
 - **Do:** Practical 4.4 questions
+- **Data skills:** [Data test skills and practice](../data-test-skills.md)
 
 ## Try it
 
