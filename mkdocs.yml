@@ -84,6 +84,22 @@ nav:
   - Resources:
       - Overview: resources/index.md
       - Interactive Labs: resources/labs.md
+  - Year 10 Science:
+      - Overview: year10/index.md
+      - Global systems:
+          - "Earth's spheres, energy and a warming world": year10/lessons/earths-spheres-and-warming.md
+          - "El Niño, a warming climate and the road to net zero": year10/lessons/el-nino-and-net-zero.md
+      - The universe:
+          - "The Great Conspiracy: how do we know?": year10/lessons/how-do-we-know.md
+          - "Practical: can light tell us what stars are made of?": year10/lessons/practical-spectroscopy.md
+          - "The scale of the universe and the life of a star": year10/lessons/scale-and-star-life-cycles.md
+          - "Reading the H–R diagram": year10/lessons/hr-diagram.md
+          - "Redshift and the expanding universe": year10/lessons/redshift-and-expansion.md
+          - "The big bang: evidence, timeline and the fate of the universe": year10/lessons/big-bang-evidence-and-fate.md
+          - "Technology that changed our view of the universe": year10/lessons/technology-and-the-universe.md
+      - Biology revision:
+          - "Revision: from DNA to Punnett squares": year10/lessons/revision-dna-to-punnett-squares.md
+          - "Revision: sex-linked traits, pedigrees and evaluating claims": year10/lessons/revision-sex-linked-and-pedigrees.md
 
 markdown_extensions:
   - pymdownx.arithmatex:
