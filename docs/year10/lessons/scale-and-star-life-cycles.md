@@ -3,7 +3,7 @@
 <span class="checklist-codes">AC9S10U03</span> <span class="checklist-codes">AC9S10I05</span>
 
 !!! abstract "By the end of this lesson you should be able to"
-    - Order objects in the universe by size and compare sizes using scientific notation.
+    - Compare the sizes of objects in space using scientific notation.
     - Describe the stages in the life of a star from nebula to main sequence.
     - Explain why a star's mass decides how it ends, and describe the two paths.
     - Explain how supernovae spread the elements that make planets and people.
@@ -25,7 +25,7 @@
 
 ## Birth and the main sequence
 
-<p>Every star starts in a <strong>nebula</strong>: a huge, cold cloud of gas (mostly hydrogen and helium) and dust.</p><ol><li><strong>Gravity</strong> pulls part of the cloud together. As it squeezes in, it heats up. This hot, shrinking ball is a <strong>protostar</strong>.</li><li>When the centre reaches about 10 million °C, hydrogen nuclei start to join together to make helium. This is <strong>nuclear fusion</strong>, and it releases huge amounts of energy. A star is born.</li><li>The star is now a <strong>main-sequence star</strong>. Gravity pulls inwards; the pressure from the hot gas and energy from fusion pushes outwards. The two are in <strong>balance</strong>, so the star stays the same size for a long time.</li></ol><p>Stars spend about 90% of their lives on the main sequence. The Sun is about 4.6 billion years into a main-sequence life of about 10 billion years.</p><div class="admonition tip"><p style='margin:0;'><strong>Surprise:</strong> bigger stars have <em>shorter</em> lives. A star with more mass has a hotter, more squeezed core, so it burns through its hydrogen much faster. A star 20 times the Sun's mass lasts only about 10 million years.</p></div>
+<p>Every star starts in a <strong>nebula</strong>: a huge, cold cloud of gas (mostly hydrogen and helium) and dust.</p><ol><li><strong>Gravity</strong> pulls part of the cloud together. As it squeezes in, it heats up. This hot, shrinking ball is a <strong>protostar</strong>.</li><li>When the centre reaches about 10 million K (kelvin; at these temperatures K and °C are almost the same number), hydrogen nuclei start to join together to make helium. This is <strong>nuclear fusion</strong>, and it releases huge amounts of energy. A star is born.</li><li>The star is now a <strong>main-sequence star</strong>. Gravity pulls inwards; the pressure from the hot gas and energy from fusion pushes outwards. The two are in <strong>balance</strong>, so the star stays the same size for a long time.</li></ol><p>Stars spend about 90% of their lives on the main sequence. The Sun is about 4.6 billion years into a main-sequence life of about 10 billion years.</p><div class="admonition tip"><p style='margin:0;'><strong>Surprise:</strong> bigger stars have <em>shorter</em> lives. A star with more mass has a hotter, more squeezed core, so it burns through its hydrogen much faster. A star 20 times the Sun's mass lasts only about 10 million years.</p></div>
 
 ## Two endings: mass decides
 
@@ -33,7 +33,7 @@
 
 ## We are made of star stuff
 
-<p>Right after the big bang, the universe had almost only <strong>hydrogen and helium</strong>. So where did everything else come from?</p><ul><li>Fusion in stars made the elements up to <strong>iron</strong>: carbon, oxygen, nitrogen, calcium and more.</li><li>Elements <strong>heavier than iron</strong>, such as gold, silver and uranium, need even more energy. They are made in <strong>supernovae</strong> and in collisions of neutron stars.</li><li>These explosions throw the new elements into space. They mix into new nebulae, which form new stars, planets and, eventually, people.</li></ul><div class="admonition tip"><p style='margin:0;'><strong>Key idea:</strong> the carbon in your cells, the oxygen you breathe and the gold in a ring were all made in stars that lived and died before the Sun formed. You are, literally, made of star stuff.</p></div>
+<p>Right after the big bang, the universe had almost only <strong>hydrogen and helium</strong>. So where did everything else come from?</p><ul><li>Fusion in stars made the elements up to <strong>iron</strong>: carbon, oxygen, nitrogen, calcium and more.</li><li>Elements <strong>heavier than iron</strong> need even more energy. <strong>Most of the gold</strong> and other very heavy elements (such as platinum and uranium) were made in <strong>supernovae</strong> and in collisions of <strong>neutron stars</strong>. (Some heavy elements are also built up slowly inside giant stars.)</li><li>These explosions throw the new elements into space. They mix into new nebulae, which form new stars, planets and, eventually, people.</li></ul><div class="admonition tip"><p style='margin:0;'><strong>Key idea:</strong> the carbon in your cells, the oxygen you breathe and the gold in a ring were all made in stars that lived and died before the Sun formed. You are, literally, made of star stuff.</p></div>
 
 ## Card sort: build the life cycle
 
@@ -47,9 +47,9 @@
 
 ## Guided example
 
-<p>Two stars form in the same nebula at the same time. Star X has 0.5 times the Sun's mass. Star Y has 15 times the Sun's mass. Which star will die first, and how will each one end?</p>
+<p>Two stars form in the same nebula at the same time. Star X has 0.9 times the Sun's mass. Star Y has 15 times the Sun's mass. Which star will die first, and how will each one end?</p>
 <details class="success"><summary>Show answer</summary>
-<p><strong>Step 1: what decides the path?</strong> Mass. The dividing line is about 8 times the Sun's mass.</p><p><strong>Step 2: star X (0.5 × Sun).</strong> Low mass. It fuses hydrogen slowly, so it lives a very long time (much longer than the Sun's 10 billion years). Eventually: red giant → planetary nebula → white dwarf.</p><p><strong>Step 3: star Y (15 × Sun).</strong> High mass. Its core is hotter and more squeezed, so it uses its fuel fast and lives only a few tens of millions of years. Then: red supergiant → supernova → most likely a neutron star (a black hole if the leftover core is heavy enough).</p><p><strong>Answer:</strong> star Y dies first, even though it has much more fuel, because it burns it far faster.</p>
+<p><strong>Step 1: what decides the path?</strong> Mass. The dividing line is about 8 times the Sun's mass.</p><p><strong>Step 2: star X (0.9 × Sun).</strong> A little less mass than the Sun. It fuses hydrogen a little more slowly, so it lives a bit longer than the Sun's 10 billion years (roughly 13–15 billion years). Eventually: red giant → planetary nebula → white dwarf.</p><p><strong>Step 3: star Y (15 × Sun).</strong> High mass. Its core is hotter and more squeezed, so it uses its fuel fast and lives only a few tens of millions of years. Then: red supergiant → supernova → most likely a neutron star (a black hole if the leftover core is heavy enough).</p><p><strong>Answer:</strong> star Y dies first, even though it has much more fuel, because it burns it far faster.</p>
 </details>
 
 ## Self-check
@@ -88,24 +88,24 @@
 <div class="sc-mc" data-correct="c">
 <button data-opt="a" data-fb="The big bang made almost only hydrogen and helium (with a trace of lithium). Gold came much later.">A — It was made in the big bang</button>
 <button data-opt="b" data-fb="The Sun fuses hydrogen into helium. Even massive stars can only fuse up to iron in their cores. Gold is much heavier than iron.">B — It was made by fusion in the core of the Sun</button>
-<button data-opt="c" data-fb="Yes. Elements heavier than iron need these extreme events. The gold then became part of the nebula that formed the Sun and Earth.">C — It was made in supernovae or neutron-star collisions, and spread through space before Earth formed</button>
+<button data-opt="c" data-fb="Yes. Elements heavier than iron need these extreme events. The gold then became part of the nebula that formed the Sun and Earth.">C — Most of it was made in supernovae and neutron-star collisions, and spread through space before Earth formed</button>
 <button data-opt="d" data-fb="Heat and pressure in Earth can move gold around and concentrate it into veins, but they cannot make new gold atoms.">D — It formed inside Earth from heat and pressure</button>
 </div>
 <details class="success"><summary>Explanation</summary>
-<p>Hydrogen and helium: big bang. Elements up to iron: fusion in stars. Heavier than iron (gold, uranium): supernovae and neutron-star collisions.</p>
+<p>Hydrogen and helium: big bang. Elements up to iron: fusion in stars. Most of the gold and other very heavy elements: supernovae and neutron-star collisions (some heavy elements are also made slowly inside giant stars).</p>
 </details>
 
 ---
 
-<p><strong>4.</strong></p><p>Which list is in order from <strong>smallest to largest</strong>?</p>
-<div class="sc-mc" data-correct="b">
-<button data-opt="a" data-fb="Earth (about 13 000 km) is smaller than Jupiter (about 140 000 km), and the Milky Way is part of the Local Group, so it must be smaller.">A — Jupiter → Earth → Sun → Local Group → Milky Way</button>
-<button data-opt="b" data-fb="Yes. About 0.5 km → 1.3 × 10⁴ km → 1.4 × 10⁶ km → 100 000 light-years → about 10 million light-years.">B — Asteroid → Earth → Sun → Milky Way → Local Group</button>
-<button data-opt="c" data-fb="An asteroid is much smaller than Earth, and the Sun is one of hundreds of billions of stars in the Milky Way.">C — Earth → asteroid → Milky Way → Sun → Local Group</button>
-<button data-opt="d" data-fb="The Sun is about 110 times wider than Earth, and the Local Group contains the Milky Way.">D — Asteroid → Sun → Earth → Local Group → Milky Way</button>
+<p><strong>4.</strong></p><p>The Milky Way is about 1 × 10<sup>5</sup> light-years across. The Local Group of galaxies is about 1 × 10<sup>7</sup> light-years across. About how many times wider is the Local Group?</p>
+<div class="sc-mc" data-correct="c">
+<button data-opt="a" data-fb="7 − 5 = 2 is the difference in the powers, not the answer. A difference of 2 in the power means 10 × 10 = 100 times.">A — 2 times</button>
+<button data-opt="b" data-fb="Powers of ten multiply, they don&#x27;t add. Each step up in the power is another × 10, so two steps is 10 × 10 = 100, not 2 × 10.">B — 20 times</button>
+<button data-opt="c" data-fb="Yes. 107 ÷ 105 = 107 − 5 = 102 = 100. About 100 Milky Ways would fit across the Local Group.">C — 100 times</button>
+<button data-opt="d" data-fb="That would be a difference of 6 in the powers. Here the powers are 7 and 5, so the difference is 2: 102 = 100.">D — 1 000 000 times</button>
 </div>
 <details class="success"><summary>Explanation</summary>
-<p>Something that contains another thing must be bigger: a galaxy contains stars, and a group of galaxies contains galaxies.</p>
+<p>To compare numbers in scientific notation, divide: (1 ÷ 1) × 10<sup>7 − 5</sup> = 10<sup>2</sup> = 100. Each step of 1 in the power is 10 times bigger.</p>
 </details>
 
 ---
@@ -114,7 +114,7 @@
 
 <ol><li>Explain what keeps a main-sequence star from collapsing or blowing apart.</li><li>Why does a star with more mass have a shorter life?</li><li>In one or two sentences, explain what "we are made of star stuff" means.</li></ol>
 <details class="success"><summary>Show answers</summary>
-<ol><li>Gravity pulls the star's gas inwards. Pressure from the hot gas, powered by energy from fusion in the core, pushes outwards. The two forces balance.</li><li>More mass squeezes the core harder, making it hotter, so fusion happens much faster. The star uses up its hydrogen sooner, even though it started with more.</li><li>Most elements in our bodies (like carbon, oxygen, calcium and iron) were made by fusion in stars, and heavier ones in supernovae. Dying stars spread them into space, where they became part of the Sun, Earth and us.</li></ol>
+<ol><li>Gravity pulls the star's gas inwards. Pressure from the hot gas, powered by energy from fusion in the core, pushes outwards. The two forces balance.</li><li>More mass squeezes the core harder, making it hotter, so fusion happens much faster. The star uses up its hydrogen sooner, even though it started with more.</li><li>Most elements in our bodies (like carbon, oxygen, calcium and iron) were made by fusion in stars, and most of the heaviest ones in supernovae and neutron-star collisions. Dying stars spread them into space, where they became part of the Sun, Earth and us.</li></ol>
 </details>
 
 ## Want more?

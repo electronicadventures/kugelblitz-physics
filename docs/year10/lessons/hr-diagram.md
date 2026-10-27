@@ -92,7 +92,7 @@
 <button data-opt="d" data-fb="The opposite: main-sequence stars are the ones fusing hydrogen into helium in their cores.">D — Main-sequence stars are stars that have stopped fusing hydrogen</button>
 </div>
 <details class="success"><summary>Explanation</summary>
-<p>Along the main sequence, mass decides position: top left = massive, hot, bright, short-lived; bottom right = small, cool, dim, long-lived.</p>
+<p>Along the main sequence, mass decides position. The more massive a star, the hotter, brighter and higher up the band it is, and the faster it uses its fuel.</p>
 </details>
 
 ---
@@ -131,9 +131,9 @@
 
 
 <p><em>Guided (use the prompts)</em></p>
-<p><strong>3.</strong></p><p>Use the diagram.</p><p><img src="../../img/y10u04-hr-diagram.png" alt="H–R diagram with real stars" width="560" style="max-width:100%;" loading="lazy"></p><p>Describe <strong>Proxima Centauri</strong> using data from the diagram, and predict how long it will stay on the main sequence compared with the Sun.</p><p><em>Prompts: (1) temperature from the x-axis, with units; (2) luminosity from the y-axis, compared with the Sun; (3) colour and group; (4) what its position tells you about its mass and lifetime.</em></p>
+<p><strong>3.</strong></p><p>Use the diagram.</p><p><img src="../../img/y10u04-hr-diagram.png" alt="H–R diagram with real stars" width="560" style="max-width:100%;" loading="lazy"></p><p>Describe <strong>Sirius B</strong> using data from the diagram. Which group is it in, and what does its position tell you about its size and its stage of life?</p><p><em>Prompts: (1) temperature from the x-axis, with units, compared with the Sun; (2) luminosity from the y-axis, compared with the Sun; (3) name the group; (4) hot but dim: what must be true about its size? Where is it in its life cycle?</em></p>
 <details class="success"><summary>Model answer</summary>
-<p>Proxima Centauri has a surface temperature of about 3000 K, cooler than the Sun's 5800 K, so it is red. Its luminosity is about 0.002 (2 × 10<sup>−3</sup>) of the Sun's, so it is several hundred times dimmer. It sits at the bottom right of the main-sequence band, so it is a <strong>red dwarf</strong>. Stars at the bottom right of the main sequence have the least mass and fuse hydrogen very slowly, so Proxima will stay on the main sequence far longer than the Sun's 10 billion years (likely trillions of years).</p>
+<p>Sirius B has a surface temperature of about 25 000 K, much hotter than the Sun's 5800 K, so it is blue-white. Its luminosity is only about 0.05 of the Sun's (about 20 times dimmer). It sits in the lower left of the diagram, so it is a <strong>white dwarf</strong>. Because it is hotter than the Sun, each square metre of its surface gives out far more light, yet overall it is much dimmer, so it must have a very small surface: it is tiny, about the size of Earth. A white dwarf is the leftover core of a star at the <strong>end of its life</strong>: it no longer fuses hydrogen and will slowly cool and fade.</p>
 </details>
 
 
