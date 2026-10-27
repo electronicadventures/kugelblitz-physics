@@ -42,6 +42,12 @@
 
 ## Try it
 
+**GeoGebra: Vector Components (Tom Walsh).** Enter a magnitude and direction: predict the x and y components first, then check. Try 150°, 225° and 300° and watch the signs.
+
+<iframe title="GeoGebra: Vector Components (Tom Walsh)" src="https://www.geogebra.org/material/iframe/id/BvQdyqvy" width="100%" height="560" style="border:1px solid #ccc;border-radius:8px;" allowfullscreen loading="lazy"></iframe>
+
+[Open it in a new tab](https://www.geogebra.org/m/BvQdyqvy) if it does not load.
+
 - [PhET Vector Addition](https://phet.colorado.edu/sims/html/vector-addition/latest/vector-addition_en.html)
 
 ## Watch
