@@ -35,17 +35,43 @@ theme:
     code: JetBrains Mono
 
 nav:
-  - Home: index.md
-  - Unit 1 — Thermal, Nuclear & Electrical:
+  - Home:
+      - Overview: index.md
+      - Assessment:
+          - Overview: assessment/index.md
+          - IA1 — Data Test: assessment/ia1-data-test.md
+          - IA2 — Student Experiment: assessment/ia2-student-experiment.md
+          - IA3 — Research Investigation: assessment/ia3-research-investigation.md
+          - External Exam: assessment/external-exam.md
+      - Resources:
+          - Overview: resources/index.md
+          - Interactive Labs: resources/labs.md
+  - Year 10:
+      - Overview: year10/index.md
+      - Global systems:
+          - "Earth's spheres, energy and a warming world": year10/lessons/earths-spheres-and-warming.md
+          - "El Niño, a warming climate and the road to net zero": year10/lessons/el-nino-and-net-zero.md
+      - The universe:
+          - "The Great Conspiracy: how do we know?": year10/lessons/how-do-we-know.md
+          - "Practical: can light tell us what stars are made of?": year10/lessons/practical-spectroscopy.md
+          - "The scale of the universe and the life of a star": year10/lessons/scale-and-star-life-cycles.md
+          - "Reading the H–R diagram": year10/lessons/hr-diagram.md
+          - "Redshift and the expanding universe": year10/lessons/redshift-and-expansion.md
+          - "The big bang: evidence, timeline and the fate of the universe": year10/lessons/big-bang-evidence-and-fate.md
+          - "Technology that changed our view of the universe": year10/lessons/technology-and-the-universe.md
+      - Biology revision:
+          - "Revision: from DNA to Punnett squares": year10/lessons/revision-dna-to-punnett-squares.md
+          - "Revision: sex-linked traits, pedigrees and evaluating claims": year10/lessons/revision-sex-linked-and-pedigrees.md
+  - Unit 1:
       - Lesson Planner: unit1/index.md
       - Heating Processes: unit1/heating-processes.md
       - Ionising Radiation & Nuclear Reactions: unit1/nuclear-physics.md
       - Electrical Circuits: unit1/electrical-circuits.md
-  - Unit 2 — Linear Motion & Waves:
+  - Unit 2:
       - Lesson Planner: unit2/index.md
       - Linear Motion & Force: unit2/linear-motion.md
       - Waves: unit2/waves.md
-  - Unit 3 — Gravity & Electromagnetism:
+  - Unit 3:
       - Lesson Planner: unit3/index.md
       - Gravity & Motion: unit3/gravity-motion.md
       - "Self-check: Projectile Motion": unit3/self-check-projectiles.md
@@ -70,37 +96,11 @@ nav:
           - "Orbits and satellites": unit3/lessons/orbits-and-satellites.md
           - "Gravity: people and collaboration": unit3/lessons/gravity-people-and-collaboration.md
       - Electromagnetism: unit3/electromagnetism.md
-  - Unit 4 — Modern Physics:
+  - Unit 4:
       - Lesson Planner: unit4/index.md
       - Special Relativity: unit4/special-relativity.md
       - Quantum Theory: unit4/quantum-theory.md
       - The Standard Model: unit4/standard-model.md
-  - Assessment:
-      - Overview: assessment/index.md
-      - IA1 — Data Test: assessment/ia1-data-test.md
-      - IA2 — Student Experiment: assessment/ia2-student-experiment.md
-      - IA3 — Research Investigation: assessment/ia3-research-investigation.md
-      - External Exam: assessment/external-exam.md
-  - Resources:
-      - Overview: resources/index.md
-      - Interactive Labs: resources/labs.md
-  - Year 10 Science:
-      - Overview: year10/index.md
-      - Global systems:
-          - "Earth's spheres, energy and a warming world": year10/lessons/earths-spheres-and-warming.md
-          - "El Niño, a warming climate and the road to net zero": year10/lessons/el-nino-and-net-zero.md
-      - The universe:
-          - "The Great Conspiracy: how do we know?": year10/lessons/how-do-we-know.md
-          - "Practical: can light tell us what stars are made of?": year10/lessons/practical-spectroscopy.md
-          - "The scale of the universe and the life of a star": year10/lessons/scale-and-star-life-cycles.md
-          - "Reading the H–R diagram": year10/lessons/hr-diagram.md
-          - "Redshift and the expanding universe": year10/lessons/redshift-and-expansion.md
-          - "The big bang: evidence, timeline and the fate of the universe": year10/lessons/big-bang-evidence-and-fate.md
-          - "Technology that changed our view of the universe": year10/lessons/technology-and-the-universe.md
-      - Biology revision:
-          - "Revision: from DNA to Punnett squares": year10/lessons/revision-dna-to-punnett-squares.md
-          - "Revision: sex-linked traits, pedigrees and evaluating claims": year10/lessons/revision-sex-linked-and-pedigrees.md
-
 markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
