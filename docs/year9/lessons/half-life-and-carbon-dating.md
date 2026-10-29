@@ -16,6 +16,13 @@
 
 <p>Watch: <a href="https://www.youtube.com/watch?v=fx3BqQ44zDE" target="_blank" rel="noopener">How to Date a Dead Thing</a> · <em>SciShow</em></p>
 
+<details class="note"><summary>More video options</summary>
+<p><strong>How Does Radiocarbon Dating Work?</strong> · <em>Scientific American</em></p>
+<div class="video"><iframe src="https://www.youtube.com/embed/phZeE7Att_s" title="How Does Radiocarbon Dating Work? (Scientific American)" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+<p><strong>Half-life and carbon dating: another explanation</strong></p>
+<div class="video"><iframe src="https://www.youtube.com/embed/8QnsA_1pEd8" title="Half-life and carbon dating video" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+</details>
+
 ## Quick recap: radioisotopes
 
 <p>Some atoms are <strong>unstable</strong>. Their nucleus has the wrong mix of protons and neutrons, so sooner or later it breaks down and gives off radiation. This is <strong>radioactive decay</strong>.</p><p>An unstable isotope is called a <strong>radioisotope</strong>. When it decays, it turns into a different, <strong>stable</strong> atom.</p><p>You can never predict <em>when</em> one particular atom will decay. But with millions of atoms, the pattern is very predictable.</p>
