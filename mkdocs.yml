@@ -46,6 +46,10 @@ nav:
       - Resources:
           - Overview: resources/index.md
           - Interactive Labs: resources/labs.md
+  - Year 9:
+      - Overview: year9/index.md
+      - Radioactivity:
+          - "Half-life and carbon dating": year9/lessons/half-life-and-carbon-dating.md
   - Year 10:
       - Overview: year10/index.md
       - Global systems:

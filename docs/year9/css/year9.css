@@ -1,0 +1,39 @@
+/* Year 9 section styles (kept inside docs/year9 so the section can move to its own site). */
+
+/* Half-life animation */
+.hl-sim { border: 1px solid var(--md-default-fg-color--lightest); border-radius: 8px; padding: 0.8em; margin: 1em 0; }
+.hl-legend { display: flex; flex-wrap: wrap; gap: 1.2em; font-size: 0.8rem; margin-bottom: 0.6em; }
+.hl-legend span { display: inline-flex; align-items: center; gap: 0.4em; }
+.hl-wrap { display: flex; flex-wrap: wrap; gap: 1em; align-items: center; }
+.hl-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; width: 100%; max-width: 230px; }
+.hl-dot { display: inline-block; width: 100%; aspect-ratio: 1; min-width: 12px; border-radius: 50%;
+  background: var(--md-primary-fg-color); transition: background 0.3s, transform 0.3s; }
+.hl-legend .hl-dot { width: 14px; min-width: 14px; }
+.hl-dot.hl-gone { background: var(--md-default-fg-color--lighter); }
+.hl-dot.hl-pop { animation: hl-pop 0.4s ease-out; }
+@keyframes hl-pop { 0% { transform: scale(1.5); background: var(--md-accent-fg-color); } 100% { transform: scale(1); } }
+.hl-graph { flex: 1 1 280px; max-width: 420px; width: 100%; height: auto; }
+.hl-axis { stroke: var(--md-default-fg-color--light); stroke-width: 1.2; }
+.hl-gridline { stroke: var(--md-default-fg-color--lightest); stroke-width: 1; }
+.hl-tick { fill: var(--md-default-fg-color--light); font-size: 10px; }
+.hl-label { fill: var(--md-default-fg-color); font-size: 10.5px; }
+.hl-ideal { fill: none; stroke: var(--md-default-fg-color--light); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.hl-actual { fill: none; stroke: var(--md-primary-fg-color); stroke-width: 2; }
+.hl-pt { fill: var(--md-primary-fg-color); }
+.hl-out { font-size: 0.8rem; margin: 0.6em 0; min-height: 2.4em; }
+.hl-row { display: flex; flex-wrap: wrap; gap: 0.5em; }
+.md-typeset .hl-row .md-button { padding: 0.35em 1em; margin: 0; font-size: 0.75rem; }
+.md-typeset .hl-row .md-button[disabled] { opacity: 0.4; pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .hl-dot, .hl-dot.hl-pop { transition: none; animation: none; } }
+
+/* Step-by-step flow (boxes and arrows) */
+.flow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0.4em; margin: 1em 0; }
+.flow .step { flex: 1 1 140px; border: 1px solid var(--md-primary-fg-color); border-radius: 6px;
+  padding: 0.5em 0.6em; font-size: 0.75rem; background: var(--md-code-bg-color); }
+.flow .step strong { display: block; color: var(--md-primary-fg-color); margin-bottom: 0.2em; }
+.flow .arrow { align-self: center; font-size: 1.2rem; color: var(--md-default-fg-color--light); }
+@media (max-width: 600px) { .flow { flex-direction: column; } .flow .arrow { transform: rotate(90deg); } }
+
+/* Video embed */
+.video { position: relative; width: 100%; max-width: 640px; aspect-ratio: 16 / 9; margin: 0.6em 0; }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 6px; }
