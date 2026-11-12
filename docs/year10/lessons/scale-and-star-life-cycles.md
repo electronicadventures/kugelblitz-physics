@@ -19,7 +19,7 @@
 
 <p>Sizes in space are so different that ordinary numbers stop working. We use <strong>scientific notation</strong>: a number between 1 and 10 multiplied by a power of ten. Each step up in the power means <strong>10 times bigger</strong>.</p><p><img src="../../img/y10u03-scale-ladder.png" alt="Bar chart on a log scale of diameters: asteroid Bennu about 0.5 km, Earth 1.3 × 10^4 km, Jupiter 1.4 × 10^5 km, Sun 1.4 × 10^6 km, Betelgeuse about 10^9 km, Milky Way about 100 000 light-years, Local Group about 10 million light-years, observable universe about 93 billion light-years" width="640" style="max-width:100%;" loading="lazy"></p><ul><li>A <strong>planet</strong> orbits a star; a <strong>star</strong> is a huge ball of hot gas that makes its own light.</li><li>A <strong>galaxy</strong> is a collection of billions of stars, gas and dust held together by gravity.</li><li>Galaxies gather in <strong>groups and clusters</strong>. The Milky Way belongs to the <strong>Local Group</strong>, with the Andromeda Galaxy and dozens of smaller galaxies.</li><li>The <strong>observable universe</strong> is everything whose light has had time to reach us.</li></ul><div class="admonition tip"><p style='margin:0;'><strong>Key idea:</strong> when the scale has a log axis, each tick is a jump of many times, not a step of the same size. On the chart above the Sun looks close to Jupiter, but it is 10 times wider.</p></div>
 
-<details class="example"><summary>Worked example: how many Earths across the Sun?</summary>
+<details class="example" id="worked-example-how-many-earths-across-the-sun"><summary>Worked example: how many Earths across the Sun?</summary>
 <p>Earth is 1.3 × 10<sup>4</sup> km across. The Sun is 1.4 × 10<sup>6</sup> km across. About how many Earths would fit across the Sun?</p><hr><p>Divide the numbers and subtract the powers: (1.4 ÷ 1.3) × 10<sup>6 − 4</sup> ≈ 1.1 × 10<sup>2</sup> ≈ <strong>110 Earths</strong>.</p><p><strong>Now try:</strong> Betelgeuse is about 1 × 10<sup>9</sup> km across. How many Suns across is that? (1 × 10<sup>9</sup> ÷ 1.4 × 10<sup>6</sup> ≈ 700 Suns.)</p>
 </details>
 
@@ -71,7 +71,7 @@
 
 ---
 
-<p><strong>2.</strong></p><p>A star 20 times the mass of the Sun explodes as a supernova. What could be left behind?</p>
+<p><strong>2.</strong></p><p>In the star life-cycle model from this lesson, a star 20 times the mass of the Sun ends its life in a supernova. What is left behind?</p>
 <div class="sc-mc" data-correct="b">
 <button data-opt="a" data-fb="White dwarfs are left by low and average-mass stars after a planetary nebula, not after a supernova of a massive star.">A — A white dwarf</button>
 <button data-opt="b" data-fb="Yes. The core collapses in the supernova. A leftover core up to about 3 times the Sun&#x27;s mass becomes a neutron star; a heavier one becomes a black hole.">B — A neutron star or a black hole</button>
@@ -88,11 +88,11 @@
 <div class="sc-mc" data-correct="c">
 <button data-opt="a" data-fb="The big bang made almost only hydrogen and helium (with a trace of lithium). Gold came much later.">A — It was made in the big bang</button>
 <button data-opt="b" data-fb="The Sun fuses hydrogen into helium. Even massive stars can only fuse up to iron in their cores. Gold is much heavier than iron.">B — It was made by fusion in the core of the Sun</button>
-<button data-opt="c" data-fb="Yes. Elements heavier than iron need these extreme events. The gold then became part of the nebula that formed the Sun and Earth.">C — Most of it was made in supernovae and neutron-star collisions, and spread through space before Earth formed</button>
+<button data-opt="c" data-fb="Yes. Elements heavier than iron need extreme events like these. The gold then became part of the cloud of gas and dust that formed the Sun and Earth.">C — It was made in extreme events such as neutron-star collisions, then spread through space before Earth formed</button>
 <button data-opt="d" data-fb="Heat and pressure in Earth can move gold around and concentrate it into veins, but they cannot make new gold atoms.">D — It formed inside Earth from heat and pressure</button>
 </div>
 <details class="success"><summary>Explanation</summary>
-<p>Hydrogen and helium: big bang. Elements up to iron: fusion in stars. Most of the gold and other very heavy elements: supernovae and neutron-star collisions (some heavy elements are also made slowly inside giant stars).</p>
+<p>Hydrogen and helium: big bang. Elements up to iron: fusion in stars. Gold and other very heavy elements: extreme events such as neutron-star collisions and some kinds of supernova. Scientists are still working out how much comes from each.</p>
 </details>
 
 ---
