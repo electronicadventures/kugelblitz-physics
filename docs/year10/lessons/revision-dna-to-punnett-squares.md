@@ -55,12 +55,12 @@
 <p><strong>1.</strong></p><p>Which statement about genes and chromosomes is correct?</p>
 <div class="sc-mc" data-correct="b">
 <button data-opt="a" data-fb="It is the other way round. A gene is a small section of the DNA that makes up a chromosome.">A — A chromosome is a section of a gene</button>
-<button data-opt="b" data-fb="Yes. One chromosome is one long DNA molecule, and it carries hundreds to thousands of genes.">B — A gene is a section of the DNA molecule in a chromosome</button>
+<button data-opt="b" data-fb="Yes. A chromosome contains one long DNA molecule, packaged with proteins, and that DNA carries hundreds to thousands of genes.">B — A gene is a section of the DNA molecule in a chromosome</button>
 <button data-opt="c" data-fb="A nucleotide is the smallest building block here: one phosphate, one sugar and one base. A gene is made of many nucleotides.">C — A nucleotide is made of many genes</button>
 <button data-opt="d" data-fb="In plant and animal cells the chromosomes are inside the nucleus.">D — Chromosomes are found outside the nucleus in body cells</button>
 </div>
 <details class="success"><summary>Explanation</summary>
-<p>From biggest to smallest: cell → nucleus → chromosome → DNA molecule → gene → nucleotide. Each is part of the one before it.</p>
+<p>A chromosome contains one long DNA molecule packaged with proteins. Genes are sections of that DNA, and the DNA is built from nucleotides. In plant and animal cells, chromosomes are in the nucleus.</p>
 </details>
 
 ---
@@ -81,12 +81,12 @@
 <p><strong>3.</strong></p><p>Which description matches <strong>meiosis</strong>?</p>
 <div class="sc-mc" data-correct="b">
 <button data-opt="a" data-fb="That is mitosis, used for growth and repair.">A — One division, 2 identical cells, same chromosome number</button>
-<button data-opt="b" data-fb="Yes. Meiosis makes gametes. Halving the number means fertilisation restores the full number.">B — Two divisions, 4 genetically different cells, half the chromosome number</button>
+<button data-opt="b" data-fb="Yes. Meiosis makes gametes. Halving the number means fertilisation restores the full number. (In this simple model meiosis makes four cells. In human egg formation, only one of the four becomes a working egg.)">B — Two divisions, 4 genetically different cells, half the chromosome number</button>
 <button data-opt="c" data-fb="Meiosis cells are all different (crossing over and shuffling), and have half the chromosome number.">C — Two divisions, 4 identical cells, same chromosome number</button>
 <button data-opt="d" data-fb="Meiosis needs two divisions to make four cells, each with half the chromosome number.">D — One division, 2 cells with half the chromosome number</button>
 </div>
 <details class="success"><summary>Explanation</summary>
-<p>Meiosis: 2 divisions → 4 cells → half the chromosomes → all different. Mitosis: 1 division → 2 cells → same number → identical.</p>
+<p>Meiosis: 2 divisions → 4 cells → half the chromosomes → all genetically different. Mitosis: 1 division → 2 cells → same number → identical.</p>
 </details>
 
 ---
@@ -114,35 +114,48 @@
 
 ## Exam skill: Punnett squares and % chance
 
-<div class="admonition note"><p class="admonition-title">What a full answer includes</p><ul><li>a key: which letter is dominant and which is recessive</li><li>both parents' genotypes, worked out from the clues</li><li>the gametes each parent can make</li><li>a completed Punnett square</li><li>the answer to the exact question asked (genotype ratio, phenotype ratio or % chance), in words as well as letters</li></ul></div>
+<div class="admonition note"><p class="admonition-title">What a full answer includes</p><ul><li>a key: which letter is dominant and which is recessive</li><li>both parents' genotypes, worked out from the clues</li><li>the gametes each parent can make (along the top and side of the square)</li><li>a completed Punnett square</li><li>the answer to the exact question asked (genotype ratio, phenotype ratio or % chance)</li></ul></div>
 
 <p><em>Worked example</em></p>
 <p><strong>Worked example.</strong> In pea plants, round seeds (R) are dominant to wrinkled seeds (r). Two plants, both heterozygous for seed shape, are crossed. What % of the seeds are expected to be round?</p><p><strong>Key:</strong> R = round, r = wrinkled. <strong>Parents:</strong> both heterozygous, so Rr × Rr.</p><table style='border-collapse:collapse;text-align:center;margin:8px 0;font-size:1.05em;'><tr><td style='padding:6px 14px;'></td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(99,102,241,.14);font-weight:bold;'>R</td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(99,102,241,.14);font-weight:bold;'>r</td></tr><tr><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(99,102,241,.14);font-weight:bold;'>R</td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(127,127,127,.06);'>RR</td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(127,127,127,.06);'>Rr</td></tr><tr><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(99,102,241,.14);font-weight:bold;'>r</td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(127,127,127,.06);'>Rr</td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(127,127,127,.06);'>rr</td></tr></table><p><strong>Count:</strong> 1 RR, 2 Rr, 1 rr. Genotype ratio 1 RR : 2 Rr : 1 rr. Phenotype ratio 3 round : 1 wrinkled.</p><p><strong>Answer:</strong> RR and Rr are both round (one R is enough), so 3 out of 4 are round: <strong>75%</strong>. (Wrinkled = 25%.)</p>
 
 <p><em>Guided (use the prompts)</em></p>
-<p><strong>2.</strong></p><em>Simplified textbook model:</em> tongue rolling (R) is dominant to non-rolling (r). A woman cannot roll her tongue. Her partner can, but his mother could not. Write both parents' genotypes and the possible genotypes of their children.<br><strong>Prompts:</strong> First write the woman's genotype (non-rolling is recessive). Then ask: what must her partner have got from his non-rolling mother? Then draw the square.
-<details class="success"><summary>Model answer</summary>
-<p>The woman is a non-roller, so she is <strong>rr</strong>. Her partner rolls, so he has at least one R. His mother was rr, so she gave him an r: he is <strong>Rr</strong>.</p><table style='border-collapse:collapse;text-align:center;margin:8px 0;font-size:1.05em;'><tr><td style='padding:6px 14px;'></td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(99,102,241,.14);font-weight:bold;'>R</td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(99,102,241,.14);font-weight:bold;'>r</td></tr><tr><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(99,102,241,.14);font-weight:bold;'>r</td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(127,127,127,.06);'>Rr</td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(127,127,127,.06);'>rr</td></tr><tr><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(99,102,241,.14);font-weight:bold;'>r</td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(127,127,127,.06);'>Rr</td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(127,127,127,.06);'>rr</td></tr></table><p>Children: <strong>Rr</strong> (roller) or <strong>rr</strong> (non-roller), in a 1 : 1 ratio.</p>
+<p><strong>2.</strong></p><div class="sc-dd">
+<p>In fruit flies, normal wings (V) are dominant to short, crumpled <strong>vestigial</strong> wings (v). A female with vestigial wings is crossed with a male with normal wings. The male's mother had vestigial wings.</p><p><strong>Prompts:</strong> First work out the female's genotype (vestigial is recessive). Then ask: which allele must the male have got from his vestigial-winged mother? Put each parent's gametes along the top and side, then fill in the offspring.</p><p><small><span style="background-color:rgba(59,130,246,.15);padding:1px 6px;">blue</span> = gametes from the male (father) · <span style="background-color:rgba(236,72,153,.15);padding:1px 6px;">pink</span> = gametes from the female (mother)<br><strong>Order rule:</strong> put the capital letter before the lower-case letter, and X before Y.</small></p><table style="border-collapse:collapse;"><tbody><tr><th style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;"></th><th style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;background-color:rgba(59,130,246,.15);"><select data-blank="t1" data-answer="V" aria-label="choose"><option value="">…</option><option value="V">V</option><option value="v">v</option></select></th><th style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;background-color:rgba(59,130,246,.15);"><select data-blank="t2" data-answer="v" aria-label="choose"><option value="">…</option><option value="V">V</option><option value="v">v</option></select></th></tr><tr><th style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;background-color:rgba(236,72,153,.15);"><select data-blank="s1" data-answer="v" aria-label="choose"><option value="">…</option><option value="V">V</option><option value="v">v</option></select></th><td style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;"><select data-blank="c11" data-answer="Vv" aria-label="choose"><option value="">…</option><option value="VV">VV</option><option value="Vv">Vv</option><option value="vv">vv</option></select></td><td style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;"><select data-blank="c12" data-answer="vv" aria-label="choose"><option value="">…</option><option value="VV">VV</option><option value="Vv">Vv</option><option value="vv">vv</option></select></td></tr><tr><th style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;background-color:rgba(236,72,153,.15);"><select data-blank="s2" data-answer="v" aria-label="choose"><option value="">…</option><option value="V">V</option><option value="v">v</option></select></th><td style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;"><select data-blank="c21" data-answer="Vv" aria-label="choose"><option value="">…</option><option value="VV">VV</option><option value="Vv">Vv</option><option value="vv">vv</option></select></td><td style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;"><select data-blank="c22" data-answer="vv" aria-label="choose"><option value="">…</option><option value="VV">VV</option><option value="Vv">Vv</option><option value="vv">vv</option></select></td></tr></tbody></table>
+</div>
+<details class="success"><summary>Worked solution</summary>
+<p>The female has vestigial wings, so she is <strong>vv</strong>: her gametes are v and v. The male has normal wings, so he has at least one V. His mother was vv, so she gave him a v: he is <strong>Vv</strong>, and his gametes are V and v.</p><p>Offspring: 2 Vv (normal wings) and 2 vv (vestigial wings), a 1 : 1 ratio.</p>
 </details>
 
 
 <p><em>Guided (use the prompts)</em></p>
-<p><strong>3.</strong></p><p>Using your square for the woman and her partner: what is the % chance that a child of theirs can roll their tongue? (Type a number only.)<br><strong>Prompt:</strong> count the boxes with at least one R.</p>
+<p><strong>3.</strong></p><p>From the same cross (female <strong>vv</strong> × male <strong>Vv</strong>): what is the % chance that an offspring fly has <strong>normal</strong> wings? (Type a number only.)<br><strong>Prompt:</strong> count the boxes with at least one V.</p>
 <div class="sc-num" data-answer="50" data-tol="0.005"></div>
 <details class="success"><summary>Worked solution</summary>
-<p>2 boxes (Rr, Rr) out of 4 contain an R, so <strong>50%</strong>.</p>
+<p>2 boxes (Vv, Vv) out of 4 contain a V, so <strong>50%</strong>.</p>
 </details>
 
 
 <p><em>Your turn</em></p>
-<p><strong>4.</strong></p><p>In cattle, polled (hornless, P) is dominant to horned (p). A farmer crosses a heterozygous polled bull with a heterozygous polled cow. Show the Punnett square and give the genotype ratio and phenotype ratio of the calves.</p>
-<details class="success"><summary>Model answer</summary>
-<p>Key: P = polled, p = horned. Parents <strong>Pp × Pp</strong>.</p><table style='border-collapse:collapse;text-align:center;margin:8px 0;font-size:1.05em;'><tr><td style='padding:6px 14px;'></td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(99,102,241,.14);font-weight:bold;'>P</td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(99,102,241,.14);font-weight:bold;'>p</td></tr><tr><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(99,102,241,.14);font-weight:bold;'>P</td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(127,127,127,.06);'>PP</td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(127,127,127,.06);'>Pp</td></tr><tr><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(99,102,241,.14);font-weight:bold;'>p</td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(127,127,127,.06);'>Pp</td><td style='border:1px solid #6b7280;padding:6px 14px;background:rgba(127,127,127,.06);'>pp</td></tr></table><p>Genotype ratio <strong>1 PP : 2 Pp : 1 pp</strong>. Phenotype ratio <strong>3 polled : 1 horned</strong>.</p>
+<p><strong>4.</strong></p><div class="sc-dd">
+<p>In cattle, polled (hornless, P) is dominant to horned (p). A farmer crosses a <strong>heterozygous</strong> polled bull with a <strong>heterozygous</strong> polled cow. Complete the Punnett square.</p><p><small><span style="background-color:rgba(59,130,246,.15);padding:1px 6px;">blue</span> = gametes from the bull · <span style="background-color:rgba(236,72,153,.15);padding:1px 6px;">pink</span> = gametes from the cow<br><strong>Order rule:</strong> put the capital letter before the lower-case letter, and X before Y.</small></p><table style="border-collapse:collapse;"><tbody><tr><th style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;"></th><th style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;background-color:rgba(59,130,246,.15);"><select data-blank="t1" data-answer="P" aria-label="choose"><option value="">…</option><option value="P">P</option><option value="p">p</option></select></th><th style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;background-color:rgba(59,130,246,.15);"><select data-blank="t2" data-answer="p" aria-label="choose"><option value="">…</option><option value="P">P</option><option value="p">p</option></select></th></tr><tr><th style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;background-color:rgba(236,72,153,.15);"><select data-blank="s1" data-answer="P" aria-label="choose"><option value="">…</option><option value="P">P</option><option value="p">p</option></select></th><td style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;"><select data-blank="c11" data-answer="PP" aria-label="choose"><option value="">…</option><option value="PP">PP</option><option value="Pp">Pp</option><option value="pp">pp</option></select></td><td style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;"><select data-blank="c12" data-answer="Pp" aria-label="choose"><option value="">…</option><option value="PP">PP</option><option value="Pp">Pp</option><option value="pp">pp</option></select></td></tr><tr><th style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;background-color:rgba(236,72,153,.15);"><select data-blank="s2" data-answer="p" aria-label="choose"><option value="">…</option><option value="P">P</option><option value="p">p</option></select></th><td style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;"><select data-blank="c21" data-answer="Pp" aria-label="choose"><option value="">…</option><option value="PP">PP</option><option value="Pp">Pp</option><option value="pp">pp</option></select></td><td style="border:1px solid #9ca3af;padding:6px 10px;text-align:center;"><select data-blank="c22" data-answer="pp" aria-label="choose"><option value="">…</option><option value="PP">PP</option><option value="Pp">Pp</option><option value="pp">pp</option></select></td></tr></tbody></table>
+</div>
+<details class="success"><summary>Worked solution</summary>
+<p>Both parents are Pp, so each makes P and p gametes. Offspring: 1 PP, 2 Pp, 1 pp.</p>
 </details>
 
 
 <p><em>Your turn</em></p>
-<p><strong>5.</strong></p><p>For the same cattle cross (Pp × Pp), what is the % chance that a calf is <strong>horned</strong>? (Type a number only.)</p>
+<p><strong>5.</strong></p><div class="sc-dd">
+<p>Use your square for the same cattle cross (Pp × Pp). Out of every 4 calves:</p><p><strong>Genotype ratio:</strong> <select data-blank="g1" data-answer="1" aria-label="choose"><option value="">…</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select> PP : <select data-blank="g2" data-answer="2" aria-label="choose"><option value="">…</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select> Pp : <select data-blank="g3" data-answer="1" aria-label="choose"><option value="">…</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select> pp</p><p><strong>Phenotype ratio:</strong> <select data-blank="h1" data-answer="3" aria-label="choose"><option value="">…</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select> polled : <select data-blank="h2" data-answer="1" aria-label="choose"><option value="">…</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select> horned</p>
+</div>
+<details class="success"><summary>Worked solution</summary>
+<p>Genotype ratio <strong>1 PP : 2 Pp : 1 pp</strong>. PP and Pp both have a P, so they are polled: phenotype ratio <strong>3 polled : 1 horned</strong>.</p>
+</details>
+
+
+<p><em>Your turn</em></p>
+<p><strong>6.</strong></p><p>For the same cattle cross (Pp × Pp), what is the % chance that any one calf is <strong>horned</strong>? (Type a number only.)</p>
 <div class="sc-num" data-answer="25" data-tol="0.005"></div>
 <details class="success"><summary>Worked solution</summary>
 <p>Only pp is horned: 1 box out of 4 = <strong>25%</strong>. (Polled is 75%.)</p>
@@ -150,7 +163,7 @@
 
 
 <p><em>Your turn</em></p>
-<p><strong>6.</strong></p><p>In pea plants, purple flowers (A) are dominant to white flowers (a). A pure-breeding purple plant is crossed with a white plant. What % of the offspring are expected to have <strong>white</strong> flowers? (Type a number only.)</p>
+<p><strong>7.</strong></p><p>In pea plants, purple flowers (A) are dominant to white flowers (a). A pure-breeding purple plant is crossed with a white plant. What % of the offspring are expected to have <strong>white</strong> flowers? (Type a number only.)</p>
 <div class="sc-num" data-answer="0" data-tol="0.010"></div>
 <details class="success"><summary>Worked solution</summary>
 <p>Pure-breeding purple = AA; white = aa. Every offspring gets A from one parent and a from the other, so all are Aa (purple). White = <strong>0%</strong>. Watch for "pure-breeding": it tells you the genotype is homozygous.</p>
@@ -158,15 +171,15 @@
 
 
 <p><em>Your turn</em></p>
-<p><strong>7.</strong></p><strong>Challenge.</strong> From the Pp × Pp cattle cross, a farmer picks a calf that is <strong>polled</strong>. What is the chance that this calf is <strong>heterozygous</strong> (Pp)?
+<p><strong>8.</strong></p><strong>Extension (harder).</strong> From the Pp × Pp cattle cross, a farmer picks a calf that is <strong>polled</strong>. What is the chance that this calf is <strong>heterozygous</strong> (Pp)?
 <div class="sc-mc" data-correct="c">
-<button data-opt="a" data-fb="25% is the chance of horned (pp) among all calves. Here we already know the calf is polled.">A — 25%</button>
+<button data-opt="a" data-fb="25% is the chance of a horned calf (pp) among all calves. Here we already know the calf is polled.">A — 25%</button>
 <button data-opt="b" data-fb="50% is the chance of Pp among ALL calves (2 of 4 boxes). But the horned box is ruled out, because this calf is polled.">B — 50%</button>
-<button data-opt="c" data-fb="Yes. Only the 3 polled boxes count (PP, Pp, Pp). 2 of those 3 are Pp, so 2/3 ≈ 67%.">C — about 67% (2 out of 3)</button>
-<button data-opt="d" data-fb="75% is the chance that any calf is polled. The question asks about calves we already know are polled.">D — 75%</button>
+<button data-opt="c" data-fb="Yes. Only the 3 polled boxes count (PP, Pp, Pp). 2 of those 3 are Pp, so 2 ÷ 3 ≈ 67%.">C — 67%</button>
+<button data-opt="d" data-fb="75% is the chance that any calf is polled. The question asks about a calf we already know is polled.">D — 75%</button>
 </div>
 <details class="success"><summary>Explanation</summary>
-<p>Read the question carefully: "of the polled calves" means count only the polled boxes. PP, Pp, Pp → 2 out of 3 are heterozygous.</p>
+<p>We already know the calf is polled, so cross out the horned box (pp). That leaves 3 boxes: PP, Pp, Pp. 2 of these 3 are heterozygous: 2 ÷ 3 ≈ 67%.</p>
 </details>
 
 

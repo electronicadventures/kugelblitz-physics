@@ -64,18 +64,18 @@
 
 <p><strong>1.</strong></p><p>Which statement best describes a <strong>scientific theory</strong>?</p>
 <div class="sc-mc" data-correct="b">
-<button data-opt="a" data-fb="That is a hypothesis or a guess. A theory has already survived many tests.">A — A guess that scientists have not tested yet</button>
+<button data-opt="a" data-fb="No. An idea that has not been tested yet could be a hypothesis, which is a specific, testable proposed explanation, not just a guess. A theory is different: it has already survived many tests.">A — A guess that scientists have not tested yet</button>
 <button data-opt="b" data-fb="Yes. That is why scientists can be confident about things like the size of Earth without seeing all of it.">B — A well-tested explanation supported by many lines of evidence that makes predictions we can check</button>
 <button data-opt="c" data-fb="Careful: an idea that can never be tested is not scientific. A theory makes predictions that COULD turn out wrong, and so far they have not.">C — An idea that can never be proven wrong</button>
 <button data-opt="d" data-fb="Agreement comes from the evidence, not from who the scientists are. Anyone can check the measurements.">D — Something scientists agree on because they are experts</button>
 </div>
 <details class="success"><summary>Explanation</summary>
-<p>In science, a theory is the strongest kind of explanation: well tested, supported by evidence, and able to make checkable predictions.</p>
+<p>In science, a theory is a broad, well-tested explanation supported by many lines of evidence. It makes predictions that can be checked, and it can be changed if new evidence demands it.</p>
 </details>
 
 ---
 
-<p><strong>2.</strong></p><p>Eratosthenes found the shadow angle at Alexandria was 7.2° when there was no shadow at Syene, 800 km away. What did this tell him?</p>
+<p><strong>2.</strong></p><p>Eratosthenes found the shadow angle at Alexandria was 7.2° when there was no shadow at Syene, 800 km away. Assume the Sun's rays are parallel and Syene is roughly due south of Alexandria. What did this tell him?</p>
 <div class="sc-mc" data-correct="b">
 <button data-opt="a" data-fb="He assumed the Sun is far away, so its rays arrive parallel. The shadow difference then comes from Earth&#x27;s curve.">A — The Sun is very close to Earth</button>
 <button data-opt="b" data-fb="Yes. 360° ÷ 7.2° = 50, so the circumference is about 50 × 800 = 40 000 km.">B — Earth is curved, and 800 km is 1/50 of the way around it</button>

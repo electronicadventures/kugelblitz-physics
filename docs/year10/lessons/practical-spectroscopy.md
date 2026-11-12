@@ -59,12 +59,12 @@
 
 ---
 
-<p><strong>2.</strong></p><p>Why does each element give out its own particular set of colours?</p>
-<div class="sc-mc" data-correct="a">
-<button data-opt="a" data-fb="Yes. The size of each drop fixes the colour, and every element&#x27;s levels are different, so its line pattern is unique, like a fingerprint.">A — Each element has its own set of electron energy levels, so its electrons drop by particular amounts and give out particular colours</button>
-<button data-opt="b" data-fb="Atoms do not have a colour of their own. The light comes from electrons dropping between energy levels.">B — Each element is a different colour to start with, like paint</button>
-<button data-opt="c" data-fb="Temperature changes how bright the lines are, not where they are. Hydrogen&#x27;s red line is at 656 nm whether the gas is hot or very hot.">C — Hotter elements give out redder light</button>
-<button data-opt="d" data-fb="The spectroscope only spreads out the light that is already there. It cannot add colours.">D — The spectroscope adds the colours</button>
+<p><strong>2.</strong></p><p>Why do atoms of different elements produce <strong>different patterns</strong> of emission lines?</p>
+<div class="sc-mc" data-correct="b">
+<button data-opt="a" data-fb="Atoms do not have a colour of their own. The light comes from electrons dropping between energy levels.">A — Each element's atoms are a different colour to start with, like paint</button>
+<button data-opt="b" data-fb="Yes. The size of each drop fixes the colour (wavelength), and every element&#x27;s levels are different, so its line pattern is unique, like a fingerprint.">B — Each element has its own set of electron energy levels, so the drops differ</button>
+<button data-opt="c" data-fb="Temperature changes how bright the lines are, not where they are. Hydrogen&#x27;s red line is at 656 nm whether the gas is hot or very hot.">C — Hotter elements give out redder lines, so the pattern depends on temperature</button>
+<button data-opt="d" data-fb="The spectroscope only spreads out the light that is already there. It cannot add colours.">D — The spectroscope adds a different set of colours for each kind of gas</button>
 </div>
 <details class="success"><summary>Explanation</summary>
 <p>Electrons absorb energy and jump up energy levels, then drop down and emit light. The colour depends on the size of the drop, and each element has its own set of levels.</p>
@@ -72,9 +72,9 @@
 
 ---
 
-<p><strong>3.</strong></p><p>The Sun's spectrum has dark lines at 393, 397, 410, 434, 486, 589.0, 589.6 and 656 nm. Reference lines: hydrogen 410, 434, 486, 656 nm; sodium 589.0, 589.6 nm; calcium ions 393, 397 nm; helium 447, 471, 492, 502, 587.6, 668 nm; mercury 405, 436, 546, 577, 579 nm. Which statements are supported? (Select all that apply.)</p>
-<ul><li>The Sun contains hydrogen</li><li>The Sun contains sodium</li><li>The lines at 589.0 and 589.6 nm are caused by helium</li><li>These lines give no evidence of mercury</li></ul><details class="success"><summary>Show answer</summary>
-<p>Correct: The Sun contains hydrogen; The Sun contains sodium; These lines give no evidence of mercury.</p><p>To identify an element, match its <em>whole</em> pattern of lines, not just one line. Sodium's pair at 589.0 and 589.6 nm and helium's line at 587.6 nm are close, but not the same.</p>
+<p><strong>3.</strong></p><p>The table shows the dark lines in the Sun's spectrum, and the lines that some elements make in the lab.</p><table style='border-collapse:collapse;'><tr><th style='border:1px solid #d1d5db;padding:3px 8px;'>Source</th><td style='border:1px solid #d1d5db;padding:3px 8px;'>Lines (nm)</td></tr><tr><th style='border:1px solid #d1d5db;padding:3px 8px;'><strong>Sun's dark lines</strong></th><td style='border:1px solid #d1d5db;padding:3px 8px;'>393, 397, 410, 434, 486, 589.0, 589.6, 656</td></tr><tr><th style='border:1px solid #d1d5db;padding:3px 8px;'>Hydrogen</th><td style='border:1px solid #d1d5db;padding:3px 8px;'>410, 434, 486, 656</td></tr><tr><th style='border:1px solid #d1d5db;padding:3px 8px;'>Sodium</th><td style='border:1px solid #d1d5db;padding:3px 8px;'>589.0, 589.6</td></tr><tr><th style='border:1px solid #d1d5db;padding:3px 8px;'>Calcium ions</th><td style='border:1px solid #d1d5db;padding:3px 8px;'>393, 397</td></tr><tr><th style='border:1px solid #d1d5db;padding:3px 8px;'>Helium</th><td style='border:1px solid #d1d5db;padding:3px 8px;'>447, 471, 492, 502, 587.6, 668</td></tr><tr><th style='border:1px solid #d1d5db;padding:3px 8px;'>Mercury</th><td style='border:1px solid #d1d5db;padding:3px 8px;'>405, 436, 546, 577, 579</td></tr></table><p>Which statements are supported by these data?</p>
+<ul><li>The Sun contains hydrogen</li><li>The Sun contains sodium</li><li>The lines at 589.0 and 589.6 nm are caused by helium</li><li>The Sun's lines at 393 and 397 nm match calcium ions</li><li>The Sun contains no mercury at all</li></ul><details class="success"><summary>Show answer</summary>
+<p>Correct: The Sun contains hydrogen; The Sun contains sodium; The Sun's lines at 393 and 397 nm match calcium ions.</p><p>To identify an element, match its <em>whole</em> pattern of lines, not just one line. Sodium's pair (589.0, 589.6 nm) and helium's line (587.6 nm) are close, but not the same. No matching lines means no evidence for that element in these data, which is not the same as proof it is absent.</p>
 </details>
 
 ---

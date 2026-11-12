@@ -71,7 +71,7 @@
 
 ---
 
-<p><strong>2.</strong></p><p>A star 20 times the mass of the Sun explodes as a supernova. What could be left behind?</p>
+<p><strong>2.</strong></p><p>In the star life-cycle model from this lesson, a star 20 times the mass of the Sun ends its life in a supernova. What is left behind?</p>
 <div class="sc-mc" data-correct="b">
 <button data-opt="a" data-fb="White dwarfs are left by low and average-mass stars after a planetary nebula, not after a supernova of a massive star.">A — A white dwarf</button>
 <button data-opt="b" data-fb="Yes. The core collapses in the supernova. A leftover core up to about 3 times the Sun&#x27;s mass becomes a neutron star; a heavier one becomes a black hole.">B — A neutron star or a black hole</button>
@@ -88,11 +88,11 @@
 <div class="sc-mc" data-correct="c">
 <button data-opt="a" data-fb="The big bang made almost only hydrogen and helium (with a trace of lithium). Gold came much later.">A — It was made in the big bang</button>
 <button data-opt="b" data-fb="The Sun fuses hydrogen into helium. Even massive stars can only fuse up to iron in their cores. Gold is much heavier than iron.">B — It was made by fusion in the core of the Sun</button>
-<button data-opt="c" data-fb="Yes. Elements heavier than iron need these extreme events. The gold then became part of the nebula that formed the Sun and Earth.">C — Most of it was made in supernovae and neutron-star collisions, and spread through space before Earth formed</button>
+<button data-opt="c" data-fb="Yes. Elements heavier than iron need extreme events like these. The gold then became part of the cloud of gas and dust that formed the Sun and Earth.">C — It was made in extreme events such as neutron-star collisions, then spread through space before Earth formed</button>
 <button data-opt="d" data-fb="Heat and pressure in Earth can move gold around and concentrate it into veins, but they cannot make new gold atoms.">D — It formed inside Earth from heat and pressure</button>
 </div>
 <details class="success"><summary>Explanation</summary>
-<p>Hydrogen and helium: big bang. Elements up to iron: fusion in stars. Most of the gold and other very heavy elements: supernovae and neutron-star collisions (some heavy elements are also made slowly inside giant stars).</p>
+<p>Hydrogen and helium: big bang. Elements up to iron: fusion in stars. Gold and other very heavy elements: extreme events such as neutron-star collisions and some kinds of supernova. Scientists are still working out how much comes from each.</p>
 </details>
 
 ---
