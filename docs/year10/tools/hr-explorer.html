@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>H–R Diagram Explorer</title>
+<style>
+  :root{--ink:#1f2937;--muted:#475569;--line:#cbd5e1;--card:#ffffff;--bg:#f8fafc;--accent:#1f5fa8;--good:#15803d;--bad:#b45309;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  .wrap{max-width:1000px;margin:0 auto;padding:6px}
+  .modes{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  .modes button{border:1px solid var(--line);background:#fff;border-radius:18px;padding:6px 14px;font:inherit;font-weight:600;cursor:pointer;color:var(--ink)}
+  .modes button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .grid{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start}
+  .plot{flex:1 1 480px;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:4px}
+  svg{display:block;width:100%;height:auto;touch-action:none;user-select:none}
+  .side{flex:1 1 220px;display:flex;flex-direction:column;gap:8px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+  .card h3{margin:0 0 4px;font-size:14px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  table.read{width:100%;border-collapse:collapse;font-size:14px}
+  table.read td{padding:2px 0}
+  table.read td:last-child{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+  .swatch{display:inline-block;width:14px;height:14px;border-radius:50%;border:1px solid #334155;vertical-align:-2px;margin-right:4px}
+  .group{font-weight:700;margin-top:4px}
+  canvas{width:100%;height:auto;display:block;background:#0b1020;border-radius:8px}
+  .note{font-size:12.5px;color:var(--muted);margin-top:4px}
+  label.sl{display:block;font-size:13px;margin-top:4px}
+  input[type=range]{width:100%}
+  .row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  .btn{border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:16px;padding:5px 12px;font:inherit;font-weight:600;cursor:pointer}
+  .btn.ghost{background:#fff;color:var(--accent)}
+  .btn:disabled{opacity:.5;cursor:default}
+  .task{font-weight:600}
+  .fb{margin-top:6px;padding:6px 8px;border-radius:8px;font-size:14px;display:none}
+  .fb.good{display:block;background:#dcfce7;color:#14532d}
+  .fb.bad{display:block;background:#fef3c7;color:#78350f}
+  .hidden{display:none}
+  .credit{font-size:11.5px;color:var(--muted);margin-top:6px}
+  .credit a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="modes" role="group" aria-label="Mode">
+    <button id="m-explore" aria-pressed="true">Explore</button>
+    <button id="m-find" aria-pressed="false">Find it (self-check)</button>
+    <button id="m-sun" aria-pressed="false">The Sun's future</button>
+  </div>
+  <div class="grid">
+    <div class="plot">
+      <svg id="hr" viewBox="0 0 640 540" role="img" aria-labelledby="hr-title">
+        <title id="hr-title">Interactive H–R diagram. Drag the cross, use the sliders, or use the arrow keys to move it.</title>
+      </svg>
+    </div>
+    <div class="side">
+      <div class="card" id="explore-card">
+        <h3>Explore</h3>
+        <div class="note" style="margin-top:0">Drag the cross on the diagram (or use the sliders or arrow keys).</div>
+        <label class="sl">Surface temperature <input id="sT" type="range" min="0" max="1000" step="1"></label>
+        <label class="sl">Luminosity <input id="sL" type="range" min="0" max="1000" step="1"></label>
+        <div class="row" style="margin-top:6px">
+          <button class="btn ghost" id="names" aria-pressed="true">Hide star names</button>
+          <button class="btn ghost" id="toSun">Back to the Sun</button>
+        </div>
+      </div>
+      <div class="card hidden" id="find-card">
+        <h3>Find it <span id="score" style="float:right;text-transform:none"></span></h3>
+        <div class="task" id="task"></div>
+        <div class="note">Click (or tap) the diagram. Keyboard: move the cross with the arrow keys, then press Enter.</div>
+        <div class="fb" id="fb" role="status"></div>
+        <div class="row" style="margin-top:6px"><button class="btn" id="next" disabled>Next</button><button class="btn ghost" id="restart">Start again</button></div>
+      </div>
+      <div class="card hidden" id="sun-card">
+        <h3>The Sun's future</h3>
+        <div id="sunstep" class="task">Press Play to follow the Sun's dot.</div>
+        <div class="row" style="margin-top:6px"><button class="btn" id="play">Play</button><button class="btn ghost" id="step">Next step</button></div>
+        <div class="note">Simplified path. Watch the size panel: the Sun swells to about 150 times its width, then shrinks to about the size of Earth.</div>
+      </div>
+      <div class="card">
+        <h3>The star at the cross</h3>
+        <table class="read" aria-live="polite">
+          <tr><td>Surface temperature</td><td id="rT"></td></tr>
+          <tr><td>Spectral class</td><td id="rC"></td></tr>
+          <tr><td>Luminosity (Sun = 1)</td><td id="rL"></td></tr>
+          <tr><td>Absolute magnitude</td><td id="rM"></td></tr>
+          <tr><td>Radius (Sun = 1)</td><td id="rR"></td></tr>
+          <tr><td>Colour</td><td id="rCol"></td></tr>
+        </table>
+        <div class="group" id="rG"></div>
+      </div>
+      <div class="card">
+        <h3>Size compared with the Sun</h3>
+        <canvas id="size" width="560" height="240" aria-label="Size of the star compared with the Sun"></canvas>
+        <div class="note" id="sizeNote"></div>
+      </div>
+    </div>
+  </div>
+  <div class="credit">Star positions are approximate published values. Radius uses L = R² × (T ÷ 5772 K)⁴; absolute magnitude uses M = 4.83 − 2.5 log L. Inspired by the University of Nebraska–Lincoln <a href="https://astro.unl.edu/naap/hr/animations/hr.html" target="_blank" rel="noopener">H–R Diagram Explorer</a>. Made for kugelblitz.me Year 10 Science. Nothing you do here is saved or sent anywhere.</div>
+</div>
+<script>
+(function(){
+"use strict";
+var TMAX=40000,TMIN=2300,LMIN=5e-5,LMAX=2e6,TSUN=5772,MSUN=4.83;
+var X0=70,X1=566,Y0=58,Y1=478;           // plot box inside the 640x540 viewBox
+var lg=Math.log10, NS="http://www.w3.org/2000/svg";
+function xOf(T){return X0+(lg(TMAX)-lg(T))/(lg(TMAX)-lg(TMIN))*(X1-X0);}
+function yOf(L){return Y0+(lg(LMAX)-lg(L))/(lg(LMAX)-lg(LMIN))*(Y1-Y0);}
+function TOf(x){return Math.pow(10,lg(TMAX)-(x-X0)/(X1-X0)*(lg(TMAX)-lg(TMIN)));}
+function LOf(y){return Math.pow(10,lg(LMAX)-(y-Y0)/(Y1-Y0)*(lg(LMAX)-lg(LMIN)));}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+function radius(T,L){return Math.sqrt(L)/Math.pow(T/TSUN,2);}
+function mag(L){return MSUN-2.5*lg(L);}
+var STARS=[["Rigel",12100,1.2e5],["Spica",22000,2e4],["Vega",9600,40],["Sirius A",9900,25],["Sun",5800,1],["Proxima Centauri",3000,0.0017],
+  ["Sirius B",25000,0.056],["Arcturus",4300,170],["Aldebaran",3900,440],["Betelgeuse",3600,1e5]];
+var LAB={"Rigel":[0,-10,"middle"],"Spica":[9,4,"start"],"Vega":[8,-4,"start"],"Sirius A":[-8,10,"end"],"Sun":[9,4,"start"],"Proxima Centauri":[-8,4,"end"],
+  "Sirius B":[8,4,"start"],"Arcturus":[-9,4,"end"],"Aldebaran":[0,-10,"middle"],"Betelgeuse":[0,-12,"middle"]};
+// star colour by temperature (same stops as the lesson diagram)
+var STOPS=[[2300,[255,74,42]],[3500,[255,138,76]],[5000,[255,197,107]],[6000,[255,241,184]],[7500,[244,246,255]],[10000,[207,220,255]],[40000,[143,168,255]]];
+function colour(T,wash){
+  var c=STOPS[STOPS.length-1][1];
+  for(var i=0;i<STOPS.length-1;i++){var a=STOPS[i],b=STOPS[i+1];
+    if(T<=b[0]){var f=clamp((Math.log(T)-Math.log(a[0]))/(Math.log(b[0])-Math.log(a[0])),0,1);c=[0,1,2].map(function(k){return a[1][k]+f*(b[1][k]-a[1][k]);});break;}}
+  if(T<STOPS[0][0])c=STOPS[0][1];
+  if(wash)c=c.map(function(v){return 0.62*v+0.38*255;});
+  return "rgb("+c.map(Math.round).join(",")+")";
+}
+function colourName(T){return T>=10000?"blue-white":T>=7500?"white":T>=6000?"yellow-white":T>=5000?"yellow":T>=3700?"orange":"red";}
+function specClass(T){return T>30000?"O":T>10000?"B":T>7500?"A":T>6000?"F":T>5200?"G":T>3700?"K":"M";}
+// groups, matching the lesson diagram's shapes (log space)
+var MS=[-2.1470228696029325,24.423394383819478,-61.639690031011924];
+function msMid(t){return MS[0]*t*t+MS[1]*t+MS[2];}
+function wdMid(t){return -4.0+(t-lg(5000))/(lg(30000)-lg(5000))*2.8;}
+function inEll(T,L,cT,cL,rx,ry){var dx=(lg(T)-lg(cT))/rx,dy=(lg(L)-lg(cL))/ry;return dx*dx+dy*dy<=1;}
+function group(T,L){var t=lg(T),l=lg(L);
+  if(inEll(T,L,9500,1.8e5,0.57,0.45))return "Supergiant region";
+  if(inEll(T,L,4000,250,0.10,0.95))return "Giant region";
+  if(t>=lg(2450)&&t<=lg(39000)&&Math.abs(l-msMid(t))<=0.6)return "Main sequence";
+  if(t>=lg(5000)&&t<=lg(35000)&&Math.abs(l-wdMid(t))<=0.55)return "White dwarf region";
+  return "Between the groups (few stars are here)";}
+function fmt(n){ // readable numbers for Year 10
+  if(n>=1000)return Math.round(n/ Math.pow(10,Math.floor(lg(n))-1))*Math.pow(10,Math.floor(lg(n))-1)+"";
+  if(n>=10)return Math.round(n)+"";
+  if(n>=1)return n.toFixed(1);
+  var d=Math.max(1,-Math.floor(lg(n))+1);return n.toFixed(d);}
+function spaced(s){var p=String(s).split(".");p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g," ");return p.join(".");}
+
+// ---------- draw the diagram ----------
+var svg=document.getElementById("hr");
+function el(name,attrs,parent,text){var e=document.createElementNS(NS,name);for(var k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;(parent||svg).appendChild(e);return e;}
+var defs=el("defs",{});var clip=el("clipPath",{id:"pc"},defs);el("rect",{x:X0,y:Y0,width:X1-X0,height:Y1-Y0},clip);
+var plot=el("g",{"clip-path":"url(#pc)"});
+var N=160;for(var i=0;i<N;i++){var xa=X0+i*(X1-X0)/N,xb=X0+(i+1)*(X1-X0)/N;el("rect",{x:xa,y:Y0,width:xb-xa+0.6,height:Y1-Y0,fill:colour(TOf((xa+xb)/2),true)},plot);}
+for(var k=-4;k<=6;k++)el("line",{x1:X0,x2:X1,y1:yOf(Math.pow(10,k)),y2:yOf(Math.pow(10,k)),stroke:"#64748b","stroke-opacity":k%2===0?0.45:0.25,"stroke-width":k%2===0?0.9:0.6},plot);
+var TT=[30000,20000,10000,7000,5000,4000,3000];TT.forEach(function(t){el("line",{x1:xOf(t),x2:xOf(t),y1:Y0,y2:Y1,stroke:"#64748b","stroke-opacity":0.25},plot);});
+function band(f,t0,t1,half,stroke){var top=[],bot=[];for(var i=0;i<=80;i++){var t=t0+(t1-t0)*i/80;top.push(xOf(Math.pow(10,t))+","+yOf(Math.pow(10,f(t)+half)));bot.unshift(xOf(Math.pow(10,t))+","+yOf(Math.pow(10,f(t)-half)));}
+  el("polygon",{points:top.concat(bot).join(" "),fill:"#fff","fill-opacity":0.35,stroke:stroke,"stroke-width":1.6},plot);}
+band(msMid,lg(2450),lg(39000),0.6,"#b45309");band(wdMid,lg(5000),lg(35000),0.55,"#475569");
+function ell(cT,cL,rx,ry,stroke){var pts=[];for(var i=0;i<120;i++){var a=i/120*2*Math.PI;pts.push(xOf(Math.pow(10,lg(cT)+rx*Math.cos(a)))+","+yOf(Math.pow(10,lg(cL)+ry*Math.sin(a))));}
+  el("polygon",{points:pts.join(" "),fill:"#fff","fill-opacity":0.3,stroke:stroke,"stroke-width":1.6},plot);}
+ell(4000,250,0.10,0.95,"#b91c1c");ell(9500,1.8e5,0.57,0.45,"#6d28d9");
+[0.01,0.1,1,10,100,1000].forEach(function(R){var p=[];for(var i=0;i<=40;i++){var T=Math.pow(10,lg(TMIN)+(lg(TMAX)-lg(TMIN))*i/40);p.push(xOf(T)+","+yOf(R*R*Math.pow(T/TSUN,4)));}
+  el("polyline",{points:p.join(" "),fill:"none",stroke:"#334155","stroke-opacity":0.55,"stroke-dasharray":"5 4"},plot);
+  var tl=TMIN*1.2;if(R*R*Math.pow(tl/TSUN,4)<LMIN*2.5)tl=TSUN*Math.pow(LMIN*2.5/(R*R),0.25);
+  var x=xOf(tl),y=yOf(R*R*Math.pow(tl/TSUN,4));var x2=xOf(tl*1.2),y2=yOf(R*R*Math.pow(tl*1.2/TSUN,4));var ang=Math.atan2(y2-y,x2-x)*180/Math.PI;if(ang>90)ang-=180;if(ang<-90)ang+=180;
+  var g=el("g",{transform:"translate("+x+","+y+") rotate("+ang+")"},plot);el("rect",{x:-22,y:-7,width:44,height:13,rx:3,fill:"#fff","fill-opacity":0.8},g);
+  el("text",{x:0,y:3,"text-anchor":"middle","font-size":10.3,fill:"#334155"},g,"R = "+R);});
+function lab(x,y,t,c,rot){el("text",{x:x,y:y,"text-anchor":"middle","font-size":13.8,"font-weight":700,fill:c,transform:rot?"rotate("+rot+" "+x+" "+y+")":""},plot,t);}
+lab(xOf(15000),yOf(Math.pow(10,msMid(lg(15000)))*0.9),"MAIN SEQUENCE","#92400e",-39);lab(xOf(4000),yOf(4500),"GIANTS","#991b1b");
+lab(xOf(9500),yOf(1.3e6),"SUPERGIANTS","#5b21b6");lab(xOf(13500),yOf(1.2e-3),"WHITE DWARFS","#334155",-20);
+var starG=el("g",{},plot),nameG=el("g",{},plot);
+STARS.forEach(function(s){var r=radius(s[1],s[2]),x=xOf(s[1]),y=yOf(s[2]);var rad=Math.sqrt(30+55*(lg(r)+2))/1.9;
+  el("circle",{cx:x,cy:y,r:rad,fill:colour(s[1]),stroke:"#1f2937","stroke-width":1.2},starG);
+  var o=LAB[s[0]],t=el("text",{x:x+o[0],y:y+o[1],"text-anchor":o[2],"font-size":12.6,"font-weight":700,fill:"#1f2937","paint-order":"stroke",stroke:"#fff","stroke-width":3,"stroke-linejoin":"round"},nameG,s[0]);});
+el("rect",{x:X0,y:Y0,width:X1-X0,height:Y1-Y0,fill:"none",stroke:"#1f2937"});
+// axes
+function ax(x,y,t,a,size,w){return el("text",{x:x,y:y,"text-anchor":a||"middle","font-size":size||11,"font-weight":w||400,fill:"#1f2937"},svg,t);}
+ax(320,16,"Surface temperature (K)\u2003\u2003← hotter\u2003\u2003cooler →","middle",13.8,600);
+TT.forEach(function(t){el("line",{x1:xOf(t),x2:xOf(t),y1:Y0-5,y2:Y0,stroke:"#1f2937"});ax(xOf(t),Y0-9,spaced(t));});
+[["O",30000,40000],["B",10000,30000],["A",7500,10000],["F",6000,7500],["G",5200,6000],["K",3700,5200],["M",2300,3700]].forEach(function(c){
+  ax(xOf(Math.sqrt(c[1]*c[2])),Y1+20,c[0],"middle",16.1,700);if(c[0]!=="O")el("line",{x1:xOf(c[1]),x2:xOf(c[1]),y1:Y1,y2:Y1+6,stroke:"#1f2937"});});
+ax(320,Y1+44,"Spectral class\u2003(O = hottest … M = coolest)","middle",13.8,600);
+[-10,-5,0,5,10,15].forEach(function(m){var y=yOf(Math.pow(10,(MSUN-m)/2.5));el("line",{x1:X0-5,x2:X0,y1:y,y2:y,stroke:"#1f2937"});ax(X0-8,y+4,(m>0?"+":m<0?"−":"")+Math.abs(m),"end");});
+var g1=el("g",{transform:"translate(18,"+((Y0+Y1)/2)+") rotate(-90)"});el("text",{x:0,y:0,"text-anchor":"middle","font-size":13.8,"font-weight":600,fill:"#1f2937"},g1,"Absolute magnitude (smaller = brighter ↑)");
+["0.0001","0.001","0.01","0.1","1","10","100","1000","10 000","100 000","1 000 000"].forEach(function(t,i){var y=yOf(Math.pow(10,i-4));el("line",{x1:X1,x2:X1+5,y1:y,y2:y,stroke:"#1f2937"});ax(X1+8,y+4,t,"start",12.1);});
+var g2=el("g",{transform:"translate(632,"+((Y0+Y1)/2)+") rotate(90)"});el("text",{x:0,y:0,"text-anchor":"middle","font-size":13.8,"font-weight":600,fill:"#1f2937"},g2,"Luminosity (Sun = 1, log scale)");
+// path layer, answer markers and the cursor
+var pathG=el("g",{},plot),markG=el("g",{},plot);
+var cur=el("g",{tabindex:0,role:"slider","aria-label":"Star position. Arrow keys move it."});
+el("circle",{r:11,fill:"none",stroke:"#111827","stroke-width":2.2},cur);el("circle",{r:11,fill:"none",stroke:"#fff","stroke-width":1,"stroke-dasharray":"3 3"},cur);
+el("line",{x1:-17,x2:17,y1:0,y2:0,stroke:"#dc2626","stroke-width":2.2},cur);el("line",{x1:0,x2:0,y1:-17,y2:17,stroke:"#dc2626","stroke-width":2.2},cur);
+
+// ---------- state, readouts and size panel ----------
+var state={T:TSUN,L:1};
+var sT=document.getElementById("sT"),sL=document.getElementById("sL");
+function sliderFromState(){sT.value=Math.round((lg(TMAX)-lg(state.T))/(lg(TMAX)-lg(TMIN))*1000);sL.value=Math.round((lg(state.L)-lg(LMIN))/(lg(LMAX)-lg(LMIN))*1000);}
+function set(T,L,fromSlider){state.T=clamp(T,TMIN,TMAX);state.L=clamp(L,LMIN,LMAX);if(!fromSlider)sliderFromState();render();}
+function render(){var T=state.T,L=state.L,R=radius(T,L);
+  cur.setAttribute("transform","translate("+xOf(T)+","+yOf(L)+")");
+  document.getElementById("rT").textContent=spaced(Math.round(T/50)*50)+" K";
+  document.getElementById("rC").textContent=specClass(T);
+  document.getElementById("rL").textContent=spaced(fmt(L));
+  var M=mag(L);document.getElementById("rM").textContent=(M>=0?"+":"−")+Math.abs(M).toFixed(1);
+  document.getElementById("rR").textContent=spaced(fmt(R));
+  document.getElementById("rCol").innerHTML='<span class="swatch" style="background:'+colour(T)+'"></span>'+colourName(T);
+  document.getElementById("rG").textContent=group(T,L);
+  drawSize(T,R);}
+var cv=document.getElementById("size"),cx=cv.getContext("2d");
+function drawSize(T,R){var W=cv.width,H=cv.height;cx.clearRect(0,0,W,H);cx.fillStyle="#0b1020";cx.fillRect(0,0,W,H);
+  var maxR=H*0.36,big=Math.max(R,1),scale=maxR/big; // pixels per Sun radius
+  var rs=Math.max(R*scale,1.2),rsun=Math.max(scale,1.2);
+  var ys=H*0.43;var xsun=W*0.78,xstar=W*0.33;
+  function disc(x,r,c){cx.beginPath();cx.arc(x,ys,r,0,2*Math.PI);cx.fillStyle=c;cx.shadowColor=c;cx.shadowBlur=r>3?12:4;cx.fill();cx.shadowBlur=0;}
+  if(rs>W*0.3){xstar=W*0.30;}
+  disc(xstar,rs,colour(T));disc(xsun,rsun,colour(TSUN));
+  cx.fillStyle="#e2e8f0";cx.font="600 22px system-ui,Arial";cx.textAlign="center";
+  cx.fillText("this star",xstar,H-10);cx.fillText("Sun",xsun,H-10);
+  var note=document.getElementById("sizeNote");
+  if(R>=1.5)note.textContent="This star is about "+spaced(fmt(R))+" times as wide as the Sun."+(scale<1.2?" The Sun is shown as a dot: at this scale it is too small to see.":"");
+  else if(R<=0.67)note.textContent="This star is about "+spaced(fmt(1/R))+" times narrower than the Sun."+(R*scale<1.2?" It is shown as a dot: at this scale it is too small to see.":"")+(R<0.02?" That is about the size of Earth.":"");
+  else note.textContent="About the same size as the Sun.";}
+
+// ---------- pointer and keyboard ----------
+function svgPoint(evt){var pt=svg.createSVGPoint();pt.x=evt.clientX;pt.y=evt.clientY;return pt.matrixTransform(svg.getScreenCTM().inverse());}
+var dragging=false;
+svg.addEventListener("pointerdown",function(e){var p=svgPoint(e);if(p.x<X0||p.x>X1||p.y<Y0||p.y>Y1)return;
+  if(mode==="sun")stopSun();
+  set(TOf(p.x),LOf(p.y));
+  if(mode==="find"){answer();return;}
+  dragging=true;svg.setPointerCapture(e.pointerId);});
+svg.addEventListener("pointermove",function(e){if(!dragging)return;var p=svgPoint(e);set(TOf(clamp(p.x,X0,X1)),LOf(clamp(p.y,Y0,Y1)));});
+svg.addEventListener("pointerup",function(){dragging=false;});
+cur.addEventListener("keydown",function(e){var dx=0,dy=0,st=e.shiftKey?1:4;
+  if(e.key==="ArrowLeft")dx=-st;else if(e.key==="ArrowRight")dx=st;else if(e.key==="ArrowUp")dy=-st;else if(e.key==="ArrowDown")dy=st;
+  else if(e.key==="Enter"&&mode==="find"){answer();e.preventDefault();return;}else return;
+  e.preventDefault();set(TOf(clamp(xOf(state.T)+dx,X0,X1)),LOf(clamp(yOf(state.L)+dy,Y0,Y1)));});
+sT.addEventListener("input",function(){state.T=Math.pow(10,lg(TMAX)-sT.value/1000*(lg(TMAX)-lg(TMIN)));render();});
+sL.addEventListener("input",function(){state.L=Math.pow(10,lg(LMIN)+sL.value/1000*(lg(LMAX)-lg(LMIN)));render();});
+var namesBtn=document.getElementById("names");
+namesBtn.addEventListener("click",function(){var on=nameG.style.display==="none";nameG.style.display=on?"":"none";namesBtn.textContent=on?"Hide star names":"Show star names";namesBtn.setAttribute("aria-pressed",on);});
+document.getElementById("toSun").addEventListener("click",function(){set(TSUN,1);});
+
+// ---------- find it (self-check) ----------
+function near(a,b,tol){return Math.abs(lg(a)-lg(b))<=tol;}
+var TASKS=[
+ {q:"Click where a star would be <strong>hot and blue</strong> but <strong>dimmer than the Sun</strong>.",
+  ok:function(T,L){return T>=10000&&L<1;},
+  good:"Yes. Hot (left) but dim (low down) is the lower-left corner, where the white dwarfs are. To be that hot and still dim, a star must be tiny.",
+  bad:"Not quite. Hot and blue means far <strong>left</strong> (above about 10 000 K). Dimmer than the Sun means <strong>below</strong> the 1 line on the luminosity axis."},
+ {q:"Click anywhere a star would be <strong>at least 100 times as wide</strong> as the Sun.",
+  ok:function(T,L){return radius(T,L)>=100;},
+  good:"Yes. Anywhere above and to the right of the R = 100 dashed line works. Stars that big are giants or supergiants.",
+  bad:"Not quite. Use the dashed radius lines: stars get bigger towards the <strong>top right</strong>. Click above the line labelled R = 100."},
+ {q:"A star is about <strong>4000 K</strong> and <strong>300 times</strong> as luminous as the Sun. Click where it sits.",
+  ok:function(T,L){return near(T,4000,0.05)&&near(L,300,0.35);},
+  good:"Yes. 4000 K is on the right (cool) side and 300 is between the 100 and 1000 gridlines, so it sits in the giant region.",
+  bad:"Not quite. Find 4000 K on the <strong>top</strong> axis, then 300 on the <strong>right</strong> axis (between the 100 and 1000 gridlines). Where they meet is the answer."},
+ {q:"A star has an <strong>absolute magnitude of about +10</strong> and a temperature of about <strong>3500 K</strong>. Click where it sits.",
+  ok:function(T,L){return near(T,3500,0.05)&&Math.abs(mag(L)-10)<=1.5;},
+  good:"Yes. +10 on the left axis is dim (about 0.01 of the Sun's luminosity), and 3500 K is on the cool right side: a red dwarf on the main sequence.",
+  bad:"Not quite. Magnitude is on the <strong>left</strong> axis and runs backwards: +10 is low down (dim). Then find 3500 K on the top axis, on the cool right side."},
+ {q:"Click where the <strong>Sun</strong> will be when it is a <strong>white dwarf</strong>.",
+  ok:function(T,L){return group(T,L)==="White dwarf region";},
+  good:"Yes. After it loses its outer layers, the Sun's hot core is left as a white dwarf in the lower left: hot, dim and about the size of Earth.",
+  bad:"Not quite. A white dwarf is <strong>hot</strong> (left) but very <strong>dim</strong> (low down). Look for the grey white dwarf band in the lower left."}
+];
+var ti=0,score=0,tried=false,done=false;
+var taskEl=document.getElementById("task"),fb=document.getElementById("fb"),nextBtn=document.getElementById("next"),scoreEl=document.getElementById("score");
+function showTask(){markG.innerHTML="";fb.className="fb";fb.innerHTML="";tried=false;done=false;nextBtn.disabled=true;
+  if(ti>=TASKS.length){taskEl.innerHTML="All done! You found "+score+" of "+TASKS.length+" first time. Press Start again to have another go.";scoreEl.textContent="";return;}
+  taskEl.innerHTML=(ti+1)+" of "+TASKS.length+": "+TASKS[ti].q;scoreEl.textContent="Score "+score;}
+function answer(){if(ti>=TASKS.length||done)return;var t=TASKS[ti],ok=t.ok(state.T,state.L);
+  el("circle",{cx:xOf(state.T),cy:yOf(state.L),r:6,fill:ok?"#16a34a":"#f59e0b",stroke:"#111827"},markG);
+  if(ok){if(!tried)score++;done=true;fb.className="fb good";fb.innerHTML=t.good;nextBtn.disabled=false;nextBtn.focus();}
+  else{tried=true;fb.className="fb bad";fb.innerHTML=t.bad+" Try again.";}
+  scoreEl.textContent="Score "+score;}
+nextBtn.addEventListener("click",function(){ti++;showTask();});
+document.getElementById("restart").addEventListener("click",function(){ti=0;score=0;showTask();});
+
+// ---------- the Sun's future ----------
+var SUN=[[5772,1,"Today: a G-type main-sequence star, about 5800 K."],[5600,1.8,"Over billions of years on the main sequence it slowly gets brighter."],
+ [4400,40,"About 5 billion years from now: it runs low on hydrogen in its core and starts to swell (up and right)."],
+ [3400,2500,"Red giant: cooler (about 3400 K) but thousands of times brighter, because it is about 150 times wider."],
+ [30000,3000,"It throws off its outer layers (a planetary nebula). The very hot core is exposed, so the dot jumps left."],
+ [26000,0.04,"The core is now a white dwarf: hot but very dim, about the size of Earth."],
+ [7000,3.5e-4,"With no fusion, the white dwarf slowly cools and fades (down and right) for billions of years."]];
+var si=0,timer=null,anim=null;
+function drawSunPath(n){pathG.innerHTML="";var pts=SUN.slice(0,n+1).map(function(p){return xOf(p[0])+","+yOf(p[1]);});
+  if(pts.length>1)el("polyline",{points:pts.join(" "),fill:"none",stroke:"#c2410c","stroke-width":2.5,"stroke-dasharray":"6 4"},pathG);}
+function goStep(n,done){si=n;var a=SUN[Math.max(n-1,0)],b=SUN[n],t0=performance.now(),dur=n?1300:1;
+  document.getElementById("sunstep").textContent=(n+1)+" of "+SUN.length+": "+b[2];
+  cancelAnimationFrame(anim);
+  (function f(now){var u=clamp((now-t0)/dur,0,1);u=u*u*(3-2*u);
+    set(Math.pow(10,lg(a[0])+(lg(b[0])-lg(a[0]))*u),Math.pow(10,lg(a[1])+(lg(b[1])-lg(a[1]))*u));
+    var pts=SUN.slice(0,n).map(function(p){return xOf(p[0])+","+yOf(p[1]);});pts.push(xOf(state.T)+","+yOf(state.L));
+    pathG.innerHTML="";if(pts.length>1)el("polyline",{points:pts.join(" "),fill:"none",stroke:"#c2410c","stroke-width":2.5,"stroke-dasharray":"6 4"},pathG);
+    if(u<1)anim=requestAnimationFrame(f);else if(done)done();})(t0);}
+var playing=false,playBtn=document.getElementById("play");
+function stopSun(){playing=false;clearTimeout(timer);timer=null;playBtn.textContent="Play";}
+playBtn.addEventListener("click",function(){
+  if(playing){stopSun();return;}
+  playing=true;playBtn.textContent="Pause";
+  function run(n){goStep(n,function(){if(!playing)return;if(n<SUN.length-1)timer=setTimeout(function(){if(playing)run(n+1);},1600);else stopSun();});}
+  run(si>=SUN.length-1?0:(si===0?0:si+1));});
+document.getElementById("step").addEventListener("click",function(){stopSun();goStep((si+1)%SUN.length);});
+
+// ---------- modes ----------
+var mode="explore";
+function setMode(m){mode=m;stopSun();
+  ["explore","find","sun"].forEach(function(k){document.getElementById("m-"+k).setAttribute("aria-pressed",k===m);document.getElementById(k+"-card").classList.toggle("hidden",k!==m);});
+  pathG.innerHTML="";markG.innerHTML="";
+  if(m==="find"){ti=0;score=0;showTask();}
+  if(m==="sun"){si=0;set(SUN[0][0],SUN[0][1]);drawSunPath(0);document.getElementById("sunstep").textContent="Press Play to follow the Sun's dot, or step through one stage at a time.";}}
+["explore","find","sun"].forEach(function(k){document.getElementById("m-"+k).addEventListener("click",function(){setMode(k);});});
+var q=location.hash.replace("#","");if(q==="find"||q==="sun")setMode(q);
+set(TSUN,1);
+})();
+</script>
+</body>
+</html>
