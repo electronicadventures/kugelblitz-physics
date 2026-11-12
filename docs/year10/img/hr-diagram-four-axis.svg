@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 690" role="img" aria-labelledby="title desc"><title id="title">Hertzsprung–Russell diagram with four axes</title><desc id="desc">Bottom axis: surface temperature in kelvin decreasing from 40000 to 2500 left to right. Top axis: spectral class O B A F G K M. Left axis: luminosity relative to Sun on logarithmic scale. Right axis: absolute magnitude increasing downward. Main sequence from upper left to lower right, giants upper right, supergiants top, white dwarfs lower left. Named stars are plotted.</desc><rect width="960" height="690" rx="16" fill="#f8fafc"/><text x="480" y="35" text-anchor="middle" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#152238">Hertzsprung–Russell diagram</text><rect x="132" y="115" width="664" height="450" fill="#101d37" rx="3"/>
+<line x1="132" y1="565" x2="796" y2="565" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="120" y="569" text-anchor="end" font-family="Arial" font-size="13" fill="#233047">0.0001</text>
+<line x1="132" y1="520" x2="796" y2="520" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="120" y="524" text-anchor="end" font-family="Arial" font-size="13" fill="#233047">0.001</text>
+<line x1="132" y1="475" x2="796" y2="475" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="120" y="479" text-anchor="end" font-family="Arial" font-size="13" fill="#233047">0.01</text>
+<line x1="132" y1="430" x2="796" y2="430" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="120" y="434" text-anchor="end" font-family="Arial" font-size="13" fill="#233047">0.1</text>
+<line x1="132" y1="385" x2="796" y2="385" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="120" y="389" text-anchor="end" font-family="Arial" font-size="13" fill="#233047">1</text>
+<line x1="132" y1="340" x2="796" y2="340" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="120" y="344" text-anchor="end" font-family="Arial" font-size="13" fill="#233047">10</text>
+<line x1="132" y1="295" x2="796" y2="295" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="120" y="299" text-anchor="end" font-family="Arial" font-size="13" fill="#233047">100</text>
+<line x1="132" y1="250" x2="796" y2="250" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="120" y="254" text-anchor="end" font-family="Arial" font-size="13" fill="#233047">1,000</text>
+<line x1="132" y1="205" x2="796" y2="205" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="120" y="209" text-anchor="end" font-family="Arial" font-size="13" fill="#233047">10,000</text>
+<line x1="132" y1="160" x2="796" y2="160" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="120" y="164" text-anchor="end" font-family="Arial" font-size="13" fill="#233047">100,000</text>
+<line x1="132" y1="115" x2="796" y2="115" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="120" y="119" text-anchor="end" font-family="Arial" font-size="13" fill="#233047">1,000,000</text>
+<line x1="132" y1="115" x2="132" y2="565" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="132" y="587" text-anchor="middle" font-family="Arial" font-size="12" fill="#233047">40k</text>
+<line x1="200.89622488028803" y1="115" x2="200.89622488028803" y2="565" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="200.89622488028803" y="587" text-anchor="middle" font-family="Arial" font-size="12" fill="#233047">30k</text>
+<line x1="298" y1="115" x2="298" y2="565" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="298" y="587" text-anchor="middle" font-family="Arial" font-size="12" fill="#233047">20k</text>
+<line x1="464" y1="115" x2="464" y2="565" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="464" y="587" text-anchor="middle" font-family="Arial" font-size="12" fill="#233047">10k</text>
+<line x1="532.896224880288" y1="115" x2="532.896224880288" y2="565" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="532.896224880288" y="587" text-anchor="middle" font-family="Arial" font-size="12" fill="#233047">7.5k</text>
+<line x1="586.3362886315902" y1="115" x2="586.3362886315902" y2="565" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="586.3362886315902" y="587" text-anchor="middle" font-family="Arial" font-size="12" fill="#233047">6k</text>
+<line x1="630" y1="115" x2="630" y2="565" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="630" y="587" text-anchor="middle" font-family="Arial" font-size="12" fill="#233047">5k</text>
+<line x1="683.4400637513021" y1="115" x2="683.4400637513021" y2="565" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="683.4400637513021" y="587" text-anchor="middle" font-family="Arial" font-size="12" fill="#233047">4k</text>
+<line x1="752.33628863159" y1="115" x2="752.33628863159" y2="565" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="752.33628863159" y="587" text-anchor="middle" font-family="Arial" font-size="12" fill="#233047">3k</text>
+<line x1="796" y1="115" x2="796" y2="565" stroke="#33435e" stroke-width="1" stroke-dasharray="4 5"/>
+<text x="796" y="587" text-anchor="middle" font-family="Arial" font-size="12" fill="#233047">2.5k</text>
+<text x="163.97908293843776" y="102" text-anchor="middle" font-family="Arial" font-weight="700" font-size="16" fill="#233047">O</text>
+<text x="298" y="102" text-anchor="middle" font-family="Arial" font-weight="700" font-size="16" fill="#233047">B</text>
+<text x="476.28409651966706" y="102" text-anchor="middle" font-family="Arial" font-weight="700" font-size="16" fill="#233047">A</text>
+<text x="549.4191466897398" y="102" text-anchor="middle" font-family="Arial" font-weight="700" font-size="16" fill="#233047">F</text>
+<text x="598.6203851512571" y="102" text-anchor="middle" font-family="Arial" font-weight="700" font-size="16" fill="#233047">G</text>
+<text x="660.6144788088129" y="102" text-anchor="middle" font-family="Arial" font-weight="700" font-size="16" fill="#233047">K</text>
+<text x="744.483539978383" y="102" text-anchor="middle" font-family="Arial" font-weight="700" font-size="16" fill="#233047">M</text>
+<line x1="796" y1="118.05999999999995" x2="803" y2="118.05999999999995" stroke="#233047" stroke-width="1.5" />
+<text x="809" y="122.05999999999995" font-family="Arial" font-size="13" fill="#233047">-10</text>
+<line x1="796" y1="208.06" x2="803" y2="208.06" stroke="#233047" stroke-width="1.5" />
+<text x="809" y="212.06" font-family="Arial" font-size="13" fill="#233047">-5</text>
+<line x1="796" y1="298.05999999999995" x2="803" y2="298.05999999999995" stroke="#233047" stroke-width="1.5" />
+<text x="809" y="302.05999999999995" font-family="Arial" font-size="13" fill="#233047">0</text>
+<line x1="796" y1="388.06" x2="803" y2="388.06" stroke="#233047" stroke-width="1.5" />
+<text x="809" y="392.06" font-family="Arial" font-size="13" fill="#233047">+5</text>
+<line x1="796" y1="478.06" x2="803" y2="478.06" stroke="#233047" stroke-width="1.5" />
+<text x="809" y="482.06" font-family="Arial" font-size="13" fill="#233047">+10</text>
+<text x="480" y="628" text-anchor="middle" font-family="Arial" font-size="17" font-weight="700" fill="#152238">Surface temperature (K) — hotter ← → cooler</text><text x="480" y="78" text-anchor="middle" font-family="Arial" font-size="16" font-weight="700" fill="#152238">Spectral class</text><text transform="translate(27 340) rotate(-90)" text-anchor="middle" font-family="Arial" font-size="16" font-weight="700" fill="#152238">Luminosity (Sun = 1; logarithmic)</text><text transform="translate(917 340) rotate(90)" text-anchor="middle" font-family="Arial" font-size="16" font-weight="700" fill="#152238">Absolute magnitude (brighter ↑)</text>
+<path d="M 178.07063993779917 128.54634980487918 C 336.92123210374575 242.07589334249434, 502.92123210374575 304.983193732736, 594.4552823114273 385 S 722.3612958550481 475, 786.6071342911831 551.4536501951209" fill="none" stroke="#5bb7f0" stroke-width="38" opacity=".17" stroke-linecap="round"/>
+<ellipse cx="660.6144788088129" cy="277.8904941229777" rx="92" ry="68" fill="#ffb45b" opacity=".10"/><ellipse cx="420.3362886315901" cy="160" rx="170" ry="34" fill="#ffb45b" opacity=".08"/><ellipse cx="264.52877904583795" cy="457.0926996097583" rx="90" ry="55" fill="#a7e5ff" opacity=".10"/>
+<circle cx="275.1744150575106" cy="198.4242383944793" r="5.5" fill="#9dc4ff" stroke="#0e1930" stroke-width="1.4"/><text x="263.1744150575106" y="186.4242383944793" font-family="Arial" font-size="13" font-weight="500" fill="#ffffff">Spica</text>
+<circle cx="420.3362886315901" cy="160" r="5.5" fill="#c5dcff" stroke="#0e1930" stroke-width="1.4"/><text x="408.3362886315901" y="148" font-family="Arial" font-size="13" font-weight="500" fill="#ffffff">Rigel</text>
+<circle cx="715.4191466897398" cy="160" r="5.5" fill="#ff9464" stroke="#0e1930" stroke-width="1.4"/><text x="605.4191466897398" y="150" font-family="Arial" font-size="13" font-weight="500" fill="#ffffff">Betelgeuse</text>
+<circle cx="473.77635238289236" cy="312.9073003902417" r="5.5" fill="#e2edff" stroke="#0e1930" stroke-width="1.4"/><text x="483.77635238289236" y="302.9073003902417" font-family="Arial" font-size="13" font-weight="500" fill="#ffffff">Vega</text>
+<circle cx="466.4069285693892" cy="322.0926996097583" r="5.5" fill="#e9f0ff" stroke="#0e1930" stroke-width="1.4"/><text x="388.4069285693892" y="340.0926996097583" font-family="Arial" font-size="13" font-weight="500" fill="#ffffff">Sirius A</text>
+<circle cx="595.6142279796697" cy="385" r="7" fill="#ffdc72" stroke="#0e1930" stroke-width="1.4"/><text x="605.6142279796697" y="375" font-family="Arial" font-size="13" font-weight="700" fill="#ffffff">Sun</text>
+<circle cx="752.33628863159" cy="506.4536501951209" r="5.5" fill="#fa8068" stroke="#0e1930" stroke-width="1.4"/><text x="609.33628863159" y="496.4536501951209" font-family="Arial" font-size="13" font-weight="500" fill="#ffffff">Proxima Centauri</text>
+<circle cx="689.5033591714711" cy="267.9073003902417" r="5.5" fill="#ffb075" stroke="#0e1930" stroke-width="1.4"/><text x="587.5033591714711" y="257.9073003902417" font-family="Arial" font-size="13" font-weight="500" fill="#ffffff">Aldebaran</text>
+<circle cx="666.1201782220559" cy="284.62979853797765" r="5.5" fill="#ffbb85" stroke="#0e1930" stroke-width="1.4"/><text x="678.1201782220559" y="300.62979853797765" font-family="Arial" font-size="13" font-weight="500" fill="#ffffff">Arcturus</text>
+<circle cx="244.55993624869797" cy="443.5463498048791" r="5.5" fill="#e5f2ff" stroke="#0e1930" stroke-width="1.4"/><text x="256.55993624869797" y="433.5463498048791" font-family="Arial" font-size="13" font-weight="500" fill="#ffffff">Sirius B</text>
+<text x="489.2325135118784" y="363.52954353761515" transform="rotate(37 489.2325135118784 363.52954353761515)" font-family="Arial" font-size="16" font-weight="700" fill="#91d7ff">MAIN SEQUENCE</text><text x="655.2325135118783" y="242.07589334249434" font-family="Arial" font-size="17" font-weight="700" fill="#ffd19b">GIANTS</text><text x="249.39822962817755" y="492.9073003902417" font-family="Arial" font-size="15" font-weight="700" fill="#bde8ff">WHITE DWARFS</text><text x="567.1670705398808" y="138.52954353761515" font-family="Arial" font-size="15" font-weight="700" fill="#ffd19b">SUPERGIANTS</text></svg>
