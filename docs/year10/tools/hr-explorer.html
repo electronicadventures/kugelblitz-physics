@@ -7,15 +7,16 @@
 <style>
   :root{--ink:#1f2937;--muted:#475569;--line:#cbd5e1;--card:#ffffff;--bg:#f8fafc;--accent:#1f5fa8;--good:#15803d;--bad:#b45309;}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
-  .wrap{max-width:1000px;margin:0 auto;padding:6px}
-  .modes{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  html,body{background:transparent}
+  body{margin:0;color:var(--ink);font:clamp(14px,1.25vw,18px)/1.4 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  .wrap{margin:0 auto;padding:6px}
+  .modes{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;justify-content:center}
   .modes button{border:1px solid var(--line);background:#fff;border-radius:18px;padding:6px 14px;font:inherit;font-weight:600;cursor:pointer;color:var(--ink)}
   .modes button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
-  .grid{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start}
-  .plot{flex:1 1 480px;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:4px}
+  .grid{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start;justify-content:center}
+  .plot{flex:3 1 480px;max-width:calc((100vh - 185px) * 1.19);min-width:0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:4px}
   svg{display:block;width:100%;height:auto;touch-action:none;user-select:none}
-  .side{flex:1 1 220px;display:flex;flex-direction:column;gap:8px}
+  .side{flex:1 1 230px;max-width:420px;display:flex;flex-direction:column;gap:8px}
   .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
   .card h3{margin:0 0 4px;font-size:14px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
   table.read{width:100%;border-collapse:collapse;font-size:14px}
@@ -36,8 +37,12 @@
   .fb.good{display:block;background:#dcfce7;color:#14532d}
   .fb.bad{display:block;background:#fef3c7;color:#78350f}
   .hidden{display:none}
+  .opts{display:flex;flex-wrap:wrap;gap:4px 14px;padding:6px 8px 4px;font-size:.88em;border-top:1px solid var(--line)}
+  .opts label{white-space:nowrap;cursor:pointer}
+  .opts .set{flex-basis:100%;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center}
   .credit{font-size:11.5px;color:var(--muted);margin-top:6px}
   .credit a{color:var(--accent)}
+  @media (max-width:760px){.side{max-width:none}}
 </style>
 </head>
 <body>
@@ -52,6 +57,19 @@
       <svg id="hr" viewBox="0 0 640 540" role="img" aria-labelledby="hr-title">
         <title id="hr-title">Interactive H–R diagram. Drag the cross, use the sliders, or use the arrow keys to move it.</title>
       </svg>
+      <div class="opts" role="group" aria-label="Diagram options">
+        <label><input type="checkbox" data-layer="msG" checked> Main sequence</label>
+        <label><input type="checkbox" data-layer="grpG" checked> Star groups (giants, supergiants, white dwarfs)</label>
+        <label><input type="checkbox" data-layer="radG" checked> Radius lines</label>
+        <label><input type="checkbox" data-layer="insG"> Instability strip</label>
+        <label><input type="checkbox" data-layer="nameG" checked> Star names</label>
+        <div class="set"><strong>Plotted stars:</strong>
+          <label><input type="radio" name="set" value="lesson" checked> lesson stars</label>
+          <label><input type="radio" name="set" value="nearest"> nearest stars</label>
+          <label><input type="radio" name="set" value="brightest"> brightest in our sky</label>
+          <label><input type="radio" name="set" value="both"> nearest and brightest</label>
+          <label><input type="radio" name="set" value="none"> none</label></div>
+      </div>
     </div>
     <div class="side">
       <div class="card" id="explore-card">
@@ -59,10 +77,8 @@
         <div class="note" style="margin-top:0">Drag the cross on the diagram (or use the sliders or arrow keys).</div>
         <label class="sl">Surface temperature <input id="sT" type="range" min="0" max="1000" step="1"></label>
         <label class="sl">Luminosity <input id="sL" type="range" min="0" max="1000" step="1"></label>
-        <div class="row" style="margin-top:6px">
-          <button class="btn ghost" id="names" aria-pressed="true">Hide star names</button>
-          <button class="btn ghost" id="toSun">Back to the Sun</button>
-        </div>
+        <div class="row" style="margin-top:6px"><button class="btn ghost" id="toSun">Back to the Sun</button></div>
+        <div class="note">Drag the cross onto a dot to see which star it is. The instability strip is where stars that pulse in brightness (such as Cepheids) are found.</div>
       </div>
       <div class="card hidden" id="find-card">
         <h3>Find it <span id="score" style="float:right;text-transform:none"></span></h3>
@@ -86,6 +102,7 @@
           <tr><td>Absolute magnitude</td><td id="rM"></td></tr>
           <tr><td>Radius (Sun = 1)</td><td id="rR"></td></tr>
           <tr><td>Colour</td><td id="rCol"></td></tr>
+          <tr><td>Star at the cross</td><td id="rS">–</td></tr>
         </table>
         <div class="group" id="rG"></div>
       </div>
@@ -153,25 +170,41 @@ var plot=el("g",{"clip-path":"url(#pc)"});
 var N=160;for(var i=0;i<N;i++){var xa=X0+i*(X1-X0)/N,xb=X0+(i+1)*(X1-X0)/N;el("rect",{x:xa,y:Y0,width:xb-xa+0.6,height:Y1-Y0,fill:colour(TOf((xa+xb)/2),true)},plot);}
 for(var k=-4;k<=6;k++)el("line",{x1:X0,x2:X1,y1:yOf(Math.pow(10,k)),y2:yOf(Math.pow(10,k)),stroke:"#64748b","stroke-opacity":k%2===0?0.45:0.25,"stroke-width":k%2===0?0.9:0.6},plot);
 var TT=[30000,20000,10000,7000,5000,4000,3000];TT.forEach(function(t){el("line",{x1:xOf(t),x2:xOf(t),y1:Y0,y2:Y1,stroke:"#64748b","stroke-opacity":0.25},plot);});
-function band(f,t0,t1,half,stroke){var top=[],bot=[];for(var i=0;i<=80;i++){var t=t0+(t1-t0)*i/80;top.push(xOf(Math.pow(10,t))+","+yOf(Math.pow(10,f(t)+half)));bot.unshift(xOf(Math.pow(10,t))+","+yOf(Math.pow(10,f(t)-half)));}
-  el("polygon",{points:top.concat(bot).join(" "),fill:"#fff","fill-opacity":0.35,stroke:stroke,"stroke-width":1.6},plot);}
-band(msMid,lg(2450),lg(39000),0.6,"#b45309");band(wdMid,lg(5000),lg(35000),0.55,"#475569");
-function ell(cT,cL,rx,ry,stroke){var pts=[];for(var i=0;i<120;i++){var a=i/120*2*Math.PI;pts.push(xOf(Math.pow(10,lg(cT)+rx*Math.cos(a)))+","+yOf(Math.pow(10,lg(cL)+ry*Math.sin(a))));}
-  el("polygon",{points:pts.join(" "),fill:"#fff","fill-opacity":0.3,stroke:stroke,"stroke-width":1.6},plot);}
-ell(4000,250,0.10,0.95,"#b91c1c");ell(9500,1.8e5,0.57,0.45,"#6d28d9");
+var msG=el("g",{},plot),grpG=el("g",{},plot),insG=el("g",{},plot),radG=el("g",{},plot);
+function band(f,t0,t1,half,stroke,par){var top=[],bot=[];for(var i=0;i<=80;i++){var t=t0+(t1-t0)*i/80;top.push(xOf(Math.pow(10,t))+","+yOf(Math.pow(10,f(t)+half)));bot.unshift(xOf(Math.pow(10,t))+","+yOf(Math.pow(10,f(t)-half)));}
+  el("polygon",{points:top.concat(bot).join(" "),fill:"#fff","fill-opacity":0.35,stroke:stroke,"stroke-width":1.6},par);}
+band(msMid,lg(2450),lg(39000),0.6,"#b45309",msG);band(wdMid,lg(5000),lg(35000),0.55,"#475569",grpG);
+function ell(cT,cL,rx,ry,stroke,par){var pts=[];for(var i=0;i<120;i++){var a=i/120*2*Math.PI;pts.push(xOf(Math.pow(10,lg(cT)+rx*Math.cos(a)))+","+yOf(Math.pow(10,lg(cL)+ry*Math.sin(a))));}
+  el("polygon",{points:pts.join(" "),fill:"#fff","fill-opacity":0.3,stroke:stroke,"stroke-width":1.6},par);}
+ell(4000,250,0.10,0.95,"#b91c1c",grpG);ell(9500,1.8e5,0.57,0.45,"#6d28d9",grpG);
+// instability strip (where pulsating stars such as Cepheids are found): a slanted band above the main sequence
+el("polygon",{points:[[7800,30],[6600,30],[5300,2e4],[6400,2e4]].map(function(q){return xOf(q[0])+","+yOf(q[1]);}).join(" "),fill:"#db2777","fill-opacity":0.18,stroke:"#be185d","stroke-width":1.4},insG);
 [0.01,0.1,1,10,100,1000].forEach(function(R){var p=[];for(var i=0;i<=40;i++){var T=Math.pow(10,lg(TMIN)+(lg(TMAX)-lg(TMIN))*i/40);p.push(xOf(T)+","+yOf(R*R*Math.pow(T/TSUN,4)));}
-  el("polyline",{points:p.join(" "),fill:"none",stroke:"#334155","stroke-opacity":0.55,"stroke-dasharray":"5 4"},plot);
+  el("polyline",{points:p.join(" "),fill:"none",stroke:"#334155","stroke-opacity":0.55,"stroke-dasharray":"5 4"},radG);
   var tl=TMIN*1.2;if(R*R*Math.pow(tl/TSUN,4)<LMIN*2.5)tl=TSUN*Math.pow(LMIN*2.5/(R*R),0.25);
   var x=xOf(tl),y=yOf(R*R*Math.pow(tl/TSUN,4));var x2=xOf(tl*1.2),y2=yOf(R*R*Math.pow(tl*1.2/TSUN,4));var ang=Math.atan2(y2-y,x2-x)*180/Math.PI;if(ang>90)ang-=180;if(ang<-90)ang+=180;
-  var g=el("g",{transform:"translate("+x+","+y+") rotate("+ang+")"},plot);el("rect",{x:-22,y:-7,width:44,height:13,rx:3,fill:"#fff","fill-opacity":0.8},g);
+  var g=el("g",{transform:"translate("+x+","+y+") rotate("+ang+")"},radG);el("rect",{x:-22,y:-7,width:44,height:13,rx:3,fill:"#fff","fill-opacity":0.8},g);
   el("text",{x:0,y:3,"text-anchor":"middle","font-size":10.3,fill:"#334155"},g,"R = "+R);});
-function lab(x,y,t,c,rot){el("text",{x:x,y:y,"text-anchor":"middle","font-size":13.8,"font-weight":700,fill:c,transform:rot?"rotate("+rot+" "+x+" "+y+")":""},plot,t);}
-lab(xOf(15000),yOf(Math.pow(10,msMid(lg(15000)))*0.9),"MAIN SEQUENCE","#92400e",-39);lab(xOf(4000),yOf(4500),"GIANTS","#991b1b");
-lab(xOf(9500),yOf(1.3e6),"SUPERGIANTS","#5b21b6");lab(xOf(13500),yOf(1.2e-3),"WHITE DWARFS","#334155",-20);
-var starG=el("g",{},plot),nameG=el("g",{},plot);
-STARS.forEach(function(s){var r=radius(s[1],s[2]),x=xOf(s[1]),y=yOf(s[2]);var rad=Math.sqrt(30+55*(lg(r)+2))/1.9;
-  el("circle",{cx:x,cy:y,r:rad,fill:colour(s[1]),stroke:"#1f2937","stroke-width":1.2},starG);
-  var o=LAB[s[0]],t=el("text",{x:x+o[0],y:y+o[1],"text-anchor":o[2],"font-size":12.6,"font-weight":700,fill:"#1f2937","paint-order":"stroke",stroke:"#fff","stroke-width":3,"stroke-linejoin":"round"},nameG,s[0]);});
+function lab(x,y,t,c,rot,par){el("text",{x:x,y:y,"text-anchor":"middle","font-size":13.8,"font-weight":700,fill:c,transform:rot?"rotate("+rot+" "+x+" "+y+")":""},par,t);}
+lab(xOf(15000),yOf(Math.pow(10,msMid(lg(15000)))*0.9),"MAIN SEQUENCE (V)","#92400e",-39,msG);lab(xOf(4000),yOf(4500),"GIANTS (III)","#991b1b",0,grpG);
+lab(xOf(24000),yOf(3.2e5),"SUPERGIANTS (I)","#5b21b6",0,grpG);lab(xOf(13500),yOf(1.2e-3),"WHITE DWARFS","#334155",-20,grpG);
+(function(){var a=[xOf(7200),yOf(30)],b=[xOf(5850),yOf(2e4)],ang=Math.atan2(b[1]-a[1],b[0]-a[0])*180/Math.PI;lab(xOf(6450),yOf(800)+4,"INSTABILITY STRIP","#9d174d",ang,insG);})();
+// star sets (approximate published values: temperature K, luminosity in Suns). Lesson stars keep fixed labels.
+var NEAREST=[["Sun",5772,1],["Proxima Centauri",3040,0.0017],["Alpha Centauri A",5790,1.52],["Alpha Centauri B",5260,0.5],["Wolf 359",2800,0.0011],
+  ["Lalande 21185",3550,0.021],["Sirius A",9940,25],["Sirius B",25000,0.056],["UV Ceti A",2670,0.0006],["UV Ceti B",2650,0.0004],["Ross 154",3240,0.0038],
+  ["Ross 248",3000,0.0018],["Epsilon Eridani",5080,0.34],["Lacaille 9352",3670,0.037],["Ross 128",3190,0.0036],["Procyon A",6530,6.9],["Procyon B",7740,0.00049],
+  ["61 Cygni A",4400,0.15],["61 Cygni B",4040,0.085],["Groombridge 34 A",3700,0.022],["Epsilon Indi A",4630,0.22],["Tau Ceti",5340,0.52],["Kapteyn's Star",3570,0.012]];
+var BRIGHTEST=[["Sirius A",9940,25],["Canopus",7350,10700],["Alpha Centauri A",5790,1.52],["Arcturus",4290,170],["Vega",9600,40],["Capella",4970,79],
+  ["Rigel",12100,1.2e5],["Procyon A",6530,6.9],["Achernar",15000,3150],["Betelgeuse",3600,1e5],["Hadar",25000,41700],["Altair",7700,10.6],["Acrux",28000,25000],
+  ["Aldebaran",3900,440],["Antares",3570,75900],["Spica",22000,2e4],["Pollux",4670,43],["Fomalhaut",8590,16.6],["Deneb",8525,196000],["Mimosa",27000,34000],["Regulus",12460,316]];
+var starG=el("g",{},plot),nameG=el("g",{},plot),shown=[];
+function dotR(T,L){return Math.sqrt(30+55*(lg(radius(T,L))+2))/1.9;}
+function plotStars(set){starG.innerHTML="";nameG.innerHTML="";shown=[];
+  var list=set==="lesson"?STARS:set==="nearest"?NEAREST:set==="brightest"?BRIGHTEST:set==="both"?NEAREST.concat(BRIGHTEST.filter(function(b){return !NEAREST.some(function(n){return n[0]===b[0];});})):[];
+  list.forEach(function(s){var x=xOf(s[1]),y=yOf(s[2]);shown.push(s);
+    var c=el("circle",{cx:x,cy:y,r:dotR(s[1],s[2]),fill:colour(s[1]),stroke:"#1f2937","stroke-width":1.2},starG);el("title",{},c,s[0]);
+    if(set==="lesson"){var o=LAB[s[0]];el("text",{x:x+o[0],y:y+o[1],"text-anchor":o[2],"font-size":12.6,"font-weight":700,fill:"#1f2937","paint-order":"stroke",stroke:"#fff","stroke-width":3,"stroke-linejoin":"round"},nameG,s[0]);}});}
+plotStars("lesson");
 el("rect",{x:X0,y:Y0,width:X1-X0,height:Y1-Y0,fill:"none",stroke:"#1f2937"});
 // axes
 function ax(x,y,t,a,size,w){return el("text",{x:x,y:y,"text-anchor":a||"middle","font-size":size||11,"font-weight":w||400,fill:"#1f2937"},svg,t);}
@@ -204,6 +237,8 @@ function render(){var T=state.T,L=state.L,R=radius(T,L);
   document.getElementById("rR").textContent=spaced(fmt(R));
   document.getElementById("rCol").innerHTML='<span class="swatch" style="background:'+colour(T)+'"></span>'+colourName(T);
   document.getElementById("rG").textContent=group(T,L);
+  var hit="–",best=1e9;shown.forEach(function(st){var d=Math.hypot(xOf(st[1])-xOf(T),yOf(st[2])-yOf(L));if(d<=Math.max(9,dotR(st[1],st[2])+3)&&d<best){best=d;hit=st[0];}});
+  document.getElementById("rS").textContent=hit;
   drawSize(T,R);}
 var cv=document.getElementById("size"),cx=cv.getContext("2d");
 function drawSize(T,R){var W=cv.width,H=cv.height;cx.clearRect(0,0,W,H);cx.fillStyle="#0b1020";cx.fillRect(0,0,W,H);
@@ -236,8 +271,9 @@ cur.addEventListener("keydown",function(e){var dx=0,dy=0,st=e.shiftKey?1:4;
   e.preventDefault();set(TOf(clamp(xOf(state.T)+dx,X0,X1)),LOf(clamp(yOf(state.L)+dy,Y0,Y1)));});
 sT.addEventListener("input",function(){state.T=Math.pow(10,lg(TMAX)-sT.value/1000*(lg(TMAX)-lg(TMIN)));render();});
 sL.addEventListener("input",function(){state.L=Math.pow(10,lg(LMIN)+sL.value/1000*(lg(LMAX)-lg(LMIN)));render();});
-var namesBtn=document.getElementById("names");
-namesBtn.addEventListener("click",function(){var on=nameG.style.display==="none";nameG.style.display=on?"":"none";namesBtn.textContent=on?"Hide star names":"Show star names";namesBtn.setAttribute("aria-pressed",on);});
+var LAYERS={msG:msG,grpG:grpG,radG:radG,insG:insG,nameG:nameG};
+document.querySelectorAll("[data-layer]").forEach(function(cb){function ap(){LAYERS[cb.dataset.layer].style.display=cb.checked?"":"none";}cb.addEventListener("change",ap);ap();});
+document.querySelectorAll("input[name=set]").forEach(function(r){r.addEventListener("change",function(){if(r.checked){plotStars(r.value);render();}});});
 document.getElementById("toSun").addEventListener("click",function(){set(TSUN,1);});
 
 // ---------- find it (self-check) ----------
