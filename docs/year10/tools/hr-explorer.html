@@ -91,7 +91,7 @@
         <h3>The Sun's future</h3>
         <div id="sunstep" class="task">Press Play to follow the Sun's dot.</div>
         <div class="row" style="margin-top:6px"><button class="btn" id="play">Play</button><button class="btn ghost" id="step">Next step</button></div>
-        <div class="note">Simplified path. Watch the size panel: the Sun swells to about 150 times its width, then shrinks to about the size of Earth.</div>
+        <div class="note">Simplified from published models. Watch the size panel: the Sun swells to over 200 times its width, then shrinks to about the size of Earth.</div>
       </div>
       <div class="card">
         <h3>The star at the cross</h3>
@@ -108,7 +108,8 @@
       </div>
       <div class="card">
         <h3>Size compared with the Sun</h3>
-        <canvas id="size" width="560" height="240" aria-label="Size of the star compared with the Sun"></canvas>
+        <canvas id="size" width="560" height="300" aria-label="Size of the star compared with the Sun"></canvas>
+        <div class="row" style="margin-top:6px"><button class="btn ghost" id="zOut" aria-label="Zoom out">−</button><button class="btn ghost" id="zIn" aria-label="Zoom in">+</button><button class="btn ghost" id="zAuto">Auto</button><span class="note" id="zoomLbl" style="margin:0"></span></div>
         <div class="note" id="sizeNote"></div>
       </div>
     </div>
@@ -241,19 +242,27 @@ function render(){var T=state.T,L=state.L,R=radius(T,L);
   document.getElementById("rS").textContent=hit;
   drawSize(T,R);}
 var cv=document.getElementById("size"),cx=cv.getContext("2d");
+var zoomAuto=true,zoom=1;   // zoom = pixels per Sun radius when not automatic
 function drawSize(T,R){var W=cv.width,H=cv.height;cx.clearRect(0,0,W,H);cx.fillStyle="#0b1020";cx.fillRect(0,0,W,H);
-  var maxR=H*0.36,big=Math.max(R,1),scale=maxR/big; // pixels per Sun radius
-  var rs=Math.max(R*scale,1.2),rsun=Math.max(scale,1.2);
-  var ys=H*0.43;var xsun=W*0.78,xstar=W*0.33;
-  function disc(x,r,c){cx.beginPath();cx.arc(x,ys,r,0,2*Math.PI);cx.fillStyle=c;cx.shadowColor=c;cx.shadowBlur=r>3?12:4;cx.fill();cx.shadowBlur=0;}
-  if(rs>W*0.3){xstar=W*0.30;}
-  disc(xstar,rs,colour(T));disc(xsun,rsun,colour(TSUN));
-  cx.fillStyle="#e2e8f0";cx.font="600 22px system-ui,Arial";cx.textAlign="center";
-  cx.fillText("this star",xstar,H-10);cx.fillText("Sun",xsun,H-10);
-  var note=document.getElementById("sizeNote");
-  if(R>=1.5)note.textContent="This star is about "+spaced(fmt(R))+" times as wide as the Sun."+(scale<1.2?" The Sun is shown as a dot: at this scale it is too small to see.":"");
-  else if(R<=0.67)note.textContent="This star is about "+spaced(fmt(1/R))+" times narrower than the Sun."+(R*scale<1.2?" It is shown as a dot: at this scale it is too small to see.":"")+(R<0.02?" That is about the size of Earth.":"");
-  else note.textContent="About the same size as the Sun.";}
+  var scale=zoomAuto?(H*0.4)/Math.max(R,1):zoom;          // auto: the bigger of the two fills the panel height
+  var rs=R*scale,rsun=scale,ys=H/2;
+  // the star on the left, the Sun on the right; a disc too big for its half runs off the edge (like the NAAP explorer)
+  var xstar=rs>W*0.25?W*0.5-rs:W*0.27,xsun=rsun>W*0.22?W*0.55+rsun:W*0.76;
+  function disc(x,r,c){r=Math.max(r,1.2);cx.beginPath();cx.arc(x,ys,r,0,2*Math.PI);cx.fillStyle=c;cx.shadowColor=c;cx.shadowBlur=r>3?14:4;cx.fill();cx.shadowBlur=0;}
+  disc(xsun,rsun,colour(TSUN));disc(xstar,rs,colour(T));
+  function pill(t,x,al){cx.font="600 20px system-ui,Arial";var w=cx.measureText(t).width+20;var x0=al==="l"?x:x-w;
+    cx.fillStyle="rgba(0,0,0,.75)";cx.beginPath();cx.roundRect?cx.roundRect(x0,H-38,w,28,14):cx.rect(x0,H-38,w,28);cx.fill();cx.fillStyle="#f1f5f9";cx.textAlign="left";cx.fillText(t,x0+10,H-17);}
+  pill("this star",10,"l");pill("Sun",W-10,"r");
+  var tiny=[];if(rs<1.2)tiny.push("this star");if(rsun<1.2)tiny.push("the Sun");
+  var note=document.getElementById("sizeNote"),z=document.getElementById("zoomLbl");
+  z.textContent=zoomAuto?"Zoom: auto":"Zoom: Sun = "+(rsun>=10?Math.round(rsun*2):(rsun*2).toPrecision(2))+" px wide";
+  var t=R>=1.5?"This star is about "+spaced(fmt(R))+" times as wide as the Sun.":R<=0.67?"This star is about "+spaced(fmt(1/R))+" times narrower than the Sun."+(R<0.02?" That is about the size of Earth.":""):"About the same size as the Sun.";
+  if(tiny.length)t+=" At this zoom "+tiny.join(" and ")+" is too small to see, so it is shown as a dot.";
+  note.textContent=t;}
+function setZoom(f){if(zoomAuto){zoom=(cv.height*0.4)/Math.max(radius(state.T,state.L),1);zoomAuto=false;}zoom=clamp(zoom*f,0.002,20000);render();}
+document.getElementById("zIn").addEventListener("click",function(){setZoom(2);});
+document.getElementById("zOut").addEventListener("click",function(){setZoom(0.5);});
+document.getElementById("zAuto").addEventListener("click",function(){zoomAuto=true;render();});
 
 // ---------- pointer and keyboard ----------
 function svgPoint(evt){var pt=svg.createSVGPoint();pt.x=evt.clientX;pt.y=evt.clientY;return pt.matrixTransform(svg.getScreenCTM().inverse());}
@@ -314,31 +323,46 @@ nextBtn.addEventListener("click",function(){ti++;showTask();});
 document.getElementById("restart").addEventListener("click",function(){ti=0;score=0;showTask();});
 
 // ---------- the Sun's future ----------
-var SUN=[[5772,1,"Today: a G-type main-sequence star, about 5800 K."],[5600,1.8,"Over billions of years on the main sequence it slowly gets brighter."],
- [4400,40,"About 5 billion years from now: it runs low on hydrogen in its core and starts to swell (up and right)."],
- [3400,2500,"Red giant: cooler (about 3400 K) but thousands of times brighter, because it is about 150 times wider."],
- [30000,3000,"It throws off its outer layers (a planetary nebula). The very hot core is exposed, so the dot jumps left."],
- [26000,0.04,"The core is now a white dwarf: hot but very dim, about the size of Earth."],
- [7000,3.5e-4,"With no fusion, the white dwarf slowly cools and fades (down and right) for billions of years."]];
-var si=0,timer=null,anim=null;
-function drawSunPath(n){pathG.innerHTML="";var pts=SUN.slice(0,n+1).map(function(p){return xOf(p[0])+","+yOf(p[1]);});
-  if(pts.length>1)el("polyline",{points:pts.join(" "),fill:"none",stroke:"#c2410c","stroke-width":2.5,"stroke-dasharray":"6 4"},pathG);}
-function goStep(n,done){si=n;var a=SUN[Math.max(n-1,0)],b=SUN[n],t0=performance.now(),dur=n?1300:1;
-  document.getElementById("sunstep").textContent=(n+1)+" of "+SUN.length+": "+b[2];
-  cancelAnimationFrame(anim);
-  (function f(now){var u=clamp((now-t0)/dur,0,1);u=u*u*(3-2*u);
-    set(Math.pow(10,lg(a[0])+(lg(b[0])-lg(a[0]))*u),Math.pow(10,lg(a[1])+(lg(b[1])-lg(a[1]))*u));
-    var pts=SUN.slice(0,n).map(function(p){return xOf(p[0])+","+yOf(p[1]);});pts.push(xOf(state.T)+","+yOf(state.L));
-    pathG.innerHTML="";if(pts.length>1)el("polyline",{points:pts.join(" "),fill:"none",stroke:"#c2410c","stroke-width":2.5,"stroke-dasharray":"6 4"},pathG);
-    if(u<1)anim=requestAnimationFrame(f);else if(done)done();})(t0);}
+// Simplified from published models of a 1-solar-mass star (luminosity in Suns, temperature in K).
+var STEPS=[
+ {pts:[[5772,1]],cap:"Today, 4.6 billion years old: a G-type main-sequence star, about 5800 K."},
+ {pts:[[5900,1.4],[5700,1.8]],cap:"Over the next 5 billion years on the main sequence it slowly gets brighter."},
+ {pts:[[5000,2.2]],cap:"Subgiant: the hydrogen in its core runs out. The Sun cools and starts to swell (right)."},
+ {pts:[[4500,4],[4000,30],[3500,300],[3100,2500]],cap:"Red giant: it climbs up and right to about 3100 K and about 2500 times brighter. It is now about 170 times wider than today."},
+ {pts:[[4700,45]],cap:"Helium starts fusing in the core. The Sun shrinks back and settles at about 4700 K, about 45 times brighter."},
+ {pts:[[4000,250],[3000,4000]],cap:"Second climb: the helium in its core runs out and it swells again, to about 3000 K and 4000 times brighter. This is its biggest: about 230 times wider than today."},
+ {pts:[[10000,4000],[40000,4000]],cap:"It throws off its outer layers (a planetary nebula). The hot core is exposed, so the dot races left at about the same luminosity, off the hot edge of this chart: the core reaches about 100 000 K."},
+ {pts:[[40000,0.33]],jump:true,cap:"The core comes back onto the chart as a white dwarf: very hot but dim, because it is only about the size of Earth."},
+ {pts:[[25000,0.05],[10000,0.0013],[5000,9e-5]],cap:"With no fusion, the white dwarf cools and fades for billions of years. It stays the same size, so it slides down along the R = 0.01 line."}];
+var FLAT=[];STEPS.forEach(function(st,i){st.pts.forEach(function(p,j){FLAT.push({T:p[0],L:p[1],jump:!!(st.jump&&j===0),step:i});});});
+var OFF=FLAT.findIndex(function(f){return f.step===6&&f.T===40000;});
+var si=0,timer=null,anim=null,fi=0;   // si = step shown, fi = FLAT points reached
+function drawPath(k,cur){pathG.innerHTML="";var seg=[];
+  function flush(){if(seg.length>1)el("polyline",{points:seg.join(" "),fill:"none",stroke:"#c2410c","stroke-width":2.5,"stroke-dasharray":"6 4"},pathG);seg=[];}
+  for(var i=0;i<k;i++){if(FLAT[i].jump)flush();seg.push(xOf(FLAT[i].T)+","+yOf(FLAT[i].L));}
+  if(cur){if(cur.jump)flush();seg.push(xOf(cur.T)+","+yOf(cur.L));}flush();
+  if(k>OFF){var y=yOf(4000);el("text",{x:X0+6,y:y-8,"font-size":11.5,"font-weight":700,fill:"#c2410c","paint-order":"stroke",stroke:"#fff","stroke-width":3},pathG,"← off the chart (about 100 000 K)");
+    el("text",{x:X0+6,y:yOf(0.33)-8,"font-size":11.5,"font-weight":700,fill:"#c2410c","paint-order":"stroke",stroke:"#fff","stroke-width":3},pathG,"back on as a white dwarf ↓");}}
+function drawSunPath(n){fi=n;drawPath(n,null);}
+function goStep(n,done){cancelAnimationFrame(anim);si=n;
+  document.getElementById("sunstep").textContent=(n+1)+" of "+STEPS.length+": "+STEPS[n].cap;
+  var k0=FLAT.findIndex(function(f){return f.step===n;}),k1=k0+STEPS[n].pts.length;
+  if(n===0){fi=1;set(FLAT[0].T,FLAT[0].L);drawPath(1,null);if(done)done();return;}
+  var a={T:FLAT[k0-1].T,L:FLAT[k0-1].L};
+  (function leg(k){if(k>=k1){fi=k1;if(done)done();return;}var b=FLAT[k];
+    if(b.jump){set(b.T,b.L);drawPath(k+1,null);a=b;setTimeout(function(){leg(k+1);},500);return;}
+    var t0=performance.now(),dur=750;
+    (function f(now){var u=clamp((now-t0)/dur,0,1);u=u*u*(3-2*u);
+      set(Math.pow(10,lg(a.T)+(lg(b.T)-lg(a.T))*u),Math.pow(10,lg(a.L)+(lg(b.L)-lg(a.L))*u));drawPath(k,{T:state.T,L:state.L});
+      if(u<1)anim=requestAnimationFrame(f);else{a=b;drawPath(k+1,null);leg(k+1);}})(t0);})(k0);}
 var playing=false,playBtn=document.getElementById("play");
 function stopSun(){playing=false;clearTimeout(timer);timer=null;playBtn.textContent="Play";}
 playBtn.addEventListener("click",function(){
   if(playing){stopSun();return;}
   playing=true;playBtn.textContent="Pause";
-  function run(n){goStep(n,function(){if(!playing)return;if(n<SUN.length-1)timer=setTimeout(function(){if(playing)run(n+1);},1600);else stopSun();});}
-  run(si>=SUN.length-1?0:(si===0?0:si+1));});
-document.getElementById("step").addEventListener("click",function(){stopSun();goStep((si+1)%SUN.length);});
+  function run(n){goStep(n,function(){if(!playing)return;if(n<STEPS.length-1)timer=setTimeout(function(){if(playing)run(n+1);},1600);else stopSun();});}
+  run(si>=STEPS.length-1?0:(si===0&&fi<=1?1:si+1));});
+document.getElementById("step").addEventListener("click",function(){stopSun();goStep((si+1)%STEPS.length);});
 
 // ---------- modes ----------
 var mode="explore";
@@ -346,7 +370,7 @@ function setMode(m){mode=m;stopSun();
   ["explore","find","sun"].forEach(function(k){document.getElementById("m-"+k).setAttribute("aria-pressed",k===m);document.getElementById(k+"-card").classList.toggle("hidden",k!==m);});
   pathG.innerHTML="";markG.innerHTML="";
   if(m==="find"){ti=0;score=0;showTask();}
-  if(m==="sun"){si=0;set(SUN[0][0],SUN[0][1]);drawSunPath(0);document.getElementById("sunstep").textContent="Press Play to follow the Sun's dot, or step through one stage at a time.";}}
+  if(m==="sun"){si=0;fi=1;set(FLAT[0].T,FLAT[0].L);drawSunPath(1);document.getElementById("sunstep").textContent="Press Play to follow the Sun's dot, or step through one stage at a time.";}}
 ["explore","find","sun"].forEach(function(k){document.getElementById("m-"+k).addEventListener("click",function(){setMode(k);});});
 var q=location.hash.replace("#","");if(q==="find"||q==="sun")setMode(q);
 set(TSUN,1);
