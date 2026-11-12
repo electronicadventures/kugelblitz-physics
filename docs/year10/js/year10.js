@@ -1,6 +1,7 @@
-/* Year 10 self-check: dropdown questions (e.g. Punnett squares).
-   <div class="sc-dd"> ... <select data-blank="t1" data-answer="Xᴬ">…</select> ... </div>
-   Checking happens in the browser. Nothing is stored or sent anywhere. */
+/* Year 10 pages (kugelblitz.me/year10). Runs in the browser; nothing is stored or sent.
+   1. Dropdown self-checks (e.g. Punnett squares): <div class="sc-dd"> with <select data-blank data-answer>.
+   2. Links to a worked example: a link ending in #<id> (e.g. #worked-example-morgans-fruit-flies)
+      opens that collapsed worked example and scrolls to it. */
 (function () {
   function initDd(box) {
     if (box.dataset.ready) return;
@@ -30,7 +31,21 @@
         : right + " of " + sels.length + " correct. Boxes outlined in red need another look.";
     });
   }
-  function init() { document.querySelectorAll(".sc-dd").forEach(initDd); }
+
+  function openTarget() {
+    var id = decodeURIComponent((location.hash || "").slice(1));
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (!el) return;
+    for (var d = el.closest("details"); d; d = d.parentElement && d.parentElement.closest("details")) d.open = true;
+    setTimeout(function () { el.scrollIntoView({ block: "start" }); }, 50);
+  }
+
+  function init() {
+    document.querySelectorAll(".sc-dd").forEach(initDd);
+    openTarget();
+  }
+  window.addEventListener("hashchange", openTarget);
   if (typeof document$ !== "undefined") document$.subscribe(init);
   else document.addEventListener("DOMContentLoaded", init);
 })();

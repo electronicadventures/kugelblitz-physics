@@ -138,7 +138,7 @@ extra_javascript:
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
   - javascripts/selfcheck.js
-  - year10/js/dropdowns.js
+  - year10/js/year10.js
 
 extra_css:
   - stylesheets/extra.css
