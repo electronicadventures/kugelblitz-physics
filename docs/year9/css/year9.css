@@ -37,3 +37,52 @@
 /* Video embed */
 .video { position: relative; width: 100%; max-width: 640px; aspect-ratio: 16 / 9; margin: 0.6em 0; }
 .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: 6px; }
+
+/* Chemistry revision widgets (js/chem-widgets.js) */
+.shell-builder, .hl-reader, .alpha-stepper { border: 1px solid var(--md-default-fg-color--lightest); border-radius: 8px; padding: 0.8em; margin: 1em 0; font-size: 0.8rem; }
+.cw-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5em; margin: 0.4em 0; }
+.md-typeset .cw-row .md-button { padding: 0.3em 0.9em; margin: 0; font-size: 0.75rem; }
+.md-typeset .cw-row .md-button[disabled] { opacity: 0.4; pointer-events: none; }
+.cw-row select, .cw-row input[type=text] { font: inherit; padding: 0.2em 0.4em; border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 4px; background: var(--md-default-bg-color); color: var(--md-default-fg-color); }
+.cw-row input[type=range] { flex: 1 1 200px; max-width: 360px; }
+.cw-wrap { display: flex; flex-wrap: wrap; gap: 1em; align-items: flex-start; }
+.cw-side { flex: 1 1 220px; }
+.cw-out p, .cw-out ul { margin: 0.3em 0; }
+.cw-note { margin: 0.3em 0; }
+.cw-ok { color: #2e7d32; } .cw-no { color: #c62828; }
+[data-md-color-scheme="slate"] .cw-ok { color: #81c784; } [data-md-color-scheme="slate"] .cw-no { color: #ef9a9a; }
+.cw-fb { font-weight: 600; margin: 0.3em 0; }
+.md-typeset .sb-svg { width: 100%; max-width: 260px; height: auto; }
+.sb-ring { fill: none; stroke: var(--md-default-fg-color--light); stroke-width: 1.5; }
+.sb-nuc { fill: var(--md-accent-fg-color--transparent); stroke: var(--md-accent-fg-color); stroke-width: 1.5; }
+.sb-sym { fill: var(--md-default-fg-color); font-size: 15px; font-weight: 700; }
+.sb-p { fill: var(--md-default-fg-color--light); font-size: 9px; }
+.sb-e { fill: var(--md-primary-fg-color); }
+.md-typeset .hr-svg { width: 100%; max-width: 520px; height: auto; display: block; }
+.cw-axis { stroke: var(--md-default-fg-color--light); stroke-width: 1.2; }
+.cw-grid { stroke: var(--md-default-fg-color--lightest); stroke-width: 1; }
+.cw-tick { fill: var(--md-default-fg-color--light); font-size: 10px; }
+.cw-label { fill: var(--md-default-fg-color); font-size: 11px; }
+.cw-curve { fill: none; stroke: var(--md-primary-fg-color); stroke-width: 2.2; }
+.cw-guide { fill: none; stroke: var(--md-accent-fg-color); stroke-width: 1.3; stroke-dasharray: 4 3; }
+.cw-read { fill: none; stroke: var(--md-default-fg-color--light); stroke-width: 1; stroke-dasharray: 2 3; }
+.cw-dot { fill: var(--md-accent-fg-color); }
+.ad-eq { font-size: 1.3rem; margin: 0.5em 0; display: flex; align-items: center; gap: 0.4em; flex-wrap: wrap; }
+
+/* Nuclear notation: mass number over atomic number, left of the symbol */
+.nuc { display: inline-flex; align-items: center; white-space: nowrap; }
+.nuc-n { display: inline-flex; flex-direction: column; align-items: flex-end; font-size: 0.6em; line-height: 1.05; margin-right: 0.1em; }
+
+/* Mini periodic table (first 20 elements) */
+.mini-pt { border-collapse: collapse; font-size: 0.7rem; margin: 0.8em 0; }
+.md-typeset .mini-pt td, .md-typeset .mini-pt th { border: 1px solid var(--md-default-fg-color--lighter); padding: 0.2em 0.35em; text-align: center; min-width: 3.2em; }
+.md-typeset .mini-pt th { background: transparent; font-weight: 600; color: var(--md-default-fg-color--light); }
+.md-typeset .mini-pt td.empty { border: none; }
+.mini-pt .z { display: block; font-size: 0.85em; color: var(--md-default-fg-color--light); }
+.mini-pt .s { display: block; font-size: 1.25em; font-weight: 700; }
+.mini-pt .m { display: block; font-size: 0.85em; }
+.mini-pt .g1 { background: rgba(229, 115, 115, 0.18); } .mini-pt .g17 { background: rgba(255, 213, 79, 0.22); } .mini-pt .g18 { background: rgba(100, 181, 246, 0.2); }
+
+/* "What a full answer includes" */
+.full-answer { border-left: 4px solid var(--md-accent-fg-color); padding: 0.3em 0.8em; margin: 0.8em 0; background: var(--md-code-bg-color); }
