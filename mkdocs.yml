@@ -48,6 +48,12 @@ nav:
           - Interactive Labs: resources/labs.md
   - Year 9:
       - Overview: year9/index.md
+      - Test revision:
+          - "Periodic table, shells and reactivity": year9/lessons/periodic-table-shells-reactivity.md
+          - "Protons, neutrons and electrons": year9/lessons/protons-neutrons-electrons.md
+          - "Isotopes": year9/lessons/isotopes.md
+          - "Half-life graphs and alpha decay": year9/lessons/half-life-and-alpha-decay.md
+          - "Chemical reactions and conservation of mass": year9/lessons/reactions-and-conservation-of-mass.md
       - Radioactivity:
           - "Half-life and carbon dating": year9/lessons/half-life-and-carbon-dating.md
   - Year 10:
